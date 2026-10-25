@@ -40,7 +40,6 @@
             background-color: #f7fafc;
             color: #2d3748;
         }
-        /* Custom Scrolling Ticker Animation */
         @keyframes ticker {
             0% { transform: translate3d(100%, 0, 0); }
             100% { transform: translate3d(-100%, 0, 0); }
@@ -81,15 +80,13 @@
     <!-- Main Header / Logo Section -->
     <header class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-            <!-- Brand Logo -->
             <div class="flex items-center gap-3">
-                <a href="#" class="flex items-center gap-2">
+                <a href="./index.html" class="flex items-center gap-2">
                     <span class="bg-red-600 text-white font-black text-2xl px-3 py-1 rounded tracking-tight font-rubik shadow-sm">ללא פילטר</span>
                 </a>
                 <span class="hidden sm:inline-block text-xs bg-gray-100 text-gray-600 font-medium px-2 py-1 rounded border">חדשות ואקטואליה בגובה העיניים</span>
             </div>
 
-            <!-- Header Actions / Search -->
             <div class="flex items-center gap-3">
                 <div class="relative hidden sm:block">
                     <input type="text" placeholder="חיפוש בחדשות..." class="bg-gray-100 text-sm rounded-full pr-8 pl-4 py-1.5 focus:outline-none focus:ring-2 focus:ring-red-500 w-44 md:w-60 transition">
@@ -104,7 +101,8 @@
         <!-- Navigation Bar -->
         <nav class="bg-slate-800 text-white text-sm font-medium">
             <div class="max-w-7xl mx-auto px-4 flex items-center overflow-x-auto whitespace-nowrap scrollbar-none">
-                <a href="#" class="py-2.5 px-3 bg-red-600 font-bold hover:bg-red-700 transition">פוליטיקה</a>
+                <a href="./index.html" class="py-2.5 px-3 hover:bg-slate-700 transition">ראשי</a>
+                <a href="./news_article_page.html" class="py-2.5 px-3 bg-red-600 font-bold hover:bg-red-700 transition">פוליטיקה</a>
                 <a href="#" class="py-2.5 px-3 hover:bg-slate-700 transition">צבא וביטחון</a>
                 <a href="#" class="py-2.5 px-3 hover:bg-slate-700 transition">כלכלה</a>
                 <a href="#" class="py-2.5 px-3 hover:bg-slate-700 transition">משפט</a>
@@ -134,34 +132,24 @@
     <main class="max-w-7xl mx-auto px-4 py-6 flex-1 w-full">
         <!-- Breadcrumb & Category -->
         <div class="flex items-center gap-2 text-xs text-gray-500 mb-3">
-            <a href="#" class="hover:underline">ראשי</a>
+            <a href="./index.html" class="hover:underline">ראשי</a>
             <span>&gt;</span>
-            <a href="#" class="hover:underline text-red-600 font-semibold">פוליטיקה ובחירות</a>
+            <a href="./news_article_page.html" class="hover:underline text-red-600 font-semibold">פוליטיקה ובחירות</a>
             <span>&gt;</span>
             <span class="text-gray-700 truncate">אף גוש לא מגרד 61</span>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            
-            <!-- Left Column: Article Body (8 cols) -->
             <article class="lg:col-span-8 bg-white p-6 md:p-8 rounded-xl shadow-sm border border-gray-200">
-                
-                <!-- Tag / Category Header -->
                 <span class="inline-block bg-red-100 text-red-700 text-xs font-bold px-3 py-1 rounded-full mb-3">
                     <i class="fas fa-vote-yea ml-1"></i> כתיבה עיתונאית - בחירות
                 </span>
-
-                <!-- Article Main Title -->
                 <h1 class="text-3xl md:text-5xl font-black text-slate-900 leading-tight mb-4 tracking-tight">
                     אף גוש לא מגרד 61: הסיוט של חוסר היציבות הפוליטית חוזר
                 </h1>
-
-                <!-- Article Subtitle -->
                 <h2 class="text-lg md:text-xl text-gray-600 font-normal leading-relaxed mb-6 border-r-4 border-red-600 pr-3">
                     ימים ספורים לפתיחת הקלפיות, והסקרים מראים שאף גוש לא משיג 61 מנדטים. הזיכרון של 5 הסבבים עוד חקוק בראשנו, והחשש הגדול הוא שמערכת הבחירות הנוכחית לא תביא הכרעה - ותחזיר אותנו אחורה בזמן.
                 </h2>
-
-                <!-- Author & Meta bar -->
                 <div class="flex flex-wrap items-center justify-between border-y border-gray-200 py-3 mb-6 text-xs text-gray-600 gap-3">
                     <div class="flex items-center gap-3">
                         <div class="w-10 h-10 rounded-full bg-red-600 text-white flex items-center justify-center font-bold text-sm shadow">
@@ -172,8 +160,6 @@
                             <div>פורסם לאחרונה | מערכת ללא פילטר</div>
                         </div>
                     </div>
-
-                    <!-- Toolbar Actions (No Font Sizers) -->
                     <div class="flex items-center gap-2">
                         <button onclick="window.print()" class="p-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg border transition" title="הדפס כתבה">
                             <i class="fas fa-print"></i> הדפסה
@@ -181,7 +167,6 @@
                     </div>
                 </div>
 
-                <!-- Social Share Bar Top -->
                 <div class="flex items-center gap-2 mb-6 pb-2 border-b border-gray-100">
                     <span class="text-xs font-bold text-gray-500 ml-2">שתף כתבה:</span>
                     <button onclick="shareLink('facebook')" class="bg-blue-600 text-white px-3 py-1.5 rounded text-xs font-semibold hover:opacity-90 transition flex items-center gap-1.5">
@@ -198,7 +183,6 @@
                     </button>
                 </div>
 
-                <!-- Main Featured Media / Hero Image -->
                 <div class="mb-6 rounded-xl overflow-hidden shadow-md bg-slate-900 relative">
                     <svg class="w-full h-64 md:h-96 object-cover" viewBox="0 0 800 450" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect width="800" height="450" fill="#0f172a"/>
@@ -219,7 +203,6 @@
                     </div>
                 </div>
 
-                <!-- Key Points Highlight Box -->
                 <div class="bg-gradient-to-r from-red-50 to-orange-50 border-r-4 border-red-600 rounded-xl p-5 mb-8 shadow-sm">
                     <h3 class="font-bold text-red-900 text-base mb-3 flex items-center">
                         <i class="fas fa-list-ul ml-2 text-red-600"></i> 3 נקודות עליהן נדון בהמשך הכתבה:
@@ -240,9 +223,7 @@
                     </ul>
                 </div>
 
-                <!-- Article Body Content Container -->
                 <div class="text-gray-800 space-y-6 text-lg leading-relaxed">
-                    
                     <p class="font-semibold text-slate-900">
                         רגעי ההכרעה - או חוסר ההכרעה - מתקרבים במהירות. בעוד כ־70 שעות ייפתחו הקלפיות ברחבי הארץ, ואזרחי ישראל יצאו להצביע. וכנהוג - אתמול בערב (שישי) פורסמו הסקרים האחרונים לפני הבחירות, ותמונת המצב כרגע מצביעה על דבר אחד - סבב בחירות נוסף על הפרק ובגדול.
                     </p>
@@ -267,7 +248,6 @@
                         בתחתית הרשימה נמצאת <strong>רע"ם</strong> עם 6 מנדטים, בשעה שרשימת המילואימניקים, יחד עם עמך ישראל אינן עוברות את אחוז החסימה.
                     </p>
 
-                    <!-- Mandates Interactive Table Widget -->
                     <div class="my-8 bg-slate-900 text-white rounded-xl p-5 shadow-xl border border-slate-700 text-base">
                         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 pb-4 border-b border-slate-700 gap-2">
                             <div>
@@ -283,7 +263,6 @@
                             </div>
                         </div>
 
-                        <!-- Visual Bars Comparison for Blocks -->
                         <div class="mb-6 space-y-3 bg-slate-800/60 p-4 rounded-lg border border-slate-700/50">
                             <div>
                                 <div class="flex justify-between text-xs font-bold mb-1">
@@ -310,7 +289,6 @@
                             </div>
                         </div>
 
-                        <!-- Data Table -->
                         <div class="overflow-x-auto">
                             <table class="w-full text-right text-sm">
                                 <thead>
@@ -322,7 +300,6 @@
                                     </tr>
                                 </thead>
                                 <tbody class="divide-y divide-slate-800" id="mandates-tbody">
-                                    <!-- Rows populated by JS -->
                                 </tbody>
                             </table>
                         </div>
@@ -368,7 +345,6 @@
                         מעבר לנזק הכלכלי, המחיר הכבד ביותר נגבה מאמון הציבור. התחושה בקרב אזרחי מדינה ישראל כי הקול שלהם בקלפי לא מוביל לשינוי, הובילה לשחיקת התודעה הציבורית, יחד עם ספקנות כלפי המערכת הפוליטית שלה.
                     </p>
 
-                    <!-- Pull Quote Element placed right after Shchikat Haamon paragraph -->
                     <div class="my-8 bg-slate-50 border-r-8 border-slate-800 p-6 rounded-l-xl italic shadow-inner">
                         <i class="fas fa-quote-right text-3xl text-slate-300 block mb-2"></i>
                         <p class="text-xl font-bold text-slate-800 leading-relaxed font-rubik">
@@ -391,13 +367,12 @@
                         אם אכן המצב, ונגיע לשיוויון בתום מערכת הבחירות, כאב הראש הרציני יתחיל – אילו החלטות יקבלו ראשי המפלגות? ניצבות בפניהם 3 אפשרויות, כששתי אפשרויות מהן נוסו ונכשלו, והאחרונה תעשה לנו רק נזק.
                     </p>
 
-                    <!-- 3 Scenarios Cards -->
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-6">
                         <div class="bg-gray-50 border border-gray-200 p-4 rounded-xl shadow-sm hover:border-red-400 transition">
                             <div class="w-8 h-8 rounded-full bg-red-100 text-red-600 font-bold flex items-center justify-center mb-2">1</div>
                             <h4 class="font-bold text-slate-900 text-base mb-2">ממשלה צרה</h4>
                             <p class="text-xs text-gray-600 leading-normal">
-                                הקיצוניות והזעזועים: ממשלת מיעוט הנתמכת מבחוץ על ידי המפלגות הערביות. כזכור - מהלך שנוסה על ידי ממשלת בנט-לפיד ונכשל.
+                                הקיצוניות והזעזועים: ממשלת מיעוט הנתמכת מבחוץ על ידי המפלגות הערביות. כזכור - מהלק שנוסה על ידי ממשלת בנט-לפיד ונכשל.
                             </p>
                         </div>
                         <div class="bg-gray-50 border border-gray-200 p-4 rounded-xl shadow-sm hover:border-blue-400 transition">
@@ -415,10 +390,8 @@
                             </p>
                         </div>
                     </div>
-
                 </div>
 
-                <!-- Bottom Tags -->
                 <div class="mt-8 pt-4 border-t border-gray-200">
                     <div class="flex flex-wrap gap-2">
                         <span class="text-xs text-gray-500 font-bold self-center ml-2">תגיות:</span>
@@ -428,22 +401,15 @@
                         <a href="#" class="bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs px-2.5 py-1 rounded-full border transition">מערכת פוליטית</a>
                     </div>
                 </div>
-
             </article>
 
-            <!-- Right Column: Sidebar (4 cols) -->
             <aside class="lg:col-span-4 space-y-6">
-
-                <!-- Live Election Interactive Poll Widget -->
                 <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
                     <div class="flex items-center gap-2 mb-3 text-red-600">
                         <i class="fas fa-poll text-lg"></i>
                         <h3 class="font-bold text-slate-900 text-base">סקר גולשים - ללא פילטר</h3>
                     </div>
-                    <p class="text-sm text-gray-800 font-medium mb-4">
-                        האם לדעתך נלך לבחירות חוזרות?
-                    </p>
-                    
+                    <p class="text-sm text-gray-800 font-medium mb-4">האם לדעתך נלך לבחירות חוזרות?</p>
                     <div id="poll-options" class="space-y-2">
                         <button onclick="votePoll(1)" class="w-full text-right p-3 bg-gray-50 border border-gray-200 hover:bg-red-50 hover:border-red-300 rounded-lg text-sm font-semibold text-slate-800 transition flex justify-between items-center">
                             <span>כן, אין הכרעה באופק</span>
@@ -458,12 +424,8 @@
                             <i class="far fa-circle text-gray-400"></i>
                         </button>
                     </div>
-
-                    <!-- Poll Results (Hidden until vote) -->
                     <div id="poll-results" class="hidden space-y-3 mt-3">
-                        <div class="text-xs font-bold text-emerald-600 bg-emerald-50 p-2 rounded text-center mb-2">
-                            תודה שהצבעת! תוצאות הביניים:
-                        </div>
+                        <div class="text-xs font-bold text-emerald-600 bg-emerald-50 p-2 rounded text-center mb-2">תודה שהצבעת! תוצאות הביניים:</div>
                         <div>
                             <div class="flex justify-between text-xs font-bold mb-1">
                                 <span>כן, בחירות חוזרות</span>
@@ -495,61 +457,47 @@
                     </div>
                 </div>
 
-                <!-- Most Read News Widget -->
                 <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
                     <h3 class="font-bold text-slate-900 text-base mb-4 pb-2 border-b-2 border-red-600 flex items-center justify-between">
                         <span><i class="fas fa-fire text-red-600 ml-1"></i> הכתבות הנקראות ביותר</span>
                         <span class="text-xs font-normal text-gray-500">היום</span>
                     </h3>
-
                     <div class="space-y-4">
-                        <a href="#" class="flex gap-3 group">
+                        <a href="./news_article_page.html" class="flex gap-3 group">
                             <span class="text-2xl font-black text-gray-300 group-hover:text-red-600 transition">1</span>
                             <div>
-                                <h4 class="text-sm font-bold text-gray-800 group-hover:text-red-600 transition leading-snug">
-                                    הדרמה בסקר האחרון: האם אחוז החסימה יפתיע את כולם?
-                                </h4>
+                                <h4 class="text-sm font-bold text-gray-800 group-hover:text-red-600 transition leading-snug">הדרמה בסקר האחרון: האם אחוז החסימה יפתיע את כולם?</h4>
                                 <span class="text-xs text-gray-400">לפני שעה</span>
                             </div>
                         </a>
-                        <a href="#" class="flex gap-3 group border-t border-gray-100 pt-3">
+                        <a href="./news_article_page.html" class="flex gap-3 group border-t border-gray-100 pt-3">
                             <span class="text-2xl font-black text-gray-300 group-hover:text-red-600 transition">2</span>
                             <div>
-                                <h4 class="text-sm font-bold text-gray-800 group-hover:text-red-600 transition leading-snug">
-                                    המחיר הכלכלי של סבבי הבחירות: מיליארדי שקלים ירדו לטמיון
-                                </h4>
+                                <h4 class="text-sm font-bold text-gray-800 group-hover:text-red-600 transition leading-snug">המחיר הכלכלי של סבבי הבחירות: מיליארדי שקלים ירדו לטמיון</h4>
                                 <span class="text-xs text-gray-400">לפני 3 שעות</span>
                             </div>
                         </a>
-                        <a href="#" class="flex gap-3 group border-t border-gray-100 pt-3">
+                        <a href="./news_article_page.html" class="flex gap-3 group border-t border-gray-100 pt-3">
                             <span class="text-2xl font-black text-gray-300 group-hover:text-red-600 transition">3</span>
                             <div>
-                                <h4 class="text-sm font-bold text-gray-800 group-hover:text-red-600 transition leading-snug">
-                                    השיחות החשאיות בין ראשי המפלגות לקראת יום שלישי
-                                </h4>
+                                <h4 class="text-sm font-bold text-gray-800 group-hover:text-red-600 transition leading-snug">השיחות החשאיות בין ראשי המפלגות לקראת יום שלישי</h4>
                                 <span class="text-xs text-gray-400">לפני 5 שעות</span>
                             </div>
                         </a>
                     </div>
                 </div>
-
             </aside>
         </div>
     </main>
 
-    <!-- JavaScript Interactivity -->
     <script>
-        // Set Header Live Date
         document.addEventListener('DOMContentLoaded', () => {
             const now = new Date();
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
             document.getElementById('current-date').innerHTML = `<i class="far fa-calendar-alt ml-1"></i> ${now.toLocaleDateString('he-IL', options)}`;
-            
-            // Initial Render of Mandates Table
             renderMandatesTable('all');
         });
 
-        // Mandates Data Structure exact to text
         const partyData = [
             { name: 'ישר!', seats: 22, group: 'state', groupName: 'הגוש הממלכתי', color: 'bg-blue-600' },
             { name: 'הליכוד', seats: 20, group: 'conservative', groupName: 'הגוש השמרני', color: 'bg-emerald-600' },
@@ -563,9 +511,9 @@
             { name: 'רע"ם', seats: 6, group: 'other', groupName: 'נוספות', color: 'bg-purple-500' }
         ];
 
-        // Filter and Render Mandates Table
         function renderMandatesTable(filter) {
             const tbody = document.getElementById('mandates-tbody');
+            if (!tbody) return;
             tbody.innerHTML = '';
 
             const filteredData = partyData.filter(item => {
@@ -598,6 +546,7 @@
         function filterMandates(type) {
             ['all', 'state', 'conservative'].forEach(t => {
                 const btn = document.getElementById(`btn-${t}`);
+                if (!btn) return;
                 if (t === type) {
                     btn.className = "px-3 py-1 rounded bg-red-600 font-bold text-white transition";
                 } else {
@@ -607,17 +556,14 @@
             renderMandatesTable(type);
         }
 
-        // Poll voting interactive logic
         function votePoll(option) {
             document.getElementById('poll-options').classList.add('hidden');
             document.getElementById('poll-results').classList.remove('hidden');
         }
 
-        // Share Helpers
         function shareLink(platform) {
             const url = encodeURIComponent(window.location.href);
             const title = encodeURIComponent("אף גוש לא מגרד 61: הסיוט של חוסר היציבות הפוליטית חוזר");
-            
             if (platform === 'facebook') window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`);
             if (platform === 'twitter') window.open(`https://twitter.com/intent/tweet?text=${title}&url=${url}`);
             if (platform === 'whatsapp') window.open(`https://api.whatsapp.com/send?text=${title} ${url}`);
