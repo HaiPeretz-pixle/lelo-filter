@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ללא פילטר - חדשות, אקטואליה וניתוחים</title>
+    <title>ללא פילטר - חדשות ואקטואליה בגובה העיניים</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts: Heebo & Rubik -->
@@ -40,6 +40,7 @@
             background-color: #f7fafc;
             color: #2d3748;
         }
+        /* Custom Scrolling Ticker Animation */
         @keyframes ticker {
             0% { transform: translate3d(100%, 0, 0); }
             100% { transform: translate3d(-100%, 0, 0); }
@@ -82,7 +83,7 @@
         <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
             <!-- Brand Logo -->
             <div class="flex items-center gap-3">
-                <a href="index.html" class="flex items-center gap-2">
+                <a href="./index.html" class="flex items-center gap-2">
                     <span class="bg-red-600 text-white font-black text-2xl px-3 py-1 rounded tracking-tight font-rubik shadow-sm">ללא פילטר</span>
                 </a>
                 <span class="hidden sm:inline-block text-xs bg-gray-100 text-gray-600 font-medium px-2 py-1 rounded border">חדשות ואקטואליה בגובה העיניים</span>
@@ -103,8 +104,8 @@
         <!-- Navigation Bar -->
         <nav class="bg-slate-800 text-white text-sm font-medium">
             <div class="max-w-7xl mx-auto px-4 flex items-center overflow-x-auto whitespace-nowrap scrollbar-none">
-                <a href="index.html" class="py-2.5 px-3 bg-red-600 font-bold hover:bg-red-700 transition">ראשי</a>
-                <a href="news_article_page.html" class="py-2.5 px-3 hover:bg-slate-700 transition">פוליטיקה</a>
+                <a href="./index.html" class="py-2.5 px-3 bg-red-600 font-bold hover:bg-red-700 transition">ראשי</a>
+                <a href="./news_article_page.html" class="py-2.5 px-3 hover:bg-slate-700 transition">פוליטיקה</a>
                 <a href="#" class="py-2.5 px-3 hover:bg-slate-700 transition">צבא וביטחון</a>
                 <a href="#" class="py-2.5 px-3 hover:bg-slate-700 transition">כלכלה</a>
                 <a href="#" class="py-2.5 px-3 hover:bg-slate-700 transition">משפט</a>
@@ -123,6 +124,7 @@
                 <div class="ticker-move">
                     <span class="ml-8"><strong class="text-red-600">18:42</strong> סקר אחרון: הקרב צמוד עד הרגע האחרון</span>
                     <span class="ml-8"><strong class="text-red-600">18:30</strong> ועדת הבחירות המרכזית השלימה את היערכותה ליום ההצבעה</span>
+                    <span class="ml-8"><strong class="text-red-600">18:15</strong> ראשי המפלגות במרתון כנסים ברחבי הארץ להעלאת אחוזי ההצבעה</span>
                     <span class="ml-8"><strong class="text-red-600">17:55</strong> דאגה במטה המרכזי משיעור הצבעה נמוך באזורי המפתח</span>
                 </div>
             </div>
@@ -133,34 +135,64 @@
     <main class="max-w-7xl mx-auto px-4 py-6 flex-1 w-full">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
             
-            <!-- Main Content Column (8 cols) - Featured Articles / Hero -->
+            <!-- Main Hero Article Container (8 cols) -->
             <section class="lg:col-span-8 space-y-6">
-                
-                <!-- Hero Article Card -->
-                <div class="bg-white p-6 md:p-8 rounded-xl shadow-sm border border-gray-200 border-r-4 border-r-red-600">
+                <div class="bg-white p-6 md:p-8 rounded-xl shadow-sm border border-gray-200">
+                    
                     <span class="inline-block bg-red-100 text-red-700 text-xs font-bold px-3 py-1 rounded-full mb-3">
                         <i class="fas fa-vote-yea ml-1"></i> כתיבה עיתונאית - בחירות
                     </span>
 
-                    <h2 class="text-2xl md:text-4xl font-black text-slate-900 leading-tight mb-3 tracking-tight hover:text-red-600 transition">
-                        <a href="news_article_page.html">אף גוש לא מגרד 61: הסיוט של חוסר היציבות הפוליטית חוזר</a>
+                    <h1 class="text-3xl md:text-5xl font-black text-slate-900 leading-tight mb-4 tracking-tight hover:text-red-600 transition">
+                        <a href="./news_article_page.html">אף גוש לא מגרד 61: הסיוט של חוסר היציבות הפוליטית חוזר</a>
+                    </h1>
+
+                    <h2 class="text-lg md:text-xl text-gray-600 font-normal leading-relaxed mb-6 border-r-4 border-red-600 pr-3">
+                        ימים ספורים לפתיחת הקלפיות, והסקרים מראים שאף גוש לא משיג 61 מנדטים. הזיכרון של 5 הסבבים עוד חקוק בראשנו, והחשש הגדול הוא שמערכת הבחירות הנוכחית לא תביא הכרעה - ותחזיר אותנו אחורה בזמן.
                     </h2>
 
-                    <p class="text-gray-600 text-base leading-relaxed mb-4">
-                        ימים ספורים לפתיחת הקלפיות, והסקרים מראים שאף גוש לא משיג 61 מנדטים. הזיכרון של 5 הסבבים עוד חקוק בראשנו, והחשש הגדול הוא שמערכת הבחירות הנוכחית לא תביא הכרעה.
-                    </p>
+                    <!-- Author Bar -->
+                    <div class="flex items-center justify-between border-y border-gray-200 py-3 mb-6 text-xs text-gray-600">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-red-600 text-white flex items-center justify-center font-bold text-sm shadow">
+                                ח
+                            </div>
+                            <div>
+                                <div class="font-bold text-slate-900 text-sm">מאת: חי חיים פרץ</div>
+                                <div>פורסם לאחרונה | מערכת ללא פילטר</div>
+                            </div>
+                        </div>
+                    </div>
 
-                    <div class="flex items-center justify-between pt-4 border-t border-gray-100">
-                        <span class="text-xs text-gray-500 font-semibold">מאת: חי חיים פרץ | מערכת ללא פילטר</span>
-                        <a href="news_article_page.html" class="bg-red-600 hover:bg-red-700 text-white text-xs font-bold px-4 py-2 rounded-lg transition shadow-sm">
-                            לקריאת הכתבה המלאה ←
+                    <!-- Hero Media Preview -->
+                    <div class="mb-6 rounded-xl overflow-hidden shadow-md bg-slate-900 relative">
+                        <a href="./news_article_page.html">
+                            <svg class="w-full h-64 md:h-80 object-cover hover:opacity-95 transition" viewBox="0 0 800 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="800" height="450" fill="#0f172a"/>
+                                <circle cx="200" cy="150" r="250" fill="#1e293b" opacity="0.8"/>
+                                <circle cx="600" cy="300" r="300" fill="#334155" opacity="0.5"/>
+                                <rect x="280" y="140" width="240" height="200" rx="16" fill="#1e293b" stroke="#ef4444" stroke-width="4"/>
+                                <path d="M 320 140 L 480 140 L 480 120 C 480 110 470 100 460 100 L 340 100 C 330 100 320 110 320 120 Z" fill="#ef4444"/>
+                                <rect x="360" y="60" width="80" height="90" rx="4" fill="#ffffff" transform="rotate(-5 400 105)"/>
+                                <rect x="370" y="75" width="60" height="8" rx="2" fill="#ef4444"/>
+                                <rect x="370" y="90" width="40" height="6" rx="2" fill="#94a3b8"/>
+                                <rect x="370" y="102" width="50" height="6" rx="2" fill="#94a3b8"/>
+                                <text x="400" y="240" font-family="Rubik" font-size="28" font-weight="bold" fill="#ffffff" text-anchor="middle">בחירות בישראל</text>
+                                <text x="400" y="280" font-family="Heebo" font-size="18" fill="#94a3b8" text-anchor="middle">מלכוד 61 המנדטים</text>
+                            </svg>
                         </a>
                     </div>
-                </div>
 
+                    <div class="pt-2 flex justify-end">
+                        <a href="./news_article_page.html" class="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-bold text-sm px-5 py-2.5 rounded-lg transition shadow-sm">
+                            לקריאת הכתבה המלאה והניתוח המלא <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
+
+                </div>
             </section>
 
-            <!-- Sidebar Column (4 cols) - Poll & Most Read -->
+            <!-- Right Column: Sidebar (4 cols) -->
             <aside class="lg:col-span-4 space-y-6">
 
                 <!-- Live Election Interactive Poll Widget -->
@@ -188,7 +220,7 @@
                         </button>
                     </div>
 
-                    <!-- Poll Results (Hidden until vote) -->
+                    <!-- Poll Results -->
                     <div id="poll-results" class="hidden space-y-3 mt-3">
                         <div class="text-xs font-bold text-emerald-600 bg-emerald-50 p-2 rounded text-center mb-2">
                             תודה שהצבעת! תוצאות הביניים:
@@ -232,7 +264,7 @@
                     </h3>
 
                     <div class="space-y-4">
-                        <a href="news_article_page.html" class="flex gap-3 group">
+                        <a href="./news_article_page.html" class="flex gap-3 group">
                             <span class="text-2xl font-black text-gray-300 group-hover:text-red-600 transition">1</span>
                             <div>
                                 <h4 class="text-sm font-bold text-gray-800 group-hover:text-red-600 transition leading-snug">
@@ -241,7 +273,7 @@
                                 <span class="text-xs text-gray-400">לפני שעה</span>
                             </div>
                         </a>
-                        <a href="news_article_page.html" class="flex gap-3 group border-t border-gray-100 pt-3">
+                        <a href="./news_article_page.html" class="flex gap-3 group border-t border-gray-100 pt-3">
                             <span class="text-2xl font-black text-gray-300 group-hover:text-red-600 transition">2</span>
                             <div>
                                 <h4 class="text-sm font-bold text-gray-800 group-hover:text-red-600 transition leading-snug">
@@ -250,7 +282,7 @@
                                 <span class="text-xs text-gray-400">לפני 3 שעות</span>
                             </div>
                         </a>
-                        <a href="news_article_page.html" class="flex gap-3 group border-t border-gray-100 pt-3">
+                        <a href="./news_article_page.html" class="flex gap-3 group border-t border-gray-100 pt-3">
                             <span class="text-2xl font-black text-gray-300 group-hover:text-red-600 transition">3</span>
                             <div>
                                 <h4 class="text-sm font-bold text-gray-800 group-hover:text-red-600 transition leading-snug">
