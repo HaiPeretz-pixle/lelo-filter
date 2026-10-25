@@ -3,65 +3,281 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ללא פילטר - חדשות ואקטואליה</title>
+    <title>ללא פילטר - חדשות, אקטואליה וניתוחים</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Heebo & Rubik -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            red: '#e53e3e',
+                            darkRed: '#c53030',
+                            navy: '#1a202c',
+                            blue: '#2b6cb0',
+                            accent: '#ebf8ff'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Heebo', 'sans-serif'],
+                        rubik: ['Rubik', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
-        body { background-color: #f4f4f9; color: #333; line-height: 1.6; }
-        
-        /* Top Header */
-        header { background: #1a1a1a; color: #fff; padding: 25px 0; text-align: center; border-bottom: 4px solid #e53935; }
-        header h1 { font-size: 2.5rem; margin-bottom: 5px; font-weight: bold; }
-        header p { color: #aaa; font-size: 1.1rem; }
-        
-        /* Navigation Bar */
-        nav { background: #222; display: flex; justify-content: center; gap: 20px; padding: 12px 0; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
-        nav a { color: #fff; text-decoration: none; font-weight: bold; font-size: 1.1rem; transition: color 0.3s; }
-        nav a:hover, nav a.active { color: #e53935; }
-        
-        /* Main Container */
-        .container { max-width: 900px; margin: 30px auto; padding: 0 20px; }
-        
-        /* Hero Article Card */
-        .hero-article { background: #fff; padding: 35px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-bottom: 30px; border-right: 6px solid #e53935; }
-        .category-tag { background: #e53935; color: #fff; padding: 4px 10px; font-size: 0.85rem; border-radius: 4px; display: inline-block; margin-bottom: 15px; font-weight: bold; }
-        .hero-article h2 { font-size: 2rem; margin-bottom: 15px; color: #111; line-height: 1.3; }
-        .hero-article h2 a { color: inherit; text-decoration: none; }
-        .hero-article h2 a:hover { color: #e53935; }
-        .hero-article p { font-size: 1.1rem; color: #555; margin-bottom: 20px; line-height: 1.8; }
-        .read-more { display: inline-block; color: #e53935; text-decoration: none; font-weight: bold; font-size: 1.05rem; }
-        .read-more:hover { text-decoration: underline; }
-        
-        /* Footer */
-        footer { background: #1a1a1a; color: #888; text-align: center; padding: 20px 0; margin-top: 50px; font-size: 0.9rem; }
+        body {
+            font-family: 'Heebo', sans-serif;
+            background-color: #f7fafc;
+            color: #2d3748;
+        }
+        @keyframes ticker {
+            0% { transform: translate3d(100%, 0, 0); }
+            100% { transform: translate3d(-100%, 0, 0); }
+        }
+        .ticker-wrap {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .ticker-move {
+            display: inline-block;
+            animation: ticker 30s linear infinite;
+        }
+        .ticker-move:hover {
+            animation-play-state: paused;
+        }
     </style>
 </head>
-<body>
+<body class="bg-gray-100 min-h-screen flex flex-col">
 
-    <header>
-        <h1>ללא פילטר</h1>
-        <p>חדשות, אקטואליה וניתוחים בגובה העיניים</p>
-    </header>
-
-    <nav>
-        <a href="index.html" class="active">ראשי</a>
-        <a href="news_article_page.html">פוליטיקה</a>
-        <a href="#">צבא וביטחון</a>
-        <a href="#">כלכלה</a>
-        <a href="#">תקשורת</a>
-    </nav>
-
-    <div class="container">
-        <section class="hero-article">
-            <span class="category-tag">פוליטיקה</span>
-            <h2><a href="news_article_page.html">אף גוש לא מגרד 61: הסיוט של חוסר היציבות הפוליטית חוזר</a></h2>
-            <p>ניתוח מעמיק של המפה הפוליטית מראה תמונת מצב עקרה. הבוחרים אולי עייפים, אך המנהיגים ממשיכים במאבקי החסימה. קראו את הניתוח המלא על המבוי הסתום במערכת הפוליטית.</p>
-            <a href="news_article_page.html" class="read-more">לקריאת הכתבה המלאה ←</a>
-        </section>
+    <!-- Top Bar: Date, Weather, Quick Links -->
+    <div class="bg-slate-900 text-gray-300 text-xs py-1.5 px-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <span id="current-date"><i class="far fa-calendar-alt ml-1"></i> טוען תאריך...</span>
+                <span class="hidden md:inline-block"><i class="fas fa-sun text-amber-400 ml-1"></i> תל אביב 24°C</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <a href="#" class="hover:text-white transition">מבזקים</a>
+                <span class="text-gray-600">|</span>
+                <a href="#" class="hover:text-white transition">מהדורה דיגיטלית</a>
+                <span class="text-gray-600">|</span>
+                <a href="#" class="hover:text-white font-bold text-red-400"><i class="fas fa-circle text-xs animate-pulse ml-1"></i>שידור חי</a>
+            </div>
+        </div>
     </div>
 
-    <footer>
-        <p>כל הזכויות שמורות לאתר "ללא פילטר" &copy; 2026</p>
-    </footer>
+    <!-- Main Header / Logo Section -->
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <!-- Brand Logo -->
+            <div class="flex items-center gap-3">
+                <a href="index.html" class="flex items-center gap-2">
+                    <span class="bg-red-600 text-white font-black text-2xl px-3 py-1 rounded tracking-tight font-rubik shadow-sm">ללא פילטר</span>
+                </a>
+                <span class="hidden sm:inline-block text-xs bg-gray-100 text-gray-600 font-medium px-2 py-1 rounded border">חדשות ואקטואליה בגובה העיניים</span>
+            </div>
 
+            <!-- Header Actions / Search -->
+            <div class="flex items-center gap-3">
+                <div class="relative hidden sm:block">
+                    <input type="text" placeholder="חיפוש בחדשות..." class="bg-gray-100 text-sm rounded-full pr-8 pl-4 py-1.5 focus:outline-none focus:ring-2 focus:ring-red-500 w-44 md:w-60 transition">
+                    <i class="fas fa-search absolute right-3 top-2.5 text-gray-400 text-xs"></i>
+                </div>
+                <button class="bg-red-600 hover:bg-red-700 text-white text-xs font-bold px-3 py-1.5 rounded transition shadow-sm">
+                    התראות <i class="fas fa-bell mr-1"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Navigation Bar -->
+        <nav class="bg-slate-800 text-white text-sm font-medium">
+            <div class="max-w-7xl mx-auto px-4 flex items-center overflow-x-auto whitespace-nowrap scrollbar-none">
+                <a href="index.html" class="py-2.5 px-3 bg-red-600 font-bold hover:bg-red-700 transition">ראשי</a>
+                <a href="news_article_page.html" class="py-2.5 px-3 hover:bg-slate-700 transition">פוליטיקה</a>
+                <a href="#" class="py-2.5 px-3 hover:bg-slate-700 transition">צבא וביטחון</a>
+                <a href="#" class="py-2.5 px-3 hover:bg-slate-700 transition">כלכלה</a>
+                <a href="#" class="py-2.5 px-3 hover:bg-slate-700 transition">משפט</a>
+                <a href="#" class="py-2.5 px-3 hover:bg-slate-700 transition">בעולם</a>
+                <a href="#" class="py-2.5 px-3 hover:bg-slate-700 transition">תרבות וסגנון</a>
+                <a href="#" class="py-2.5 px-3 hover:bg-slate-700 transition">ספורט</a>
+                <a href="#" class="py-2.5 px-3 hover:bg-slate-700 transition">טכנולוגיה</a>
+                <a href="#" class="py-2.5 px-3 hover:bg-slate-700 transition text-amber-300 font-semibold"><i class="fas fa-star text-xs ml-1"></i>דעות ופרשנויות</a>
+            </div>
+        </nav>
+
+        <!-- News Ticker -->
+        <div class="bg-gray-200 border-b border-gray-300 text-xs flex items-center px-4 py-1.5">
+            <span class="bg-red-600 text-white font-bold px-2 py-0.5 rounded text-[11px] ml-3 shrink-0 uppercase tracking-wide">מבזקים</span>
+            <div class="ticker-wrap flex-1 text-gray-800 font-medium">
+                <div class="ticker-move">
+                    <span class="ml-8"><strong class="text-red-600">18:42</strong> סקר אחרון: הקרב צמוד עד הרגע האחרון</span>
+                    <span class="ml-8"><strong class="text-red-600">18:30</strong> ועדת הבחירות המרכזית השלימה את היערכותה ליום ההצבעה</span>
+                    <span class="ml-8"><strong class="text-red-600">17:55</strong> דאגה במטה המרכזי משיעור הצבעה נמוך באזורי המפתח</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 py-6 flex-1 w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            
+            <!-- Main Content Column (8 cols) - Featured Articles / Hero -->
+            <section class="lg:col-span-8 space-y-6">
+                
+                <!-- Hero Article Card -->
+                <div class="bg-white p-6 md:p-8 rounded-xl shadow-sm border border-gray-200 border-r-4 border-r-red-600">
+                    <span class="inline-block bg-red-100 text-red-700 text-xs font-bold px-3 py-1 rounded-full mb-3">
+                        <i class="fas fa-vote-yea ml-1"></i> כתיבה עיתונאית - בחירות
+                    </span>
+
+                    <h2 class="text-2xl md:text-4xl font-black text-slate-900 leading-tight mb-3 tracking-tight hover:text-red-600 transition">
+                        <a href="news_article_page.html">אף גוש לא מגרד 61: הסיוט של חוסר היציבות הפוליטית חוזר</a>
+                    </h2>
+
+                    <p class="text-gray-600 text-base leading-relaxed mb-4">
+                        ימים ספורים לפתיחת הקלפיות, והסקרים מראים שאף גוש לא משיג 61 מנדטים. הזיכרון של 5 הסבבים עוד חקוק בראשנו, והחשש הגדול הוא שמערכת הבחירות הנוכחית לא תביא הכרעה.
+                    </p>
+
+                    <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                        <span class="text-xs text-gray-500 font-semibold">מאת: חי חיים פרץ | מערכת ללא פילטר</span>
+                        <a href="news_article_page.html" class="bg-red-600 hover:bg-red-700 text-white text-xs font-bold px-4 py-2 rounded-lg transition shadow-sm">
+                            לקריאת הכתבה המלאה ←
+                        </a>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Sidebar Column (4 cols) - Poll & Most Read -->
+            <aside class="lg:col-span-4 space-y-6">
+
+                <!-- Live Election Interactive Poll Widget -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
+                    <div class="flex items-center gap-2 mb-3 text-red-600">
+                        <i class="fas fa-poll text-lg"></i>
+                        <h3 class="font-bold text-slate-900 text-base">סקר גולשים - ללא פילטר</h3>
+                    </div>
+                    <p class="text-sm text-gray-800 font-medium mb-4">
+                        האם לדעתך נלך לבחירות חוזרות?
+                    </p>
+                    
+                    <div id="poll-options" class="space-y-2">
+                        <button onclick="votePoll(1)" class="w-full text-right p-3 bg-gray-50 border border-gray-200 hover:bg-red-50 hover:border-red-300 rounded-lg text-sm font-semibold text-slate-800 transition flex justify-between items-center">
+                            <span>כן, אין הכרעה באופק</span>
+                            <i class="far fa-circle text-gray-400"></i>
+                        </button>
+                        <button onclick="votePoll(2)" class="w-full text-right p-3 bg-gray-50 border border-gray-200 hover:bg-blue-50 hover:border-blue-300 rounded-lg text-sm font-semibold text-slate-800 transition flex justify-between items-center">
+                            <span>לא, תוקם ממשלת אחדות</span>
+                            <i class="far fa-circle text-gray-400"></i>
+                        </button>
+                        <button onclick="votePoll(3)" class="w-full text-right p-3 bg-gray-50 border border-gray-200 hover:bg-emerald-50 hover:border-emerald-300 rounded-lg text-sm font-semibold text-slate-800 transition flex justify-between items-center">
+                            <span>תוקם ממשלת מיעוט</span>
+                            <i class="far fa-circle text-gray-400"></i>
+                        </button>
+                    </div>
+
+                    <!-- Poll Results (Hidden until vote) -->
+                    <div id="poll-results" class="hidden space-y-3 mt-3">
+                        <div class="text-xs font-bold text-emerald-600 bg-emerald-50 p-2 rounded text-center mb-2">
+                            תודה שהצבעת! תוצאות הביניים:
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs font-bold mb-1">
+                                <span>כן, בחירות חוזרות</span>
+                                <span>71%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
+                                <div class="bg-red-600 h-full" style="width: 71%;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs font-bold mb-1">
+                                <span>ממשלת אחדות</span>
+                                <span>21%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
+                                <div class="bg-blue-600 h-full" style="width: 21%;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs font-bold mb-1">
+                                <span>ממשלת מיעוט</span>
+                                <span>8%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
+                                <div class="bg-emerald-600 h-full" style="width: 8%;"></div>
+                            </div>
+                        </div>
+                        <p class="text-[11px] text-gray-400 text-center mt-2">סך הכל מצביעים: 15,320</p>
+                    </div>
+                </div>
+
+                <!-- Most Read News Widget -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
+                    <h3 class="font-bold text-slate-900 text-base mb-4 pb-2 border-b-2 border-red-600 flex items-center justify-between">
+                        <span><i class="fas fa-fire text-red-600 ml-1"></i> הכתבות הנקראות ביותר</span>
+                        <span class="text-xs font-normal text-gray-500">היום</span>
+                    </h3>
+
+                    <div class="space-y-4">
+                        <a href="news_article_page.html" class="flex gap-3 group">
+                            <span class="text-2xl font-black text-gray-300 group-hover:text-red-600 transition">1</span>
+                            <div>
+                                <h4 class="text-sm font-bold text-gray-800 group-hover:text-red-600 transition leading-snug">
+                                    הדרמה בסקר האחרון: האם אחוז החסימה יפתיע את כולם?
+                                </h4>
+                                <span class="text-xs text-gray-400">לפני שעה</span>
+                            </div>
+                        </a>
+                        <a href="news_article_page.html" class="flex gap-3 group border-t border-gray-100 pt-3">
+                            <span class="text-2xl font-black text-gray-300 group-hover:text-red-600 transition">2</span>
+                            <div>
+                                <h4 class="text-sm font-bold text-gray-800 group-hover:text-red-600 transition leading-snug">
+                                    המחיר הכלכלי של סבבי הבחירות: מיליארדי שקלים ירדו לטמיון
+                                </h4>
+                                <span class="text-xs text-gray-400">לפני 3 שעות</span>
+                            </div>
+                        </a>
+                        <a href="news_article_page.html" class="flex gap-3 group border-t border-gray-100 pt-3">
+                            <span class="text-2xl font-black text-gray-300 group-hover:text-red-600 transition">3</span>
+                            <div>
+                                <h4 class="text-sm font-bold text-gray-800 group-hover:text-red-600 transition leading-snug">
+                                    השיחות החשאיות בין ראשי המפלגות לקראת יום שלישי
+                                </h4>
+                                <span class="text-xs text-gray-400">לפני 5 שעות</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+        </div>
+    </main>
+
+    <!-- JavaScript Interactivity -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('current-date').innerHTML = `<i class="far fa-calendar-alt ml-1"></i> ${now.toLocaleDateString('he-IL', options)}`;
+        });
+
+        function votePoll(option) {
+            document.getElementById('poll-options').classList.add('hidden');
+            document.getElementById('poll-results').classList.remove('hidden');
+        }
+    </script>
 </body>
 </html>
