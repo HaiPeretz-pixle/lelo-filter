@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ללא פילטר - חדשות ואקטואליה</title>
+    <title>ללא פילטר - חדשות, אקטואליה וניתוחים</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
         body { background-color: #f4f4f9; color: #333; line-height: 1.6; }
@@ -13,11 +13,15 @@
         nav { background: #222; display: flex; justify-content: center; gap: 20px; padding: 12px 0; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
         nav a { color: #fff; text-decoration: none; font-weight: bold; font-size: 1.1rem; transition: color 0.3s; }
         nav a:hover { color: #e53935; }
-        .container { max-width: 1000px; margin: 30px auto; padding: 0 20px; }
-        .hero-article { background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-bottom: 30px; border-right: 6px solid #e53935; }
-        .category-tag { background: #e53935; color: #fff; padding: 4px 10px; font-size: 0.85rem; border-radius: 4px; display: inline-block; margin-bottom: 10px; font-weight: bold; }
+        .container { max-width: 900px; margin: 30px auto; padding: 0 20px; }
+        .hero-article { background: #fff; padding: 35px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-bottom: 30px; border-right: 6px solid #e53935; }
+        .category-tag { background: #e53935; color: #fff; padding: 4px 10px; font-size: 0.85rem; border-radius: 4px; display: inline-block; margin-bottom: 15px; font-weight: bold; }
         .hero-article h2 { font-size: 2rem; margin-bottom: 15px; color: #111; }
-        .hero-article p { font-size: 1.1rem; color: #555; margin-bottom: 20px; }
+        .hero-article h2 a { color: inherit; text-decoration: none; }
+        .hero-article h2 a:hover { color: #e53935; }
+        .hero-article p { font-size: 1.1rem; color: #555; margin-bottom: 20px; line-height: 1.8; }
+        .read-more { display: inline-block; color: #e53935; text-decoration: none; font-weight: bold; font-size: 1.05rem; }
+        .read-more:hover { text-decoration: underline; }
         footer { background: #1a1a1a; color: #888; text-align: center; padding: 20px 0; margin-top: 50px; font-size: 0.9rem; }
     </style>
 </head>
@@ -29,17 +33,19 @@
     </header>
 
     <nav>
-        <a href="#">ראשי</a>
+        <a href="./index.html" style="color: #e53935;">ראשי</a>
         <a href="./news_article_page.html">פוליטיקה</a>
         <a href="#">כלכלה</a>
         <a href="#">תקשורת</a>
     </nav>
 
     <div class="container">
+        <!-- כרטיסיית הכתבה הראשית בעמוד הבית -->
         <section class="hero-article">
             <span class="category-tag">פוליטיקה</span>
-            <h2>האתר באוויר: מתחילים לעבוד בלי פילטרים ובחינם</h2>
-            <p>ברוכים הבאים לאתר החדש שלכם. מעכשיו האתר נמצא בבעלותכם המלאה, מאוחסן בבטחה בחינם לנצח, וללא שום הגבלות או דרישות תשלום. כאן נפרסם את כל הכתבות והעדכונים.</p>
+            <h2><a href="./news_article_page.html">אף גוש לא מגרד 61: הסיוט של חוסר היציבות הפוליטית חוזר</a></h2>
+            <p>ניתוח מעמיק של המפה הפוליטית מראה תמונת מצב עקרה. הבוחרים אולי עייפים, אך המנהיגים ממשיכים במאבקי החסימה. קראו את הניתוח המלא על המבוי הסתום במערכת הפוליטית.</p>
+            <a href="./news_article_page.html" class="read-more">לקריאת הכתבה המלאה ←</a>
         </section>
     </div>
 
