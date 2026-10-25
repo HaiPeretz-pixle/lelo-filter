@@ -8,7 +8,6 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background-color: #eef0f3; color: #222; line-height: 1.6; }
 
-        /* Top Utility Bar */
         .top-bar {
             background: #0f141e;
             color: #aaa;
@@ -21,7 +20,6 @@
         .top-bar-right, .top-bar-left { display: flex; gap: 15px; align-items: center; }
         .live-tag { color: #e53935; font-weight: bold; }
 
-        /* Main Branding Header */
         .main-header {
             background: #fff;
             padding: 15px 20px;
@@ -63,7 +61,6 @@
             cursor: pointer;
         }
 
-        /* Navigation Bar */
         nav {
             background: #1a2232;
             display: flex;
@@ -80,7 +77,6 @@
             font-weight: bold;
             font-size: 0.95rem;
             white-space: nowrap;
-            transition: background 0.2s;
         }
         nav a:hover, nav a.active {
             background: #e53935;
@@ -89,7 +85,6 @@
             color: #ffca28;
         }
 
-        /* News Ticker Bar */
         .ticker-bar {
             background: #fff;
             padding: 8px 20px;
@@ -102,7 +97,6 @@
         }
         .ticker-time { color: #e53935; font-weight: bold; }
 
-        /* Main Page Layout (Grid) */
         .page-container {
             max-width: 1250px;
             margin: 25px auto;
@@ -112,7 +106,6 @@
             gap: 25px;
         }
 
-        /* Main Content Column (Right) */
         .main-content { display: flex; flex-direction: column; gap: 20px; }
 
         .hero-card {
@@ -129,4 +122,158 @@
             border-radius: 4px;
             font-size: 0.8rem;
             font-weight: bold;
-            display: inline
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        .hero-title {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: #111;
+            line-height: 1.25;
+            margin-bottom: 15px;
+        }
+        .hero-title a { color: inherit; text-decoration: none; }
+        .hero-title a:hover { color: #e53935; }
+
+        .hero-sub {
+            font-size: 1.15rem;
+            color: #444;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .read-btn {
+            display: inline-block;
+            color: #e53935;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+        .read-btn:hover { text-decoration: underline; }
+
+        .sidebar { display: flex; flex-direction: column; gap: 20px; }
+
+        .widget-box {
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .widget-header {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #111;
+            border-bottom: 2px solid #e53935;
+            padding-bottom: 8px;
+        }
+        .poll-option {
+            background: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .top-news-list { display: flex; flex-direction: column; gap: 15px; }
+        .top-news-item { display: flex; gap: 12px; border-bottom: 1px solid #eee; padding-bottom: 12px; }
+        .top-news-item:last-child { border: none; padding-bottom: 0; }
+        .num-badge { font-size: 1.5rem; font-weight: 900; color: #ccc; }
+        .top-news-text h4 { font-size: 0.95rem; line-height: 1.3; color: #222; margin-bottom: 4px; }
+        .top-news-text p { font-size: 0.75rem; color: #888; }
+
+        @media (max-width: 900px) {
+            .page-container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div class="top-bar-right">
+            <span>📅 יום ראשון, 25 באוקטובר 2026</span>
+            <span>☀️ תל אביב 24°C</span>
+        </div>
+        <div class="top-bar-left">
+            <span>מבזקים</span>
+            <span>מהדורה דיגיטלית</span>
+            <span class="live-tag">🔴 שידור חי</span>
+        </div>
+    </div>
+
+    <div class="main-header">
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <a href="index.html" class="logo-box">ללא פילטר</a>
+            <span class="slogan">חדשות ואקטואליה בגובה העיניים</span>
+        </div>
+        <div class="header-controls">
+            <input type="text" class="search-input" placeholder="חיפוש בחדשות...">
+            <button class="alert-btn">🔔 התראות</button>
+        </div>
+    </div>
+
+    <nav>
+        <a href="index.html" class="active">ראשי</a>
+        <a href="news_article_page.html">פוליטיקה</a>
+        <a href="#">צבא וביטחון</a>
+        <a href="#">כלכלה</a>
+        <a href="#">משפט</a>
+        <a href="#">בעולם</a>
+        <a href="#">תרבות וסגנון</a>
+        <a href="#">ספורט</a>
+        <a href="#">טכנולוגיה</a>
+        <a href="#" class="highlight">★ דעות ופרשנויות</a>
+    </nav>
+
+    <div class="ticker-bar">
+        <span class="ticker-time">17:55</span>
+        <span>דאגה במטה המרכזי משיעור ההצבעה הנמוך באזורי המפתח.</span>
+    </div>
+
+    <div class="page-container">
+
+        <aside class="sidebar">
+            <div class="widget-box">
+                <div class="widget-header">📊 סקר גולשים - ללא פילטר</div>
+                <p style="font-size: 0.85rem; color: #555; margin-bottom: 12px; font-weight: bold;">האם לדעתך נלך לבחירות חוזרות?</p>
+                <div class="poll-option">כן, אין הכרעה באופק</div>
+                <div class="poll-option">לא, תוקם ממשלת אחדות</div>
+                <div class="poll-option">תוקם ממשלת מיעוט</div>
+            </div>
+
+            <div class="widget-box">
+                <div class="widget-header">🔥 הכתבות הנקראות ביותר</div>
+                <div class="top-news-list">
+                    <div class="top-news-item">
+                        <span class="num-badge">1</span>
+                        <div class="top-news-text">
+                            <h4>הדרמה בסקר האחרון: האם אחוז החסימה יפתיע את כולם?</h4>
+                            <p>לפני שעה</p>
+                        </div>
+                    </div>
+                    <div class="top-news-item">
+                        <span class="num-badge">2</span>
+                        <div class="top-news-text">
+                            <h4>המחיר הכלכלי של סבבי הבחירות: מיליארדי שקלים ירדו לטמיון</h4>
+                            <p>לפני 3 שעות</p>
+                        </div>
+                    </div>
+                    <div class="top-news-item">
+                        <span class="num-badge">3</span>
+                        <div class="top-news-text">
+                            <h4>השיחות החשאיות בין ראשי המפלגות לקראת יום שלישי</h4>
+                            <p>לפני 5 שעות</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <article class="hero-card">
+                <span class="hero-tag">📌 כתיבה עיתונאית -
