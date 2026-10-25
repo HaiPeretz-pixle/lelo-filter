@@ -3,277 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ללא פילטר - חדשות, אקטואליה וניתוחים</title>
+    <title>ללא פילטר - חדשות ואקטואליה</title>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: #eef0f3; color: #222; line-height: 1.6; }
-
-        .top-bar {
-            background: #0f141e;
-            color: #aaa;
-            font-size: 0.8rem;
-            padding: 6px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .top-bar-right, .top-bar-left { display: flex; gap: 15px; align-items: center; }
-        .live-tag { color: #e53935; font-weight: bold; }
-
-        .main-header {
-            background: #fff;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #ddd;
-        }
-        .logo-box {
-            background: #e53935;
-            color: #fff;
-            padding: 6px 16px;
-            font-size: 1.8rem;
-            font-weight: 900;
-            border-radius: 4px;
-            text-decoration: none;
-            display: inline-block;
-            letter-spacing: -1px;
-        }
-        .slogan { font-size: 0.85rem; color: #666; font-weight: bold; }
-        .header-controls { display: flex; gap: 10px; align-items: center; }
-        .search-input {
-            padding: 7px 15px;
-            border: 1px solid #ccc;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            background: #f8f9fa;
-            width: 200px;
-            text-align: right;
-        }
-        .alert-btn {
-            background: #e53935;
-            color: #fff;
-            border: none;
-            padding: 7px 14px;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        nav {
-            background: #1a2232;
-            display: flex;
-            justify-content: flex-start;
-            gap: 12px;
-            padding: 0 20px;
-            overflow-x: auto;
-            border-bottom: 3px solid #e53935;
-        }
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            padding: 12px 14px;
-            font-weight: bold;
-            font-size: 0.95rem;
-            white-space: nowrap;
-        }
-        nav a:hover, nav a.active {
-            background: #e53935;
-        }
-        nav a.highlight {
-            color: #ffca28;
-        }
-
-        .ticker-bar {
-            background: #fff;
-            padding: 8px 20px;
-            font-size: 0.85rem;
-            border-bottom: 1px solid #e0e0e0;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-        }
-        .ticker-time { color: #e53935; font-weight: bold; }
-
-        .page-container {
-            max-width: 1250px;
-            margin: 25px auto;
-            padding: 0 15px;
-            display: grid;
-            grid-template-columns: 320px 1fr;
-            gap: 25px;
-        }
-
-        .main-content { display: flex; flex-direction: column; gap: 20px; }
-
-        .hero-card {
-            background: #fff;
-            border-radius: 8px;
-            padding: 30px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
-            border-right: 5px solid #e53935;
-        }
-        .hero-tag {
-            background: #fce4e4;
-            color: #e53935;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            display: inline-block;
-            margin-bottom: 15px;
-        }
-        .hero-title {
-            font-size: 2.2rem;
-            font-weight: 900;
-            color: #111;
-            line-height: 1.25;
-            margin-bottom: 15px;
-        }
-        .hero-title a { color: inherit; text-decoration: none; }
-        .hero-title a:hover { color: #e53935; }
-
-        .hero-sub {
-            font-size: 1.15rem;
-            color: #444;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-        .read-btn {
-            display: inline-block;
-            color: #e53935;
-            font-weight: bold;
-            text-decoration: none;
-            font-size: 1rem;
-        }
-        .read-btn:hover { text-decoration: underline; }
-
-        .sidebar { display: flex; flex-direction: column; gap: 20px; }
-
-        .widget-box {
-            background: #fff;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-        }
-        .widget-header {
-            font-size: 1.1rem;
-            font-weight: bold;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: #111;
-            border-bottom: 2px solid #e53935;
-            padding-bottom: 8px;
-        }
-        .poll-option {
-            background: #f8f9fa;
-            border: 1px solid #e0e0e0;
-            padding: 10px 15px;
-            border-radius: 6px;
-            margin-bottom: 10px;
-            font-size: 0.9rem;
-            font-weight: bold;
-            color: #333;
-        }
-
-        .top-news-list { display: flex; flex-direction: column; gap: 15px; }
-        .top-news-item { display: flex; gap: 12px; border-bottom: 1px solid #eee; padding-bottom: 12px; }
-        .top-news-item:last-child { border: none; padding-bottom: 0; }
-        .num-badge { font-size: 1.5rem; font-weight: 900; color: #ccc; }
-        .top-news-text h4 { font-size: 0.95rem; line-height: 1.3; color: #222; margin-bottom: 4px; }
-        .top-news-text p { font-size: 0.75rem; color: #888; }
-
-        @media (max-width: 900px) {
-            .page-container { grid-template-columns: 1fr; }
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+        body { background-color: #f4f4f9; color: #333; line-height: 1.6; }
+        
+        /* Top Header */
+        header { background: #1a1a1a; color: #fff; padding: 25px 0; text-align: center; border-bottom: 4px solid #e53935; }
+        header h1 { font-size: 2.5rem; margin-bottom: 5px; font-weight: bold; }
+        header p { color: #aaa; font-size: 1.1rem; }
+        
+        /* Navigation Bar */
+        nav { background: #222; display: flex; justify-content: center; gap: 20px; padding: 12px 0; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        nav a { color: #fff; text-decoration: none; font-weight: bold; font-size: 1.1rem; transition: color 0.3s; }
+        nav a:hover, nav a.active { color: #e53935; }
+        
+        /* Main Container */
+        .container { max-width: 900px; margin: 30px auto; padding: 0 20px; }
+        
+        /* Hero Article Card */
+        .hero-article { background: #fff; padding: 35px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-bottom: 30px; border-right: 6px solid #e53935; }
+        .category-tag { background: #e53935; color: #fff; padding: 4px 10px; font-size: 0.85rem; border-radius: 4px; display: inline-block; margin-bottom: 15px; font-weight: bold; }
+        .hero-article h2 { font-size: 2rem; margin-bottom: 15px; color: #111; line-height: 1.3; }
+        .hero-article h2 a { color: inherit; text-decoration: none; }
+        .hero-article h2 a:hover { color: #e53935; }
+        .hero-article p { font-size: 1.1rem; color: #555; margin-bottom: 20px; line-height: 1.8; }
+        .read-more { display: inline-block; color: #e53935; text-decoration: none; font-weight: bold; font-size: 1.05rem; }
+        .read-more:hover { text-decoration: underline; }
+        
+        /* Footer */
+        footer { background: #1a1a1a; color: #888; text-align: center; padding: 20px 0; margin-top: 50px; font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
-    <div class="top-bar">
-        <div class="top-bar-right">
-            <span>📅 יום ראשון, 25 באוקטובר 2026</span>
-            <span>☀️ תל אביב 24°C</span>
-        </div>
-        <div class="top-bar-left">
-            <span>מבזקים</span>
-            <span>מהדורה דיגיטלית</span>
-            <span class="live-tag">🔴 שידור חי</span>
-        </div>
-    </div>
-
-    <div class="main-header">
-        <div style="display: flex; align-items: center; gap: 12px;">
-            <a href="index.html" class="logo-box">ללא פילטר</a>
-            <span class="slogan">חדשות ואקטואליה בגובה העיניים</span>
-        </div>
-        <div class="header-controls">
-            <input type="text" class="search-input" placeholder="חיפוש בחדשות...">
-            <button class="alert-btn">🔔 התראות</button>
-        </div>
-    </div>
+    <header>
+        <h1>ללא פילטר</h1>
+        <p>חדשות, אקטואליה וניתוחים בגובה העיניים</p>
+    </header>
 
     <nav>
         <a href="index.html" class="active">ראשי</a>
         <a href="news_article_page.html">פוליטיקה</a>
         <a href="#">צבא וביטחון</a>
         <a href="#">כלכלה</a>
-        <a href="#">משפט</a>
-        <a href="#">בעולם</a>
-        <a href="#">תרבות וסגנון</a>
-        <a href="#">ספורט</a>
-        <a href="#">טכנולוגיה</a>
-        <a href="#" class="highlight">★ דעות ופרשנויות</a>
+        <a href="#">תקשורת</a>
     </nav>
 
-    <div class="ticker-bar">
-        <span class="ticker-time">17:55</span>
-        <span>דאגה במטה המרכזי משיעור ההצבעה הנמוך באזורי המפתח.</span>
+    <div class="container">
+        <section class="hero-article">
+            <span class="category-tag">פוליטיקה</span>
+            <h2><a href="news_article_page.html">אף גוש לא מגרד 61: הסיוט של חוסר היציבות הפוליטית חוזר</a></h2>
+            <p>ניתוח מעמיק של המפה הפוליטית מראה תמונת מצב עקרה. הבוחרים אולי עייפים, אך המנהיגים ממשיכים במאבקי החסימה. קראו את הניתוח המלא על המבוי הסתום במערכת הפוליטית.</p>
+            <a href="news_article_page.html" class="read-more">לקריאת הכתבה המלאה ←</a>
+        </section>
     </div>
 
-    <div class="page-container">
+    <footer>
+        <p>כל הזכויות שמורות לאתר "ללא פילטר" &copy; 2026</p>
+    </footer>
 
-        <aside class="sidebar">
-            <div class="widget-box">
-                <div class="widget-header">📊 סקר גולשים - ללא פילטר</div>
-                <p style="font-size: 0.85rem; color: #555; margin-bottom: 12px; font-weight: bold;">האם לדעתך נלך לבחירות חוזרות?</p>
-                <div class="poll-option">כן, אין הכרעה באופק</div>
-                <div class="poll-option">לא, תוקם ממשלת אחדות</div>
-                <div class="poll-option">תוקם ממשלת מיעוט</div>
-            </div>
-
-            <div class="widget-box">
-                <div class="widget-header">🔥 הכתבות הנקראות ביותר</div>
-                <div class="top-news-list">
-                    <div class="top-news-item">
-                        <span class="num-badge">1</span>
-                        <div class="top-news-text">
-                            <h4>הדרמה בסקר האחרון: האם אחוז החסימה יפתיע את כולם?</h4>
-                            <p>לפני שעה</p>
-                        </div>
-                    </div>
-                    <div class="top-news-item">
-                        <span class="num-badge">2</span>
-                        <div class="top-news-text">
-                            <h4>המחיר הכלכלי של סבבי הבחירות: מיליארדי שקלים ירדו לטמיון</h4>
-                            <p>לפני 3 שעות</p>
-                        </div>
-                    </div>
-                    <div class="top-news-item">
-                        <span class="num-badge">3</span>
-                        <div class="top-news-text">
-                            <h4>השיחות החשאיות בין ראשי המפלגות לקראת יום שלישי</h4>
-                            <p>לפני 5 שעות</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </aside>
-
-        <main class="main-content">
-            <article class="hero-card">
-                <span class="hero-tag">📌 כתיבה עיתונאית -
+</body>
+</html>
