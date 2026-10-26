@@ -119,7 +119,7 @@
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            <!-- Article Body (8 cols) -->
+            <!-- Article Content (8 cols) -->
             <article class="lg:col-span-8 bg-white p-6 md:p-8 rounded-xl shadow-sm border border-gray-200">
                 <span class="inline-block bg-red-100 text-red-700 text-xs font-bold px-3 py-1 rounded-full mb-3">
                     <i class="fas fa-vote-yea ml-1"></i> כתיבה עיתונאית - בחירות
@@ -145,13 +145,42 @@
                     </div>
                 </div>
 
-                <!-- Text Content -->
+                <!-- FULL ARTICLE TEXT -->
                 <div class="text-gray-800 space-y-6 text-lg leading-relaxed">
-                    <p class="font-semibold text-slate-900">
-                        ימים ספורים לפתיחת הקלפיות, והסקרים מראים שאף גוש לא משיג 61 מנדטים. הזיכרון של 5 הסבבים עוד חקוק בראשנו, והחשש הגדול הוא שמערכת הבחירות הנוכחית לא תביא הכרעה.
+                    <p class="font-semibold text-slate-900 text-xl leading-relaxed border-r-4 border-red-600 pr-4 py-1 bg-red-50/50 rounded-l-lg">
+                        ימים ספורים לפתיחת הקלפיות, והסקרים מראים שאף גוש לא משיג 61 מנדטים. הזיכרון של 5 הסבבים עוד חקוק בראשנו, והחשש הגדול הוא שמערכת הבחירות הנוכחית לא תביא הכרעה – אלא רק תעמיק את השיתוק הפוליטי.
                     </p>
+
                     <p>
-                        המערכת הפוליטית בישראל ממשיכה להתמודד עם אתגרי היציבות. האזרחים שואלים את עצמם האם הבחירות הקרובות יביאו לשינוי המיוחל או למבוי סתום נוסף.
+                        בחירות 2026 מרגישות לרבים מאיתנו כמו שידור חוזר של סרט שכבר ראינו יותר מדי פעמים. הסקרים האחרונים שפורסמו בסוף השבוע מציגים תמונה כמעט זהה: אף אחד מהגושים אינו מצליח להגיע לקו המטרה של 61 חברי כנסת הנדרשים להקמת קואליציה יציבה.
+                    </p>
+
+                    <p>
+                        מצד אחד, הגוש המכהן מנסה לשמר את כוחו ונשען על בסיס תומכים יציב אך מוגבל. מן הצד השני, האופוזיציה מציגה התחזקות מסוימת, אך חלוקת המנדטים הפנימית בין המפלגות השונות מקשה על גיבוש הסכמות מראש לגבי זהות ראש הממשלה והרכב הממשלה הבאה.
+                    </p>
+
+                    <!-- Embedded Highlight Box -->
+                    <div class="my-6 p-5 bg-slate-900 text-white rounded-xl shadow-inner">
+                        <h3 class="font-bold text-amber-400 text-base mb-2 flex items-center gap-2">
+                            <i class="fas fa-chart-pie"></i> תמונת המנדטים לפי ממוצע הסקרים האחרון:
+                        </h3>
+                        <ul class="text-sm space-y-2 text-gray-200">
+                            <li class="flex justify-between border-b border-slate-700 pb-1"><span>גוש הממשלה הנוכחית:</span> <strong class="text-white">58 מנדטים</strong></li>
+                            <li class="flex justify-between border-b border-slate-700 pb-1"><span>גוש השינוי / אופוזיציה:</span> <strong class="text-white">52 מנדטים</strong></li>
+                            <li class="flex justify-between"><span>מפלגות ערביות / לא מזוהות:</span> <strong class="text-white">10 מנדטים</strong></li>
+                        </ul>
+                    </div>
+
+                    <p>
+                        הבעיה המרכזית אינה רק במספרים, אלא בפערים האידיאולוגיים והאישיים שמונעים חיבורים שעל הנייר היו יכולים לפתור את המבוי הסתום. הפסילות ההדדיות, ראשי המפלגות שסירבו לשבת זה עם זה בעבר, וההבטחות לבוחרים יוצרים מלכוד פוליטי שבו כל ירידה מהעץ נתפסת ככניעה.
+                    </p>
+
+                    <p>
+                        המחיר של חוסר היציבות הזה הוא כבד: תקציבי מדינה תקועים, רפורמות חיוניות במערכת הבריאות, הכלכלה והחינוך מוקפאות, והציבור חש שחיקה ואובדן אמון הולך וגודל במערכת הדמוקרטית ובנבחרי הציבור.
+                    </p>
+
+                    <p>
+                        כעת, עיני כולן נשואות לאחוז ההצבעה ביום הבחירות. ההיסטוריה מלמדת אותנו שבימים של תיקו פוליטי צמוד, כל אלפי קולות בודדים – ואפילו אחוז חסימה של מפלגה קטנה אחת שלא תעבור – יכולים להכריע את הכף לכאן או לכאן ולהכתיב את עתידה של המדינה בשנים הקרובות.
                     </p>
                 </div>
             </article>
@@ -160,7 +189,7 @@
             <aside class="lg:col-span-4 space-y-6">
                 <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
                     <h3 class="font-bold text-slate-900 text-base mb-4 pb-2 border-b-2 border-red-600">
-                        <i class="fas fa-star text-amber-500 ml-1"></i> מומלץ לקריאה
+                        <i class="fas fa-star text-amber-500 ml-1"></i> מומלץ לקריאה - דעות
                     </h3>
                     <div class="space-y-4">
                         <a href="./opinion_average_man.html" class="flex gap-3 group items-center">
