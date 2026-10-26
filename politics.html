@@ -137,9 +137,8 @@
                         </p>
                         <div class="flex items-center justify-between pt-4 border-t border-gray-100 text-xs text-gray-500">
                             <div class="flex items-center gap-2">
+                                <img src="image_98315f.jpg" alt="חי חיים פרץ" class="w-8 h-8 rounded-full object-cover shadow border" style="object-position: center 20%;">
                                 <span class="font-bold text-slate-900">מאת: חי חיים פרץ</span>
-                                <span>•</span>
-                                <span>מערכת ללא פילטר</span>
                             </div>
                             <a href="./news_article_page.html" class="inline-flex items-center gap-1.5 bg-red-600 hover:bg-red-700 text-white font-bold px-4 py-2 rounded-lg text-xs transition shadow-sm">
                                 לקריאת הכתבה המלאה <i class="fas fa-arrow-left"></i>
@@ -167,5 +166,13 @@
             </aside>
         </div>
     </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('current-date').innerHTML = `<i class="far fa-calendar-alt ml-1"></i> ${now.toLocaleDateString('he-IL', options)}`;
+        });
+    </script>
 </body>
 </html>
