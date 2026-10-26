@@ -117,52 +117,71 @@
     <!-- Main Content Container -->
     <main class="max-w-7xl mx-auto px-4 py-6 flex-1 w-full">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            
+            <!-- Main Content Column (8 cols) -->
             <section class="lg:col-span-8 space-y-6">
+                
+                <!-- 1. הכתבה הפוליטית הראשית -->
                 <div class="bg-white p-6 md:p-8 rounded-xl shadow-sm border border-gray-200">
                     <span class="inline-block bg-red-100 text-red-700 text-xs font-bold px-3 py-1 rounded-full mb-3">
                         <i class="fas fa-vote-yea ml-1"></i> כתיבה עיתונאית - בחירות
                     </span>
-                    <h1 class="text-3xl md:text-5xl font-black text-slate-900 leading-tight mb-4 tracking-tight hover:text-red-600 transition">
+                    <h1 class="text-2xl md:text-4xl font-black text-slate-900 leading-tight mb-3 tracking-tight hover:text-red-600 transition">
                         <a href="./news_article_page.html">אף גוש לא מגרד 61: הסיוט של חוסר היציבות הפוליטית חוזר</a>
                     </h1>
-                    <h2 class="text-lg md:text-xl text-gray-600 font-normal leading-relaxed mb-6 border-r-4 border-red-600 pr-3">
-                        ימים ספורים לפתיחת הקלפיות, והסקרים מראים שאף גוש לא משיג 61 מנדטים. הזיכרון של 5 הסבבים עוד חקוק בראשנו, והחשש הגדול הוא שמערכת הבחירות הנוכחית לא תביא הכרעה - ותחזיר אותנו אחורה בזמן.
-                    </h2>
-                    <div class="flex items-center justify-between border-y border-gray-200 py-3 mb-6 text-xs text-gray-600">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-full bg-red-600 text-white flex items-center justify-center font-bold text-sm shadow">ח</div>
-                            <div>
-                                <div class="font-bold text-slate-900 text-sm">מאת: חי חיים פרץ</div>
-                                <div>פורסם לאחרונה | מערכת ללא פילטר</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-6 rounded-xl overflow-hidden shadow-md bg-slate-900 relative">
-                        <a href="./news_article_page.html">
-                            <svg class="w-full h-64 md:h-80 object-cover hover:opacity-95 transition" viewBox="0 0 800 450" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="800" height="450" fill="#0f172a"/>
-                                <circle cx="200" cy="150" r="250" fill="#1e293b" opacity="0.8"/>
-                                <circle cx="600" cy="300" r="300" fill="#334155" opacity="0.5"/>
-                                <rect x="280" y="140" width="240" height="200" rx="16" fill="#1e293b" stroke="#ef4444" stroke-width="4"/>
-                                <path d="M 320 140 L 480 140 L 480 120 C 480 110 470 100 460 100 L 340 100 C 330 100 320 110 320 120 Z" fill="#ef4444"/>
-                                <rect x="360" y="60" width="80" height="90" rx="4" fill="#ffffff" transform="rotate(-5 400 105)"/>
-                                <rect x="370" y="75" width="60" height="8" rx="2" fill="#ef4444"/>
-                                <rect x="370" y="90" width="40" height="6" rx="2" fill="#94a3b8"/>
-                                <rect x="370" y="102" width="50" height="6" rx="2" fill="#94a3b8"/>
-                                <text x="400" y="240" font-family="Rubik" font-size="28" font-weight="bold" fill="#ffffff" text-anchor="middle">בחירות בישראל</text>
-                                <text x="400" y="280" font-family="Heebo" font-size="18" fill="#94a3b8" text-anchor="middle">מלכוד 61 המנדטים</text>
-                            </svg>
-                        </a>
-                    </div>
-                    <div class="pt-2 flex justify-end">
-                        <a href="./news_article_page.html" class="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-bold text-sm px-5 py-2.5 rounded-lg transition shadow-sm">
-                            לקריאת הכתבה המלאה והניתוח המלא <i class="fas fa-arrow-left"></i>
+                    <p class="text-gray-600 text-base leading-relaxed mb-4">
+                        ימים ספורים לפתיחת הקלפיות, והסקרים מראים שאף גוש לא משיג 61 מנדטים. הזיכרון של 5 הסבבים עוד חקוק בראשנו, והחשש הגדול הוא שמערכת הבחירות הנוכחית לא תביא הכרעה.
+                    </p>
+                    <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                        <span class="text-xs text-gray-500 font-semibold">מאת: חי חיים פרץ | מערכת ללא פילטר</span>
+                        <a href="./news_article_page.html" class="bg-red-600 hover:bg-red-700 text-white text-xs font-bold px-4 py-2 rounded-lg transition shadow-sm">
+                            לקריאת הכתבה המלאה ←
                         </a>
                     </div>
                 </div>
+
+                <!-- 2. הטור האישי שלך: "תסמונת האדם הממוצע" -->
+                <div class="bg-white p-6 md:p-8 rounded-xl shadow-sm border border-gray-200 border-r-4 border-r-slate-800">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="inline-block bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full">
+                            <i class="fas fa-star ml-1 text-amber-600"></i> טור אישי - דעות ופרשנויות
+                        </span>
+                        <span class="text-xs text-gray-400">פורסם לאחרונה</span>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row gap-6 items-center md:items-start mb-6">
+                        <!-- תמונה אישית מעוצבת -->
+                        <div class="shrink-0 text-center">
+                            <img src="profile.jpg" alt="חי חיים פרץ" class="w-28 h-28 md:w-36 md:h-36 rounded-full object-cover shadow-md border-4 border-white mx-auto">
+                            <h3 class="font-bold text-slate-900 text-sm mt-2">חי חיים פרץ</h3>
+                            <p class="text-xs text-gray-500">בן 23, טבריה</p>
+                        </div>
+
+                        <!-- תוכן הטור -->
+                        <div class="flex-1 text-right">
+                            <h2 class="text-2xl md:text-3xl font-black text-slate-900 leading-tight mb-3">
+                                "תסמונת האדם הממוצע": איך שורדים בעולם שבו כולם חייבים להיות מיוחדים?
+                            </h2>
+                            <p class="text-gray-700 text-base leading-relaxed mb-4 italic">
+                                "כבר קרוב לשעתיים שאני יושב אל מול המחשב ומנסה להבין מה לעזאזל מעניין בי. אני מנסה לחשוב על איזה סיפור מטורף מהעבר או מעשה הירואי, אבל המוח ריק... בלי פילטרים, בלי דרמות מיותרות, פשוט אני."
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
+                        <span class="text-xs text-gray-500 font-medium">עמק יזרעאל / משמר הגבול לשעבר</span>
+                        <!-- תוכל ליצור בעתיד עמוד נפרד לטור או לפתוח פופאפ, כרגע יוביל לדף הבית או לעמוד כתבה -->
+                        <a href="./index.html" class="bg-slate-800 hover:bg-slate-900 text-white text-xs font-bold px-4 py-2 rounded-lg transition shadow-sm">
+                            לקריאת הטור המלא ←
+                        </a>
+                    </div>
+                </div>
+
             </section>
 
+            <!-- Sidebar Column (4 cols) -->
             <aside class="lg:col-span-4 space-y-6">
+                <!-- Poll -->
                 <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
                     <div class="flex items-center gap-2 mb-3 text-red-600">
                         <i class="fas fa-poll text-lg"></i>
@@ -216,6 +235,7 @@
                     </div>
                 </div>
 
+                <!-- Most Read -->
                 <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
                     <h3 class="font-bold text-slate-900 text-base mb-4 pb-2 border-b-2 border-red-600 flex items-center justify-between">
                         <span><i class="fas fa-fire text-red-600 ml-1"></i> הכתבות הנקראות ביותר</span>
@@ -240,7 +260,7 @@
                             <span class="text-2xl font-black text-gray-300 group-hover:text-red-600 transition">3</span>
                             <div>
                                 <h4 class="text-sm font-bold text-gray-800 group-hover:text-red-600 transition leading-snug">השיחות החשאיות בין ראשי המפלגות לקראת יום שלישי</h4>
-                                <span class="text-xs text-gray-400">לפני 5 שעות</span>
+                                <span class="text-xs text-gray-400">לפני 5 שעות</h4>
                             </div>
                         </a>
                     </div>
