@@ -35,27 +35,14 @@
         }
     </script>
     <style>
-        body {
-            font-family: 'Heebo', sans-serif;
-            background-color: #f7fafc;
-            color: #2d3748;
-        }
+        body { font-family: 'Heebo', sans-serif; background-color: #f7fafc; color: #2d3748; }
         @keyframes ticker {
             0% { transform: translate3d(100%, 0, 0); }
             100% { transform: translate3d(-100%, 0, 0); }
         }
-        .ticker-wrap {
-            width: 100%;
-            overflow: hidden;
-            white-space: nowrap;
-        }
-        .ticker-move {
-            display: inline-block;
-            animation: ticker 30s linear infinite;
-        }
-        .ticker-move:hover {
-            animation-play-state: paused;
-        }
+        .ticker-wrap { width: 100%; overflow: hidden; white-space: nowrap; }
+        .ticker-move { display: inline-block; animation: ticker 30s linear infinite; }
+        .ticker-move:hover { animation-play-state: paused; }
     </style>
 </head>
 <body class="bg-gray-100 min-h-screen flex flex-col" dir="rtl">
@@ -98,11 +85,11 @@
             </div>
         </div>
 
-        <!-- Navigation Bar (Right to Left Order) -->
+        <!-- Navigation Bar -->
         <nav class="bg-slate-800 text-white text-sm font-medium">
             <div class="max-w-7xl mx-auto px-4 flex items-center overflow-x-auto whitespace-nowrap scrollbar-none justify-start">
                 <a href="./index.html" class="py-2.5 px-3 hover:bg-slate-700 transition">ראשי</a>
-                <a href="./news_article_page.html" class="py-2.5 px-3 bg-red-600 font-bold hover:bg-red-700 transition">פוליטיקה</a>
+                <a href="./politics.html" class="py-2.5 px-3 bg-red-600 font-bold hover:bg-red-700 transition">פוליטיקה</a>
                 <a href="#" class="py-2.5 px-3 hover:bg-slate-700 transition">צבא וביטחון</a>
                 <a href="#" class="py-2.5 px-3 hover:bg-slate-700 transition">כלכלה</a>
                 <a href="#" class="py-2.5 px-3 hover:bg-slate-700 transition">משפט</a>
@@ -133,7 +120,7 @@
         <div class="flex items-center gap-2 text-xs text-gray-500 mb-3">
             <a href="./index.html" class="hover:underline">ראשי</a>
             <span>&gt;</span>
-            <a href="./news_article_page.html" class="hover:underline text-red-600 font-semibold">פוליטיקה ובחירות</a>
+            <a href="./politics.html" class="hover:underline text-red-600 font-semibold">פוליטיקה ובחירות</a>
             <span>&gt;</span>
             <span class="text-gray-700 truncate">אף גוש לא מגרד 61</span>
         </div>
@@ -151,9 +138,7 @@
                 </h2>
                 <div class="flex flex-wrap items-center justify-between border-y border-gray-200 py-3 mb-6 text-xs text-gray-600 gap-3">
                     <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-red-600 text-white flex items-center justify-center font-bold text-sm shadow">
-                            ח
-                        </div>
+                        <div class="w-10 h-10 rounded-full bg-red-600 text-white flex items-center justify-center font-bold text-sm shadow">ח</div>
                         <div>
                             <div class="font-bold text-slate-900 text-sm">מאת: חי חיים פרץ</div>
                             <div>פורסם לאחרונה | מערכת ללא פילטר</div>
@@ -341,7 +326,7 @@
                     </h3>
 
                     <p>
-                        מעבר לנזק הכלכלי, המחיר הכבד ביותר נגבה מאמון הציבור. התחושה בקרב אזרחי מדינה ישראל כי הקול שלהם בקלפי לא מוביל לשינוי, הובילה לשחיקת התודעה הציבורית, יחד עם ספקנות כלפי המערכת הפוליטית שלה.
+                        מעבר לנזק הכלכלי, המחיר הכבד ביותר נגבה מאמון הציבור. התחושה בקרב אזרחי מדינה ישראל כי הקול שלהם בקלפי לא מוביל לשינוי, הובילה לשחיקת التודעה הציבורית, יחד עם ספקנות כלפי המערכת הפוליטית שלה.
                     </p>
 
                     <div class="my-8 bg-slate-50 border-r-8 border-slate-800 p-6 rounded-l-xl italic shadow-inner">
