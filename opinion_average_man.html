@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>"תסמונת האדם הממוצע" | ללא פילטר</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Heebo & Rubik -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { red: '#e53e3e', navy: '#1a202c' }
+                    },
+                    fontFamily: {
+                        sans: ['Heebo', 'sans-serif'],
+                        rubik: ['Rubik', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Heebo', sans-serif; background-color: #f7fafc; color: #2d3748; }
+        @keyframes ticker {
+            0% { transform: translate3d(100%, 0, 0); }
+            100% { transform: translate3d(-100%, 0, 0); }
+        }
+        .ticker-wrap { width: 100%; overflow: hidden; white-space: nowrap; }
+        .ticker-move { display: inline-block; animation: ticker 30s linear infinite; }
+        .ticker-move:hover { animation-play-state: paused; }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col" dir="rtl">
+
+    <!-- Top Bar -->
+    <div class="bg-slate-900 text-gray-300 text-xs py-1.5 px-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <a href="#" class="hover:text-white font-bold text-red-400"><i class="fas fa-circle text-xs animate-pulse ml-1"></i>שידור חי</a>
+                <span class="text-gray-600">|</span>
+                <a href="#" class="hover:text-white transition">מהדורה דיגיטלית</a>
+                <span class="text-gray-600">|</span>
+                <a href="#" class="hover:text-white transition">מבזקים</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="hidden md:inline-block"><i class="fas fa-sun text-amber-400 ml-1"></i> תל אביב 24°C</span>
+                <span id="current-date"><i class="far fa-calendar-alt ml-1"></i> טוען תאריך...</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header / Logo Section -->
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <button class="bg-red-600 hover:bg-red-700 text-white text-xs font-bold px-3 py-1.5 rounded transition shadow-sm">
+                    <i class="fas fa-bell ml-1"></i> התראות
+                </button>
+                <div class="relative hidden sm:block">
+                    <input type="text" placeholder="חיפוש בחדשות..." class="bg-gray-100 text-sm rounded-full pl-8 pr-4 py-1.5 focus:outline-none focus:ring-2 focus:ring-red-500 w-44 md:w-60 transition text-right">
+                    <i class="fas fa-search absolute left-3 top-2.5 text-gray-400 text-xs"></i>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <span class="hidden sm:inline-block text-xs bg-gray-100 text-gray-600 font-medium px-2 py-1 rounded border">חדשות ואקטואליה בגובה העיניים</span>
+                <a href="./index.html" class="flex items-center gap-2">
+                    <span class="bg-red-600 text-white font-black text-2xl px-3 py-1 rounded tracking-tight font-rubik shadow-sm">ללא פילטר</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Navigation Bar -->
+        <nav class="bg-slate-800 text-white text-sm font-medium">
+            <div class="max-w-7xl mx-auto px-4 flex items-center overflow-x-auto whitespace-nowrap scrollbar-none justify-start">
+                <a href="./index.html" class="py-2.5 px-3 hover:bg-slate-700 transition">ראשי</a>
+                <a href="./politics.html" class="py-2.5 px-3 hover:bg-slate-700 transition">פוליטיקה</a>
+                <a href="#" class="py-2.5 px-3 hover:bg-slate-700 transition">צבא וביטחון</a>
+                <a href="#" class="py-2.5 px-3 hover:bg-slate-700 transition">כלכלה</a>
+                <a href="#" class="py-2.5 px-3 hover:bg-slate-700 transition">משפט</a>
+                <a href="#" class="py-2.5 px-3 hover:bg-slate-700 transition">בעולם</a>
+                <a href="#" class="py-2.5 px-3 hover:bg-slate-700 transition">תרבות וסגנון</a>
+                <a href="#" class="py-2.5 px-3 hover:bg-slate-700 transition">ספורט</a>
+                <a href="#" class="py-2.5 px-3 hover:bg-slate-700 transition">טכנולוגיה</a>
+                <a href="./opinion_average_man.html" class="py-2.5 px-3 bg-slate-900 text-amber-300 font-semibold transition"><i class="fas fa-star text-xs ml-1"></i>דעות ופרשנויות</a>
+            </div>
+        </nav>
+
+        <!-- News Ticker -->
+        <div class="bg-gray-200 border-b border-gray-300 text-xs flex items-center px-4 py-1.5">
+            <span class="bg-red-600 text-white font-bold px-2 py-0.5 rounded text-[11px] ml-3 shrink-0 uppercase tracking-wide">מבזקים</span>
+            <div class="ticker-wrap flex-1 text-gray-800 font-medium">
+                <div class="ticker-move">
+                    <span class="ml-8"><strong class="text-red-600">18:42</strong> סקר אחרון: הקרב צמוד עד הרגע האחרון</span>
+                    <span class="ml-8"><strong class="text-red-600">18:30</strong> ועדת הבחירות המרכזית השלימה את היערכותה ליום ההצבעה</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 py-6 flex-1 w-full">
+        <div class="flex items-center gap-2 text-xs text-gray-500 mb-3">
+            <a href="./index.html" class="hover:underline">ראשי</a>
+            <span>&gt;</span>
+            <a href="./opinion_average_man.html" class="hover:underline text-amber-600 font-semibold">דעות ופרשנויות</a>
+            <span>&gt;</span>
+            <span class="text-gray-700 truncate">תסמונת האדם הממוצע</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <!-- Article Body (8 cols) -->
+            <article class="lg:col-span-8 bg-white p-6 md:p-8 rounded-xl shadow-sm border border-gray-200">
+                <span class="inline-block bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full mb-3">
+                    <i class="fas fa-star ml-1 text-amber-600"></i> טור אישי - דעות ופרשנויות
+                </span>
+
+                <h1 class="text-3xl md:text-4xl font-black text-slate-900 leading-tight mb-4 tracking-tight">
+                    "תסמונת האדם הממוצע": איך שורדים בעולם שבו כולם חייבים להיות מיוחדים?
+                </h1>
+
+                <!-- Author & Meta bar -->
+                <div class="flex flex-wrap items-center justify-between border-y border-gray-200 py-3 mb-6 text-xs text-gray-600 gap-3">
+                    <div class="flex items-center gap-3">
+                        <img src="image_98315f.jpg" alt="חי חיים פרץ" class="w-12 h-12 rounded-full object-cover shadow border">
+                        <div>
+                            <div class="font-bold text-slate-900 text-sm">מאת: חי חיים פרץ</div>
+                            <div>פורסם לאחרונה | מערכת ללא פילטר</div>
+                        </div>
+                    </div>
+                    <div>
+                        <button onclick="window.print()" class="p-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg border transition">
+                            <i class="fas fa-print"></i> הדפסה
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Featured Image -->
+                <div class="mb-6 rounded-xl overflow-hidden shadow-md bg-slate-900 text-center">
+                    <img src="image_98315f.jpg" alt="חי חיים פרץ" class="w-full max-h-[450px] object-cover">
+                    <div class="bg-slate-900 text-gray-300 text-xs p-2 text-right px-4 border-t border-slate-800">
+                        <span>צילום: אלבום אישי, חי חיים פרץ</span>
+                    </div>
+                </div>
+
+                <!-- Article Full Content -->
+                <div class="text-gray-800 space-y-6 text-lg leading-relaxed">
+                    <p class="font-semibold text-slate-900">
+                        כבר קרוב לשעתיים שאני יושב אל מול המחשב ומנסה להבין מה לעזאזל מעניין בי. אני מנסה לחשוב על איזה סיפור מטורף מהעבר או מעשה הירואי, אבל המוח ריק. איך אני הולך לספר על זה שהמחשבה הכי עמוקה שלי בשבוע האחרון היא אם יש או אין לי כוח להכין משהו לאכול?
+                    </p>
+
+                    <p>
+                        אני אתן רקע כללי: אני חי חיים פרץ, בן 23 מטבריה[cite: 11]. ביסודי למדתי בבית הספר "רעות", ואת החטיבה והתיכון עשיתי ב"עמל נופרים בגליל"[cite: 11]. בשנת 2021 התגייסתי למשמר הגבול, ושם עשיתי שירות בתור חובש מרפאה בבסיס ההכשרה של הטירונים[cite: 11]. ועכשיו נשאלת השאלה מה עוד יש לומר על עצמי? כנראה שאין[cite: 11].
+                    </p>
+
+                    <p>
+                        בטח כבר שמתם לב ש"תסמונת האדם הממוצע" זה לא באמת מונח, ואם היה, כנראה שהיה מתאר את המצב בו אני נמצא[cite: 11]. אבל כשמסתכלים על העולם בו אנחנו חיים היום – שבו כולם עם פילטרים, ממציאים סיפורים כדי להיות חלק או מנסים להיות יוצאי דופן – מסתבר שאני הוא המיוחד[cite: 11]. בלי פילטרים, בלי דרמות מיותרות, פשוט אני[cite: 11].
+                    </p>
+                </div>
+            </article>
+
+            <!-- Sidebar (4 cols) -->
+            <aside class="lg:col-span-4 space-y-6">
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
+                    <h3 class="font-bold text-slate-900 text-base mb-4 pb-2 border-b-2 border-red-600">
+                        <i class="fas fa-fire text-red-600 ml-1"></i> הכתבות הנקראות ביותר
+                    </h3>
+                    <div class="space-y-4">
+                        <a href="./news_article_page.html" class="flex gap-3 group">
+                            <span class="text-2xl font-black text-gray-300 group-hover:text-red-600 transition">1</span>
+                            <div>
+                                <h4 class="text-sm font-bold text-gray-800 group-hover:text-red-600 transition leading-snug">אף גוש לא מגרד 61: הסיוט של חוסר היציבות הפוליטית חוזר</h4>
+                                <span class="text-xs text-gray-400">לפני שעה</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+</body>
+</html>
