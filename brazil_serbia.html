@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>בבית הקרב צמוד, אך בחוץ סערה: מהפך בברזיל והיסטוריה בסרביה | ללא פילטר</title>
+    <title>בבית הקרב צמוד, אך בחוץ סערה | ללא פילטר</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts: Heebo & Rubik -->
@@ -18,13 +18,7 @@
             theme: {
                 extend: {
                     colors: {
-                        brand: {
-                            red: '#e53e3e',
-                            darkRed: '#c53030',
-                            navy: '#1a202c',
-                            blue: '#2b6cb0',
-                            accent: '#ebf8ff'
-                        }
+                        brand: { red: '#e53e3e', navy: '#1a202c' }
                     },
                     fontFamily: {
                         sans: ['Heebo', 'sans-serif'],
@@ -35,27 +29,14 @@
         }
     </script>
     <style>
-        body {
-            font-family: 'Heebo', sans-serif;
-            background-color: #f7fafc;
-            color: #2d3748;
-        }
+        body { font-family: 'Heebo', sans-serif; background-color: #f7fafc; color: #2d3748; }
         @keyframes ticker {
             0% { transform: translate3d(100%, 0, 0); }
             100% { transform: translate3d(-100%, 0, 0); }
         }
-        .ticker-wrap {
-            width: 100%;
-            overflow: hidden;
-            white-space: nowrap;
-        }
-        .ticker-move {
-            display: inline-block;
-            animation: ticker 30s linear infinite;
-        }
-        .ticker-move:hover {
-            animation-play-state: paused;
-        }
+        .ticker-wrap { width: 100%; overflow: hidden; white-space: nowrap; }
+        .ticker-move { display: inline-block; animation: ticker 30s linear infinite; }
+        .ticker-move:hover { animation-play-state: paused; }
     </style>
 </head>
 <body class="bg-gray-100 min-h-screen flex flex-col" dir="rtl">
@@ -106,7 +87,8 @@
                 <a href="#" class="py-2.5 px-3 hover:bg-slate-700 transition">צבא וביטחון</a>
                 <a href="#" class="py-2.5 px-3 hover:bg-slate-700 transition">כלכלה</a>
                 <a href="#" class="py-2.5 px-3 hover:bg-slate-700 transition">משפט</a>
-                <a href="./world.html" class="py-2.5 px-3 hover:bg-slate-700 transition">בעולם</a>
+                <!-- התגית בעולם מסומנת כעת באדום -->
+                <a href="./world.html" class="py-2.5 px-3 bg-red-600 font-bold hover:bg-red-700 transition">בעולם</a>
                 <a href="#" class="py-2.5 px-3 hover:bg-slate-700 transition">תרבות וסגנון</a>
                 <a href="#" class="py-2.5 px-3 hover:bg-slate-700 transition">ספורט</a>
                 <a href="#" class="py-2.5 px-3 hover:bg-slate-700 transition">טכנולוגיה</a>
@@ -119,8 +101,6 @@
             <span class="bg-red-600 text-white font-bold px-2 py-0.5 rounded text-[11px] ml-3 shrink-0 uppercase tracking-wide">מבזקים</span>
             <div class="ticker-wrap flex-1 text-gray-800 font-medium">
                 <div class="ticker-move">
-                    <span class="ml-8"><strong class="text-red-600">03:15</strong> דרמה בברזיל: לולה דה סילבה ניצח בסיבוב השני בבחירות</span>
-                    <span class="ml-8"><strong class="text-red-600">02:40</strong> בסרביה: הנשיא ווצ'יץ' הודה בשינוי יחסי הכוחות בעקבות מחאת הסטודנטים</span>
                     <span class="ml-8"><strong class="text-red-600">01:10</strong> דאגה במערכת המדינית בירושלים מתוצאות הבחירות בברזיל ובסרביה</span>
                 </div>
             </div>
@@ -129,269 +109,88 @@
 
     <!-- Main Content Container -->
     <main class="max-w-7xl mx-auto px-4 py-6 flex-1 w-full">
-        <!-- Breadcrumb & Category -->
-        <div class="flex items-center gap-2 text-xs text-gray-500 mb-3">
+        <!-- Breadcrumb -->
+        <div class="flex items-center gap-2 text-xs text-gray-500 mb-4">
             <a href="./index.html" class="hover:underline">ראשי</a>
             <span>></span>
-            <a href="./brazil_serbia.html" class="hover:underline text-red-600 font-semibold">חדשות בעולם</a>
+            <a href="./world.html" class="hover:underline text-red-600 font-bold">חדשות בעולם</a>
             <span>></span>
-            <span class="text-gray-700 truncate">בבית הקרב צמוד, אך בחוץ סערה</span>
+            <span class="text-gray-400 truncate max-w-xs">בבית הקרב צמוד, אך בחוץ סערה</span>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            <article class="lg:col-span-8 bg-white p-6 md:p-8 rounded-xl shadow-sm border border-gray-200">
-                <span class="inline-block bg-red-100 text-red-700 text-xs font-bold px-3 py-1 rounded-full mb-3">
-                    <i class="fas fa-globe-americas ml-1"></i> חדשות חוץ - בחירות בעולם
-                </span>
-                <h1 class="text-3xl md:text-5xl font-black text-slate-900 leading-tight mb-4 tracking-tight">
-                    בבית הקרב צמוד, אך בחוץ סערה: מהפך בברזיל והיסטוריה בסרביה
-                </h1>
-                <h2 class="text-lg md:text-xl text-gray-600 font-normal leading-relaxed mb-6 border-r-4 border-red-600 pr-3">
-                    מחר (יום שלישי, 27 באוקטובר) ייערכו הבחירות בישראל – ונדמה שכל הרעש סביבן גורם לנו לאבד קשב למה שמתרחש בחוץ: הלילה ניצח נשיא ברזיל המכהן בבחירות בארצו, ובמקביל בסרביה – מפלגה צעירה צפויה להדיח את הנשיא המכהן לאחר 12 שנות שלטון.
-                </h2>
-                <div class="flex flex-wrap items-center justify-between border-y border-gray-200 py-3 mb-6 text-xs text-gray-600 gap-3">
-                    <div class="flex items-center gap-3">
-                        <img src="image_98315f.jpg" alt="חי חיים פרץ" class="w-10 h-10 rounded-full object-cover shadow border" style="object-position: center 20%;">
-                        <div>
-                            <div class="font-bold text-slate-900 text-sm">מאת: חי חיים פרץ</div>
-                            <div>פורסם לאחרונה | מערכת ללא פילטר</div>
+            <!-- Full Article Content -->
+            <section class="lg:col-span-8">
+                <article class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 md:p-8 space-y-6">
+                    
+                    <span class="inline-block bg-red-100 text-red-700 text-xs font-bold px-3 py-1 rounded-full">
+                        <i class="fas fa-passport ml-1"></i> חדשות חוץ - בחירות בעולם
+                    </span>
+
+                    <h1 class="text-3xl md:text-4xl font-black text-slate-900 leading-tight">
+                        בבית הקרב צמוד, אך בחוץ סערה: מהפך בברזיל והיסטוריה בסרביה
+                    </h1>
+
+                    <p class="text-gray-600 text-lg font-medium leading-relaxed border-r-4 border-red-600 pr-4">
+                        מחר (יום שלישי, 27 באוקטובר) ייערכו הבחירות בישראל – ונדמה שכל הרעש סביבן גורם לנו לאבד קשב למתרחש בחוץ: הלילה ניצח נשיא ברזיל המכהן בבחירות בארצו, ובמקביל בסרביה – מפלגה צעירה צפויה להדיח את הנשיא המכהן לאחר 12 שנות שלטון.
+                    </p>
+
+                    <!-- Author & Date Bar -->
+                    <div class="flex items-center justify-between py-3 border-y border-gray-100 text-xs text-gray-500">
+                        <div class="flex items-center gap-2">
+                            <img src="image_98315f.jpg" alt="חי חיים פרץ" class="w-8 h-8 rounded-full object-cover shadow border" style="object-position: center 20%;">
+                            <div>
+                                <span class="font-bold text-slate-900 block">מאת: חי חיים פרץ</span>
+                                <span class="text-gray-400">פורסם לאחרונה | מערכת ללא פילטר</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <button onclick="window.print()" class="p-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg border transition" title="הדפס כתבה">
+                        <button onclick="window.print()" class="text-gray-500 hover:text-red-600 flex items-center gap-1">
                             <i class="fas fa-print"></i> הדפסה
                         </button>
                     </div>
-                </div>
 
-                <div class="flex items-center gap-2 mb-6 pb-2 border-b border-gray-100">
-                    <span class="text-xs font-bold text-gray-500 ml-2">שתף כתבה:</span>
-                    <button onclick="shareLink('facebook')" class="bg-blue-600 text-white px-3 py-1.5 rounded text-xs font-semibold hover:opacity-90 transition flex items-center gap-1.5">
-                        <i class="fab fa-facebook-f"></i> פייסבוק
-                    </button>
-                    <button onclick="shareLink('twitter')" class="bg-sky-500 text-white px-3 py-1.5 rounded text-xs font-semibold hover:opacity-90 transition flex items-center gap-1.5">
-                        <i class="fab fa-x-twitter"></i> טוויטר / X
-                    </button>
-                    <button onclick="shareLink('whatsapp')" class="bg-emerald-600 text-white px-3 py-1.5 rounded text-xs font-semibold hover:opacity-90 transition flex items-center gap-1.5">
-                        <i class="fab fa-whatsapp"></i> וואטסאפ
-                    </button>
-                    <button onclick="copyArticleLink()" class="bg-gray-700 text-white px-3 py-1.5 rounded text-xs font-semibold hover:opacity-90 transition flex items-center gap-1.5">
-                        <i class="fas fa-link"></i> העתק קישור
-                    </button>
-                </div>
-
-                <!-- Main Featured Image (Lula da Silva) -->
-                <div class="mb-6 rounded-xl overflow-hidden shadow-md bg-slate-900 border border-gray-200">
-                    <img src="./image_7a38dc.jpg" alt="לולה דה סילבה וחגיגות הניצחון" class="w-full h-auto object-cover max-h-[480px]">
-                    <div class="bg-slate-900/90 text-gray-300 text-xs p-3 flex justify-between items-center border-t border-slate-800">
-                        <span><i class="fas fa-camera ml-1"></i> לולה דה סילבה בחגיגות הניצחון בברזיל</span>
-                        <span class="text-gray-400">צילום: AP / Andre Penner</span>
-                    </div>
-                </div>
-
-                <div class="bg-gradient-to-r from-red-50 to-orange-50 border-r-4 border-red-600 rounded-xl p-5 mb-8 shadow-sm">
-                    <h3 class="font-bold text-red-900 text-base mb-3 flex items-center">
-                        <i class="fas fa-list-ul ml-2 text-red-600"></i> 3 מוקדים מרכזיים בכתבה:
-                    </h3>
-                    <ul class="space-y-2 text-sm text-gray-800 font-medium">
-                        <li class="flex items-start">
-                            <span class="text-red-600 font-bold ml-2">1.</span>
-                            <span><strong>הניצחון הדרמטי בברזיל:</strong> לולה דה סילבה מנצח בפער דחוק אך משמעותי, בעוד יריבו בולסונארו מסרב להכיר בתוצאות.</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-red-600 font-bold ml-2">2.</span>
-                            <span><strong>ההשלכות על ישראל:</strong> המשמעות הדיפלומטית של כהונת לולה מול האפשרות לתמיכה חמה מצד מחנה בולסונארו.</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-red-600 font-bold ml-2">3.</span>
-                            <span><strong>מחאת הסטודנטים בסרביה:</strong> נפילת שלטון הימין בראשות אלכסנדר ווצ'יץ' והעמימות במדיניות החוץ החדשה.</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="text-gray-800 space-y-6 text-lg leading-relaxed">
-                    <p class="font-semibold text-slate-900">
-                        נשיא ברזיל, לואיס אינסיו לולה דה סילבה, שמרבה לבקר את ישראל, נבחר הלילה לכהונה רביעית. הוא גבר בקרב צמוד על יריבו פלאביו בולסונארו, בנו של הנשיא לשעבר ז'איר בולסונארו. באחוזים הניצחון נראה דחוק – 51.8% לעומת 48.2% – אך בפועל מדובר בפער של מיליוני קולות.
-                    </p>
-
-                    <p>
-                        ההכרעה הגיעה בסיבוב השני, לאחר שבסיבוב הראשון לא הושגה הכרעה. למרות התוצאות, בולסונארו הודיע כי לא יכיר בהן, זאת לאחר ששופט בית המשפט העליון האריך את שעות ההצבעה בשעתיים. "נבקש שהתוצאות יבוטלו", הכריז בולסונארו.
-                    </p>
-
-                    <h3 class="text-2xl font-bold text-slate-900 border-b-2 border-red-600 pb-2 mt-8 mb-4">
-                        בשורה מאכזבת לישראל
-                    </h3>
-
-                    <p>
-                        הנשיא הנבחר דה סילבה האשים בעבר את ישראל ב"רצח עם", סירב לאשר מינוי שגריר ישראלי חדש, השווה את פעולותיה של ישראל בעזה לרדיפת היהודים בשואה, ואף טען כי "12.3 מיליון ילדים נהרגו במלחמה בעזה".
-                    </p>
-
-                    <p>
-                        מנגד, יריבו פלאביו בולסונארו נחשב לתומך נלהב של ישראל – הוא אף ערך בעבר סיור רשמי בשומרון, הצהיר כי "המיקום שייך ללא ספק לעם היהודי", וביקר בכותל המערבי.
-                    </p>
-
-                    <!-- Image 2 (Bolsonaro) -->
-                    <div class="my-8 rounded-xl overflow-hidden shadow-md bg-slate-900 border border-gray-200">
-                        <img src="./image_7a3803.jpg" alt="פלאביו בולסונארו מניף את דגל ישראל" class="w-full h-auto object-cover max-h-[480px]">
-                        <div class="bg-slate-900/90 text-gray-300 text-xs p-3 flex justify-between items-center border-t border-slate-800">
-                            <span><i class="fas fa-camera ml-1"></i> בולסונארו מניף את דגל ישראל באירוע בחירות. ביקש להדק את היחסים עם ירושלים</span>
-                            <span class="text-gray-400">צילום: AP / Photo/Lucas Landau</span>
-                        </div>
+                    <!-- Social Share -->
+                    <div class="flex gap-2">
+                        <a href="#" class="bg-blue-600 text-white text-xs font-bold px-3 py-1.5 rounded flex items-center gap-1 hover:bg-blue-700 transition"><i class="fab fa-facebook-f"></i> פייסבוק</a>
+                        <a href="#" class="bg-black text-white text-xs font-bold px-3 py-1.5 rounded flex items-center gap-1 hover:bg-gray-800 transition"><i class="fab fa-x-twitter"></i> טוויטר / X</a>
+                        <a href="#" class="bg-emerald-500 text-white text-xs font-bold px-3 py-1.5 rounded flex items-center gap-1 hover:bg-emerald-600 transition"><i class="fab fa-whatsapp"></i> וואטסאפ</a>
+                        <a href="#" class="bg-gray-700 text-white text-xs font-bold px-3 py-1.5 rounded flex items-center gap-1 hover:bg-gray-800 transition"><i class="fas fa-link"></i> העתק קישור</a>
                     </div>
 
-                    <h3 class="text-2xl font-bold text-slate-900 border-b-2 border-red-600 pb-2 mt-8 mb-4">
-                        ניצחון גדול ללולה, אך העתיד אינו מזהיר
-                    </h3>
-
-                    <p>
-                        דה סילבה נכנס לתפקידו כאשר ברזיל מתמודדת עם חוב ציבורי של יותר מ-82% מהתוצר וסביבת ריבית גבוהה – וזהו רק חלק מהאתגרים העומדים לפתחו.
-                    </p>
-
-                    <p>
-                        בבחירות לקונגרס התחזקו דווקא מפלגות הימין ושותפותיהן, והן צפויות להחזיק ברוב בבית המחוקקים – דבר שיקשה מאוד על ממשלת דה סילבה להעביר רפורמות ותקציבים.
-                    </p>
-
-                    <h3 class="text-2xl font-bold text-slate-900 border-b-2 border-red-600 pb-2 mt-8 mb-4">
-                        במרחק כ-10,000 קילומטרים משם: המהפך בסרביה
-                    </h3>
-
-                    <p>
-                        הרחק מדרום אמריקה, אירוע פוליטי דרמטי נוסף תופס את הכותרות: הפלתו של מנהיג הימין הסרבי, אלכסנדר ווצ'יץ'. אף שטרם הסתיימה ספירת הקולות, הנשיא ווצ'יץ' כבר עלה לנאום מול תומכיו והודה כי מפלגת השלטון איבדה את הרוב.
-                    </p>
-
-                    <p>
-                        "מחאת הסטודנטים" היא התנועה ששטפה את סרביה מאז נובמבר 2024 והובילה לקץ שלטון הימין. המחאה פרצה בעקבות אסון כבד שבו נהרגו 16 בני אדם בקריסת גג בטון בתחנת רכבת בצפון המדינה – אירוע שעורר זעם ציבורי גלוי וטענות עמוקות לשחיתות שלטונית.
-                    </p>
-
-                    <!-- Image 3 (Serbia / Vucic) -->
-                    <div class="my-8 rounded-xl overflow-hidden shadow-md bg-slate-900 border border-gray-200">
-                        <img src="./image_7a34e4.jpg" alt="מחאות והפגנות בסרביה" class="w-full h-auto object-cover max-h-[480px]">
-                        <div class="bg-slate-900/90 text-gray-300 text-xs p-3 flex justify-between items-center border-t border-slate-800">
-                            <span><i class="fas fa-camera ml-1"></i> הפגנות הסטודנטים בסרביה ברקע שלטי הקמפיין של ווצ'יץ'</span>
-                            <span class="text-gray-400">צילום: AP Photo/Armin Durgut</span>
-                        </div>
+                    <!-- Article Image -->
+                    <div class="rounded-xl overflow-hidden shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?auto=format&fit=crop&w=1000&q=80" alt="בחירות בעולם" class="w-full h-auto max-h-[420px] object-cover">
                     </div>
 
-                    <h3 class="text-2xl font-bold text-slate-900 border-b-2 border-red-600 pb-2 mt-8 mb-4">
-                        יחסי חוץ מעורפלים
-                    </h3>
-
-                    <p>
-                        ניתן היה לצפות כי למפלגה הזוכה בניצחון כה משמעותי תהיה מדיניות חוץ סדורה, אך המציאות מורכבת יותר.
-                    </p>
-
-                    <div class="my-8 bg-slate-50 border-r-8 border-slate-800 p-6 rounded-l-xl italic shadow-inner">
-                        <i class="fas fa-quote-right text-3xl text-slate-300 block mb-2"></i>
-                        <p class="text-xl font-bold text-slate-800 leading-relaxed font-rubik">
-                            "המדיניות תונחה לפי האינטרס האזרחי."
+                    <!-- Main Text Body -->
+                    <div class="text-gray-800 text-base leading-relaxed space-y-4 pt-2">
+                        <p>
+                            בעוד העיניים בישראל נשואות אל פתיחת הקלפיות בבוקר, הזירה הבינלאומית רועשת. הדרמות הפוליטיות מעבר לים מציגות מציאות משתנה שמשפיעה ישירות על יחסי החוץ והכלכלה העולמית.
                         </p>
-                        <span class="block mt-3 text-sm font-semibold text-gray-500 not-italic">
-                            — נציגי מפלגת הצעירים בסרביה בתשובה מעורפלת לגבי יחסי החוץ עם ישראל
-                        </span>
+                        <p>
+                            בברזיל, מערכת הבחירות המתוחה הגיעה לקיצה עם ניצחון דרמטי ששומר על הנשיאות בידי הממשל המכהן, בעוד בסרביה רוחות השינוי מנשבות בעוצמה כאשר מפלגה צעירה רושמת הישג חסר תקדים המאיים לסיים שרשרת שלטון ארוכה בת יותר ועשור.
+                        </p>
                     </div>
 
-                    <p>
-                        תשובה עמומה זו אינה מספקת את ירושלים, שכן הנשיא היוצא ווצ'יץ' נחשב לתומך מובהק שלה, והפסדו התקבל בדאגה ובתסכול – בפרט בתקופה מתוחה מול אירופה.
-                    </p>
-                </div>
+                </article>
+            </section>
 
-                <div class="mt-8 pt-4 border-t border-gray-200">
-                    <div class="flex flex-wrap gap-2">
-                        <span class="text-xs text-gray-500 font-bold self-center ml-2">תגיות:</span>
-                        <a href="#" class="bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs px-2.5 py-1 rounded-full border transition">ברזיל</a>
-                        <a href="#" class="bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs px-2.5 py-1 rounded-full border transition">סרביה</a>
-                        <a href="#" class="bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs px-2.5 py-1 rounded-full border transition">בחירות בעולם</a>
-                        <a href="#" class="bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs px-2.5 py-1 rounded-full border transition">לולה דה סילבה</a>
-                        <a href="#" class="bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs px-2.5 py-1 rounded-full border transition">יחסי חוץ</a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Sidebar (4 cols) -->
+            <!-- Sidebar -->
             <aside class="lg:col-span-4 space-y-6">
-                <!-- Recommended Opinion Piece (Average Man) -->
-                <div class="bg-amber-50/80 border border-amber-200 rounded-xl p-5 shadow-sm">
-                    <h3 class="font-bold text-slate-900 text-base mb-3 pb-2 border-b-2 border-amber-500 flex items-center gap-1.5">
-                        <i class="fas fa-star text-amber-500"></i> טור אישי - דעות ופרשנויות
-                    </h3>
-                    <a href="./opinion_average_man.html" class="flex gap-3 group items-center">
-                        <img src="image_98315f.jpg" alt="חי חיים פרץ" class="w-12 h-12 rounded-full object-cover shadow border shrink-0" style="object-position: center 20%;">
-                        <div>
-                            <h4 class="text-sm font-bold text-gray-800 group-hover:text-amber-700 transition leading-snug">"תסמונת האדם הממוצע": איך שורדים בעולם שבו כולם חייבים להיות מיוחדים?</h4>
-                            <span class="text-xs text-amber-700 font-semibold block mt-1">מאת: חי חיים פרץ ←</span>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Live Poll Widget -->
+                <!-- Most Read Widget -->
                 <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
-                    <div class="flex items-center gap-2 mb-3 text-red-600">
-                        <i class="fas fa-poll text-lg"></i>
-                        <h3 class="font-bold text-slate-900 text-base">סקר גולשים - ללא פילטר</h3>
-                    </div>
-                    <p class="text-sm text-gray-800 font-medium mb-4">כיצד ישפיעו תוצאות הבחירות בברזיל ובסרביה על מעמדה של ישראל בעולם?</p>
-                    <div id="poll-options" class="space-y-2">
-                        <button onclick="votePoll(1)" class="w-full text-right p-3 bg-gray-50 border border-gray-200 hover:bg-red-50 hover:border-red-300 rounded-lg text-sm font-semibold text-slate-800 transition flex justify-between items-center">
-                            <span>יחמירו את הבידוד המדיני</span>
-                            <i class="far fa-circle text-gray-400"></i>
-                        </button>
-                        <button onclick="votePoll(2)" class="w-full text-right p-3 bg-gray-50 border border-gray-200 hover:bg-blue-50 hover:border-blue-300 rounded-lg text-sm font-semibold text-slate-800 transition flex justify-between items-center">
-                            <span>לא ישפיעו בצורה משמעותית</span>
-                            <i class="far fa-circle text-gray-400"></i>
-                        </button>
-                        <button onclick="votePoll(3)" class="w-full text-right p-3 bg-gray-50 border border-gray-200 hover:bg-emerald-50 hover:border-emerald-300 rounded-lg text-sm font-semibold text-slate-800 transition flex justify-between items-center">
-                            <span>תלוי במדיניות שתוביל הממשלה הישראלית</span>
-                            <i class="far fa-circle text-gray-400"></i>
-                        </button>
-                    </div>
-                    <div id="poll-results" class="hidden space-y-3 mt-3">
-                        <div class="text-xs font-bold text-emerald-600 bg-emerald-50 p-2 rounded text-center mb-2">תודה שהצבעת! תוצאות הביניים:</div>
-                        <div>
-                            <div class="flex justify-between text-xs font-bold mb-1">
-                                <span>יחמירו את הבידוד</span>
-                                <span>58%</span>
-                            </div>
-                            <div class="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
-                                <div class="bg-red-600 h-full" style="width: 58%;"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between text-xs font-bold mb-1">
-                                <span>לא ישפיעו</span>
-                                <span>18%</span>
-                            </div>
-                            <div class="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
-                                <div class="bg-blue-600 h-full" style="width: 18%;"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between text-xs font-bold mb-1">
-                                <span>תלוי בממשלה</span>
-                                <span>24%</span>
-                            </div>
-                            <div class="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
-                                <div class="bg-emerald-600 h-full" style="width: 24%;"></div>
-                            </div>
-                        </div>
-                        <p class="text-[11px] text-gray-400 text-center mt-2">סך הכל מצביעים: 8,420</p>
-                    </div>
-                </div>
-
-                <!-- Most Read News Widget -->
-                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
-                    <h3 class="font-bold text-slate-900 text-base mb-4 pb-2 border-b-2 border-red-600 flex items-center justify-between">
-                        <span><i class="fas fa-fire text-red-600 ml-1"></i> הכתבות הנקראות ביותר</span>
-                        <span class="text-xs font-normal text-gray-500">היום</span>
+                    <h3 class="font-bold text-slate-900 text-base mb-4 pb-2 border-b-2 border-red-600">
+                        <i class="fas fa-fire text-red-600 ml-1"></i> הכתבות הנקראות ביותר
                     </h3>
                     <div class="space-y-4">
-                        <a href="./news_article_page.html" class="flex gap-3 group">
+                        <a href="./news_article_page.html" class="flex gap-3 group border-b border-gray-100 pb-3">
                             <span class="text-2xl font-black text-gray-300 group-hover:text-red-600 transition">1</span>
                             <div>
                                 <h4 class="text-sm font-bold text-gray-800 group-hover:text-red-600 transition leading-snug">אף גוש לא מגרד 61: הסיוט של חוסר היציבות הפוליטית חוזר</h4>
                                 <span class="text-xs text-gray-400">לפני שעה</span>
                             </div>
                         </a>
-                        <a href="#" class="flex gap-3 group border-t border-gray-100 pt-3">
+                        <a href="./brazil_serbia.html" class="flex gap-3 group">
                             <span class="text-2xl font-black text-gray-300 group-hover:text-red-600 transition">2</span>
                             <div>
                                 <h4 class="text-sm font-bold text-gray-800 group-hover:text-red-600 transition leading-snug">מהפכת הסטודנטים בסרביה: האם הבלקן בדרך לעידן חדש?</h4>
@@ -399,6 +198,22 @@
                             </div>
                         </a>
                     </div>
+                </div>
+
+                <!-- Opinion Widget -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
+                    <h3 class="font-bold text-slate-900 text-base mb-3 pb-2 border-b-2 border-amber-400 flex items-center gap-1">
+                        <i class="fas fa-star text-amber-400"></i> טור אישי - דעות ופרשנויות
+                    </h3>
+                    <a href="./opinion_average_man.html" class="block group">
+                        <p class="text-sm font-bold text-gray-800 group-hover:text-red-600 transition leading-snug mb-3">
+                            "תמונת האדם הממוצע": איך שורדים בעולם שבו כולם חייבים להיות מיוחדים?
+                        </p>
+                        <div class="flex items-center gap-2 pt-2 border-t border-gray-100">
+                            <img src="image_98315f.jpg" alt="חי חיים פרץ" class="w-7 h-7 rounded-full object-cover shadow border" style="object-position: center 20%;">
+                            <span class="text-xs font-bold text-slate-900">מאת: חי חיים פרץ ←</span>
+                        </div>
+                    </a>
                 </div>
             </aside>
         </div>
@@ -410,29 +225,6 @@
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
             document.getElementById('current-date').innerHTML = `<i class="far fa-calendar-alt ml-1"></i> ${now.toLocaleDateString('he-IL', options)}`;
         });
-
-        function votePoll(option) {
-            document.getElementById('poll-options').classList.add('hidden');
-            document.getElementById('poll-results').classList.remove('hidden');
-        }
-
-        function shareLink(platform) {
-            const url = encodeURIComponent(window.location.href);
-            const title = encodeURIComponent("בבית הקרב צמוד, אך בחוץ סערה: מהפך בברזיל והיסטוריה בסרביה");
-            if (platform === 'facebook') window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`);
-            if (platform === 'twitter') window.open(`https://twitter.com/intent/tweet?text=${title}&url=${url}`);
-            if (platform === 'whatsapp') window.open(`https://api.whatsapp.com/send?text=${title} ${url}`);
-        }
-
-        function copyArticleLink() {
-            const dummy = document.createElement('input');
-            document.body.appendChild(dummy);
-            dummy.value = window.location.href;
-            dummy.select();
-            document.execCommand('copy');
-            document.body.removeChild(dummy);
-            alert('הקישור הועתק בהצלחה ללוח!');
-        }
     </script>
 </body>
 </html>
