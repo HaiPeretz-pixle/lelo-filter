@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>חדשות בעולם | ללא פילטר</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Heebo & Rubik -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { red: '#e53e3e', navy: '#1a202c' }
+                    },
+                    fontFamily: {
+                        sans: ['Heebo', 'sans-serif'],
+                        rubik: ['Rubik', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Heebo', sans-serif; background-color: #f7fafc; color: #2d3748; }
+        @keyframes ticker {
+            0% { transform: translate3d(100%, 0, 0); }
+            100% { transform: translate3d(-100%, 0, 0); }
+        }
+        .ticker-wrap { width: 100%; overflow: hidden; white-space: nowrap; }
+        .ticker-move { display: inline-block; animation: ticker 30s linear infinite; }
+        .ticker-move:hover { animation-play-state: paused; }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col" dir="rtl">
+
+    <!-- Top Bar -->
+    <div class="bg-slate-900 text-gray-300 text-xs py-1.5 px-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <a href="#" class="hover:text-white font-bold text-red-400"><i class="fas fa-circle text-xs animate-pulse ml-1"></i>שידור חי</a>
+                <span class="text-gray-600">|</span>
+                <a href="#" class="hover:text-white transition">מהדורה דיגיטלית</a>
+                <span class="text-gray-600">|</span>
+                <a href="#" class="hover:text-white transition">מבזקים</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="hidden md:inline-block"><i class="fas fa-sun text-amber-400 ml-1"></i> תל אביב 24°C</span>
+                <span id="current-date"><i class="far fa-calendar-alt ml-1"></i> טוען תאריך...</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header / Logo Section -->
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <button class="bg-red-600 hover:bg-red-700 text-white text-xs font-bold px-3 py-1.5 rounded transition shadow-sm">
+                    <i class="fas fa-bell ml-1"></i> התראות
+                </button>
+                <div class="relative hidden sm:block">
+                    <input type="text" placeholder="חיפוש בחדשות..." class="bg-gray-100 text-sm rounded-full pl-8 pr-4 py-1.5 focus:outline-none focus:ring-2 focus:ring-red-500 w-44 md:w-60 transition text-right">
+                    <i class="fas fa-search absolute left-3 top-2.5 text-gray-400 text-xs"></i>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <span class="hidden sm:inline-block text-xs bg-gray-100 text-gray-600 font-medium px-2 py-1 rounded border">חדשות ואקטואליה בגובה העיניים</span>
+                <a href="./index.html" class="flex items-center gap-2">
+                    <span class="bg-red-600 text-white font-black text-2xl px-3 py-1 rounded tracking-tight font-rubik shadow-sm">ללא פילטר</span>
+                </a>
+            </div>
+        </div>
+
+       <!-- Navigation Bar -->
+        <nav class="bg-slate-800 text-white text-sm font-medium">
+            <div class="max-w-7xl mx-auto px-4 flex items-center overflow-x-auto whitespace-nowrap scrollbar-none justify-start">
+                <a href="./index.html" class="py-2.5 px-3 hover:bg-slate-700 transition">ראשי</a>
+                <a href="./politics.html" class="py-2.5 px-3 hover:bg-slate-700 transition">פוליטיקה</a>
+                <a href="#" class="py-2.5 px-3 hover:bg-slate-700 transition">צבא וביטחון</a>
+                <a href="#" class="py-2.5 px-3 hover:bg-slate-700 transition">כלכלה</a>
+                <a href="#" class="py-2.5 px-3 hover:bg-slate-700 transition">משפט</a>
+                <a href="./world.html" class="py-2.5 px-3 bg-red-600 font-bold hover:bg-red-700 transition">בעולם</a>
+                <a href="#" class="py-2.5 px-3 hover:bg-slate-700 transition">תרבות וסגנון</a>
+                <a href="#" class="py-2.5 px-3 hover:bg-slate-700 transition">ספורט</a>
+                <a href="#" class="py-2.5 px-3 hover:bg-slate-700 transition">טכנולוגיה</a>
+                <a href="./opinion_average_man.html" class="py-2.5 px-3 hover:bg-slate-700 transition text
