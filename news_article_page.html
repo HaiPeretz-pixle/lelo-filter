@@ -396,4 +396,227 @@
                             </p>
                         </div>
                         <div class="bg-gray-50 border border-gray-200 p-4 rounded-xl shadow-sm hover:border-blue-400 transition">
-                            <div class="w-8 h-8 rounded-full bg
+                            <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 font-bold flex items-center justify-center mb-2">2</div>
+                            <h4 class="font-bold text-slate-900 text-base mb-2">ממשלת אחדות</h4>
+                            <p class="text-xs text-gray-600 leading-normal">
+                                פשרה בין המפלגות הגדולות, הכוללת ויתורים אידיאולוגיים רבים, אך היא הדבר היחיד שיכול להבטיח 61 מנדטים להקמת ממשלה.
+                            </p>
+                        </div>
+                        <div class="bg-gray-50 border border-gray-200 p-4 rounded-xl shadow-sm hover:border-amber-400 transition">
+                            <div class="w-8 h-8 rounded-full bg-amber-100 text-amber-700 font-bold flex items-center justify-center mb-2">3</div>
+                            <h4 class="font-bold text-slate-900 text-base mb-2">בחירות חוזרות</h4>
+                            <p class="text-xs text-gray-600 leading-normal">
+                                התפרקות הכנסת וחזרה לקלפיות בעוד כשלושה חודשים. תרחיש שכאמור, רק יעמיק את השיתוק הממשלתי והאדישות הציבורית.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Bottom Tags -->
+                <div class="mt-8 pt-4 border-t border-gray-200">
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs text-gray-500 font-bold self-center ml-2">תגיות:</span>
+                        <a href="#" class="bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs px-2.5 py-1 rounded-full border transition">בחירות</a>
+                        <a href="#" class="bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs px-2.5 py-1 rounded-full border transition">סקרים</a>
+                        <a href="#" class="bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs px-2.5 py-1 rounded-full border transition">מנדטים</a>
+                        <a href="#" class="bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs px-2.5 py-1 rounded-full border transition">מערכת פוליטית</a>
+                    </div>
+                </div>
+
+            </article>
+
+            <!-- Right Column: Sidebar (4 cols) -->
+            <aside class="lg:col-span-4 space-y-6">
+
+                <!-- Live Election Interactive Poll Widget -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
+                    <div class="flex items-center gap-2 mb-3 text-red-600">
+                        <i class="fas fa-poll text-lg"></i>
+                        <h3 class="font-bold text-slate-900 text-base">סקר גולשים - ללא פילטר</h3>
+                    </div>
+                    <p class="text-sm text-gray-800 font-medium mb-4">
+                        האם לדעתך נלך לבחירות חוזרות?
+                    </p>
+                    
+                    <div id="poll-options" class="space-y-2">
+                        <button onclick="votePoll(1)" class="w-full text-right p-3 bg-gray-50 border border-gray-200 hover:bg-red-50 hover:border-red-300 rounded-lg text-sm font-semibold text-slate-800 transition flex justify-between items-center">
+                            <span>כן, אין הכרעה באופק</span>
+                            <i class="far fa-circle text-gray-400"></i>
+                        </button>
+                        <button onclick="votePoll(2)" class="w-full text-right p-3 bg-gray-50 border border-gray-200 hover:bg-blue-50 hover:border-blue-300 rounded-lg text-sm font-semibold text-slate-800 transition flex justify-between items-center">
+                            <span>לא, תוקם ממשלת אחדות</span>
+                            <i class="far fa-circle text-gray-400"></i>
+                        </button>
+                        <button onclick="votePoll(3)" class="w-full text-right p-3 bg-gray-50 border border-gray-200 hover:bg-emerald-50 hover:border-emerald-300 rounded-lg text-sm font-semibold text-slate-800 transition flex justify-between items-center">
+                            <span>תוקם ממשלת מיעוט</span>
+                            <i class="far fa-circle text-gray-400"></i>
+                        </button>
+                    </div>
+
+                    <!-- Poll Results (Hidden until vote) -->
+                    <div id="poll-results" class="hidden space-y-3 mt-3">
+                        <div class="text-xs font-bold text-emerald-600 bg-emerald-50 p-2 rounded text-center mb-2">
+                            תודה שהצבעת! תוצאות הביניים:
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs font-bold mb-1">
+                                <span>כן, בחירות חוזרות</span>
+                                <span>71%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
+                                <div class="bg-red-600 h-full" style="width: 71%;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs font-bold mb-1">
+                                <span>ממשלת אחדות</span>
+                                <span>21%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
+                                <div class="bg-blue-600 h-full" style="width: 21%;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs font-bold mb-1">
+                                <span>ממשלת מיעוט</span>
+                                <span>8%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
+                                <div class="bg-emerald-600 h-full" style="width: 8%;"></div>
+                            </div>
+                        </div>
+                        <p class="text-[11px] text-gray-400 text-center mt-2">סך הכל מצביעים: 15,320</p>
+                    </div>
+                </div>
+
+                <!-- Most Read News Widget -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
+                    <h3 class="font-bold text-slate-900 text-base mb-4 pb-2 border-b-2 border-red-600 flex items-center justify-between">
+                        <span><i class="fas fa-fire text-red-600 ml-1"></i> הכתבות הנקראות ביותר</span>
+                        <span class="text-xs font-normal text-gray-500">היום</span>
+                    </h3>
+
+                    <div class="space-y-4">
+                        <a href="./brazil_serbia.html" class="flex gap-3 group border-b border-gray-100 pb-3">
+                            <span class="text-2xl font-black text-gray-300 group-hover:text-red-600 transition">1</span>
+                            <div>
+                                <h4 class="text-sm font-bold text-gray-800 group-hover:text-red-600 transition leading-snug">בבית הקרב צמוד, אך בחוץ סערה: מהפך בברזיל והיסטוריה בסרביה</h4>
+                                <span class="text-xs text-gray-400">לפני 3 שעות</span>
+                            </div>
+                        </a>
+                        <a href="./news_article_page.html" class="flex gap-3 group">
+                            <span class="text-2xl font-black text-gray-300 group-hover:text-red-600 transition">2</span>
+                            <div>
+                                <h4 class="text-sm font-bold text-gray-800 group-hover:text-red-600 transition leading-snug">אף גוש לא מגרד 61: הסיוט של חוסר היציבות הפוליטית חוזר</h4>
+                                <span class="text-xs text-gray-400">לפני שעה</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Opinion Widget -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
+                    <h3 class="font-bold text-slate-900 text-base mb-3 pb-2 border-b-2 border-amber-400 flex items-center gap-1">
+                        <i class="fas fa-star text-amber-400"></i> טור אישי - דעות ופרשנויות
+                    </h3>
+                    <a href="./opinion_average_man.html" class="block group">
+                        <p class="text-sm font-bold text-gray-800 group-hover:text-red-600 transition leading-snug mb-3">
+                            "תמונת האדם הממוצע": איך שורדים בעולם שבו כולם חייבים להיות מיוחדים?
+                        </p>
+                        <div class="flex items-center gap-2 pt-2 border-t border-gray-100">
+                            <img src="image_98315f.jpg" alt="חי חיים פרץ" class="w-7 h-7 rounded-full object-cover shadow border" style="object-position: center 20%;">
+                            <span class="text-xs font-bold text-slate-900">מאת: חי חיים פרץ ←</span>
+                        </div>
+                    </a>
+                </div>
+
+            </aside>
+        </div>
+    </main>
+
+    <script>
+        // Mandates Data
+        const parties = [
+            { name: "ישר!", group: "state", groupName: "גוש ממלכתי", seats: 22, color: "bg-blue-500", textColor: "text-blue-400" },
+            { name: "הליכוד", group: "conservative", groupName: "גוש שמרני", seats: 20, color: "bg-emerald-500", textColor: "text-emerald-400" },
+            { name: "ביחד", group: "state", groupName: "גוש ממלכתי", seats: 15, color: "bg-blue-400", textColor: "text-blue-300" },
+            { name: "הדמוקרטים", group: "state", groupName: "גוש ממלכתי", seats: 9, color: "bg-sky-400", textColor: "text-sky-300" },
+            { name: "הרשימה המשותפת", group: "other", groupName: "אחר/עצמאי", seats: 9, color: "bg-purple-500", textColor: "text-purple-300" },
+            { name: "עוצמה יהודית", group: "conservative", groupName: "גוש שמרני", seats: 8, color: "bg-emerald-600", textColor: "text-emerald-400" },
+            { name: "יהדות התורה", group: "conservative", groupName: "גוש שמרני", seats: 8, color: "bg-teal-500", textColor: "text-teal-300" },
+            { name: "ישראל ביתנו", group: "state", groupName: "גוש ממלכתי", seats: 8, color: "bg-indigo-400", textColor: "text-indigo-300" },
+            { name: "ש\"ס", group: "conservative", groupName: "גוש שמרני", seats: 7, color: "bg-emerald-700", textColor: "text-emerald-500" },
+            { name: "הציונות הדתית", group: "conservative", groupName: "גוש שמרני", seats: 7, color: "bg-green-600", textColor: "text-green-400" },
+            { name: "רע\"ם", group: "other", groupName: "אחר/עצמאי", seats: 6, color: "bg-yellow-500", textColor: "text-yellow-400" }
+        ];
+
+        function renderMandates(filter = 'all') {
+            const tbody = document.getElementById('mandates-tbody');
+            tbody.innerHTML = '';
+
+            const filteredParties = parties.filter(p => filter === 'all' || p.group === filter);
+
+            filteredParties.forEach(p => {
+                const percentage = (p.seats / 22) * 100;
+                const tr = document.createElement('tr');
+                tr.className = 'hover:bg-slate-800/50 transition';
+                tr.innerHTML = `
+                    <td class="p-3 font-bold text-white">${p.name}</td>
+                    <td class="p-3 text-xs ${p.textColor}">${p.groupName}</td>
+                    <td class="p-3 text-center font-bold text-amber-400 text-base">${p.seats}</td>
+                    <td class="p-3">
+                        <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
+                            <div class="${p.color} h-full rounded-full" style="width: ${percentage}%;"></div>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function filterMandates(type) {
+            document.querySelectorAll('[id^="btn-"]').forEach(btn => {
+                btn.className = 'px-3 py-1 rounded hover:bg-slate-700 text-gray-300 transition';
+            });
+            const activeBtn = document.getElementById(`btn-${type}`);
+            if (activeBtn) {
+                activeBtn.className = 'px-3 py-1 rounded bg-red-600 font-bold text-white transition';
+            }
+            renderMandates(type);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('current-date').innerHTML = `<i class="far fa-calendar-alt ml-1"></i> ${now.toLocaleDateString('he-IL', options)}`;
+            
+            // Initial render of mandates table
+            renderMandates('all');
+        });
+
+        function votePoll(option) {
+            document.getElementById('poll-options').classList.add('hidden');
+            document.getElementById('poll-results').classList.remove('hidden');
+        }
+
+        function shareLink(platform) {
+            const url = encodeURIComponent(window.location.href);
+            const title = encodeURIComponent("אף גוש לא מגרד 61: הסיוט של חוסר היציבות הפוליטית חוזר");
+            if (platform === 'facebook') window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`);
+            if (platform === 'twitter') window.open(`https://twitter.com/intent/tweet?text=${title}&url=${url}`);
+            if (platform === 'whatsapp') window.open(`https://api.whatsapp.com/send?text=${title} ${url}`);
+        }
+
+        function copyArticleLink() {
+            const dummy = document.createElement('input');
+            document.body.appendChild(dummy);
+            dummy.value = window.location.href;
+            dummy.select();
+            document.execCommand('copy');
+            document.body.removeChild(dummy);
+            alert('הקישור הועתק בהצלחה ללוח!');
+        }
+    </script>
+</body>
+</html>
