@@ -279,14 +279,14 @@
                         </div>
 
                         <!-- Visual Bars Comparison for Blocks -->
-                        <div class="mb-6 space-y-3 bg-slate-800/60 p-4 rounded-lg border border-slate-700/50">
+                        <div class="mb-6 space-y-4 bg-slate-800/60 p-4 rounded-lg border border-slate-700/50">
                             <div>
                                 <div class="flex justify-between text-xs font-bold mb-1">
                                     <span class="text-blue-400"><i class="fas fa-shield-alt ml-1"></i> הגוש הממלכתי</span>
                                     <span>54 מנדטים</span>
                                 </div>
-                                <div class="w-full bg-slate-700 h-4 rounded-full overflow-hidden flex">
-                                    <div class="bg-blue-500 h-full transition-all duration-1000" style="width: 45%;"></div>
+                                <div class="w-full bg-slate-700 h-3.5 rounded-full overflow-hidden flex justify-end">
+                                    <div class="bg-blue-500 h-full transition-all duration-1000 rounded-full" style="width: 45%;"></div>
                                 </div>
                             </div>
                             <div>
@@ -294,12 +294,12 @@
                                     <span class="text-emerald-400"><i class="fas fa-landmark ml-1"></i> הגוש השמרני</span>
                                     <span>50 מנדטים</span>
                                 </div>
-                                <div class="w-full bg-slate-700 h-4 rounded-full overflow-hidden flex">
-                                    <div class="bg-emerald-500 h-full transition-all duration-1000" style="width: 41.6%;"></div>
+                                <div class="w-full bg-slate-700 h-3.5 rounded-full overflow-hidden flex justify-end">
+                                    <div class="bg-emerald-500 h-full transition-all duration-1000 rounded-full" style="width: 41.6%;"></div>
                                 </div>
                             </div>
                             <div class="text-center pt-1">
-                                <span class="text-[11px] text-amber-300 bg-amber-950/60 border border-amber-800/60 px-2 py-0.5 rounded">
+                                <span class="text-[11px] text-amber-300 bg-amber-950/60 border border-amber-800/60 px-3 py-1 rounded-full inline-block">
                                     <i class="fas fa-exclamation-triangle ml-1"></i> אף גוש לא מגיע ל-61! פער של 7 מנדטים.
                                 </span>
                             </div>
@@ -313,11 +313,11 @@
                                         <th class="p-3">מפלגה</th>
                                         <th class="p-3">שיוך גושי</th>
                                         <th class="p-3 text-center">מנדטים</th>
-                                        <th class="p-3">ייצוג חזותי</th>
+                                        <th class="p-3 w-1/3">ייצוג חזותי</th>
                                     </tr>
                                 </thead>
                                 <tbody class="divide-y divide-slate-800" id="mandates-tbody">
-                                    <!-- Rows populated dynamically by JavaScript below -->
+                                    <!-- Rows populated dynamically by JavaScript -->
                                 </tbody>
                             </table>
                         </div>
@@ -360,7 +360,7 @@
                     </h3>
 
                     <p>
-                        מעבר לנזק הכלכלי, המחיר הכבד ביותר נגבה מאמון הציבור. התחושה בקרב אזרחי מדינה ישראל כי הקול שלהם בקלפי לא מוביל לשינוי, הובילה לשחיקת התודעה הציבורית, יחד עם ספקנות כלפי המערכת הפוליטית שלה.
+                        מעבר לנזק الכלכלי, המחיר הכבד ביותר נגבה מאמון הציבור. התחושה בקרב אזרחי מדינה ישראל כי הקול שלהם בקלפי לא מוביל לשינוי, הובילה לשחיקת התודעה הציבורית, יחד עם ספקנות כלפי המערכת הפוליטית שלה.
                     </p>
 
                     <!-- Pull Quote Element -->
@@ -464,8 +464,8 @@
                                 <span>כן, בחירות חוזרות</span>
                                 <span>71%</span>
                             </div>
-                            <div class="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
-                                <div class="bg-red-600 h-full" style="width: 71%;"></div>
+                            <div class="w-full bg-gray-200 h-2 rounded-full overflow-hidden flex justify-end">
+                                <div class="bg-red-600 h-full rounded-full" style="width: 71%;"></div>
                             </div>
                         </div>
                         <div>
@@ -473,8 +473,8 @@
                                 <span>ממשלת אחדות</span>
                                 <span>21%</span>
                             </div>
-                            <div class="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
-                                <div class="bg-blue-600 h-full" style="width: 21%;"></div>
+                            <div class="w-full bg-gray-200 h-2 rounded-full overflow-hidden flex justify-end">
+                                <div class="bg-blue-600 h-full rounded-full" style="width: 21%;"></div>
                             </div>
                         </div>
                         <div>
@@ -482,8 +482,8 @@
                                 <span>ממשלת מיעוט</span>
                                 <span>8%</span>
                             </div>
-                            <div class="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
-                                <div class="bg-emerald-600 h-full" style="width: 8%;"></div>
+                            <div class="w-full bg-gray-200 h-2 rounded-full overflow-hidden flex justify-end">
+                                <div class="bg-emerald-600 h-full rounded-full" style="width: 8%;"></div>
                             </div>
                         </div>
                         <p class="text-[11px] text-gray-400 text-center mt-2">סך הכל מצביעים: 15,320</p>
@@ -566,7 +566,7 @@
                     <td class="p-3 text-xs ${p.textColor}">${p.groupName}</td>
                     <td class="p-3 text-center font-bold text-amber-400 text-base">${p.seats}</td>
                     <td class="p-3">
-                        <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
+                        <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden flex justify-end">
                             <div class="${p.color} h-full rounded-full" style="width: ${percentage}%;"></div>
                         </div>
                     </td>
