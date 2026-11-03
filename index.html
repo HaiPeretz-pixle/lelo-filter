@@ -3,126 +3,225 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ללא פילטר | חדשות ואקטואליה בגובה העיניים</title>
-    <link rel="stylesheet" href="style.css">
+    <title>ראשי | ללא פילטר</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Heebo & Rubik -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { red: '#e53e3e', navy: '#1a202c' }
+                    },
+                    fontFamily: {
+                        sans: ['Heebo', 'sans-serif'],
+                        rubik: ['Rubik', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Heebo', sans-serif; background-color: #f7fafc; color: #2d3748; }
+        @keyframes ticker {
+            0% { transform: translate3d(100%, 0, 0); }
+            100% { transform: translate3d(-100%, 0, 0); }
+        }
+        .ticker-wrap { width: 100%; overflow: hidden; white-space: nowrap; }
+        .ticker-move { display: inline-block; animation: ticker 30s linear infinite; }
+        .ticker-move:hover { animation-play-state: paused; }
+    </style>
 </head>
-<body>
+<body class="bg-gray-100 min-h-screen flex flex-col" dir="rtl">
 
-    <div class="top-bar">
-        <div class="top-bar-inner">
-            <div class="top-links">
-                <a href="javascript:void(0)">שידור חי</a> |
-                <a href="javascript:void(0)">מהדורה דיגיטלית</a> |
-                <a href="javascript:void(0)">מבזקים</a>
+    <!-- Top Bar -->
+    <div class="bg-slate-900 text-gray-300 text-xs py-1.5 px-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <a href="#" class="hover:text-white font-bold text-red-400"><i class="fas fa-circle text-xs animate-pulse ml-1"></i>שידור חי</a>
+                <span class="text-gray-600">|</span>
+                <a href="#" class="hover:text-white transition">מהדורה דיגיטלית</a>
+                <span class="text-gray-600">|</span>
+                <a href="#" class="hover:text-white transition">מבזקים</a>
             </div>
-            <div>
-                <span>תל אביב 24°C</span>
+            <div class="flex items-center gap-4">
+                <span class="hidden md:inline-block"><i class="fas fa-sun text-amber-400 ml-1"></i> תל אביב 24°C</span>
+                <span id="current-date"><i class="far fa-calendar-alt ml-1"></i> טוען תאריך...</span>
             </div>
         </div>
     </div>
 
-    <header class="site-header">
-        <div class="header-main">
-            <div>
-                <a href="index.html" class="logo-title">ללא פילטר</a>
-                <div class="logo-tagline">חדשות ואקטואליה בגובה העיניים</div>
+    <!-- Main Header / Logo Section -->
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <button class="bg-red-600 hover:bg-red-700 text-white text-xs font-bold px-3 py-1.5 rounded transition shadow-sm">
+                    <i class="fas fa-bell ml-1"></i> התראות
+                </button>
+                <div class="relative hidden sm:block">
+                    <input type="text" placeholder="חיפוש בחדשות..." class="bg-gray-100 text-sm rounded-full pl-8 pr-4 py-1.5 focus:outline-none focus:ring-2 focus:ring-red-500 w-44 md:w-60 transition text-right">
+                    <i class="fas fa-search absolute left-3 top-2.5 text-gray-400 text-xs"></i>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <span class="hidden sm:inline-block text-xs bg-gray-100 text-gray-600 font-medium px-2 py-1 rounded border">חדשות ואקטואליה בגובה העיניים</span>
+                <a href="./index.html" class="flex items-center gap-2">
+                    <span class="bg-red-600 text-white font-black text-2xl px-3 py-1 rounded tracking-tight font-rubik shadow-sm">ללא פילטר</span>
+                </a>
             </div>
         </div>
 
-        <nav class="main-nav">
-            <div class="nav-inner">
-                <a href="index.html" class="active">ראשי</a>
-                <a href="politics.html">פוליטיקה</a>
-                <a href="world.html">בעולם</a>
-                <a href="opinion_average_man.html">דעות ופרשנויות</a>
-                <a href="javascript:void(0)">צבא וביטחון</a>
-                <a href="javascript:void(0)">כלכלה</a>
-                <a href="javascript:void(0)">משפט</a>
-                <a href="javascript:void(0)">טכנולוגיה</a>
+        <!-- Navigation Bar -->
+        <nav class="bg-slate-800 text-white text-sm font-medium">
+            <div class="max-w-7xl mx-auto px-4 flex items-center overflow-x-auto whitespace-nowrap scrollbar-none justify-start">
+                <a href="./index.html" class="py-2.5 px-3 bg-red-600 font-bold hover:bg-red-700 transition">ראשי</a>
+                <a href="./politics.html" class="py-2.5 px-3 hover:bg-slate-700 transition">פוליטיקה</a>
+                <a href="#" class="py-2.5 px-3 hover:bg-slate-700 transition">צבא וביטחון</a>
+                <a href="#" class="py-2.5 px-3 hover:bg-slate-700 transition">כלכלה</a>
+                <a href="#" class="py-2.5 px-3 hover:bg-slate-700 transition">משפט</a>
+                <a href="./world.html" class="py-2.5 px-3 hover:bg-slate-700 transition">בעולם</a>
+                <a href="#" class="py-2.5 px-3 hover:bg-slate-700 transition">תרבות וסגנון</a>
+                <a href="#" class="py-2.5 px-3 hover:bg-slate-700 transition">ספורט</a>
+                <a href="#" class="py-2.5 px-3 hover:bg-slate-700 transition">טכנולוגיה</a>
+                <a href="./opinion_average_man.html" class="py-2.5 px-3 hover:bg-slate-700 transition text-amber-300 font-semibold"><i class="fas fa-star text-xs ml-1"></i>דעות ופרשנויות</a>
             </div>
         </nav>
+
+        <!-- News Ticker -->
+        <div class="bg-gray-200 border-b border-gray-300 text-xs flex items-center px-4 py-1.5">
+            <span class="bg-red-600 text-white font-bold px-2 py-0.5 rounded text-[11px] ml-3 shrink-0 uppercase tracking-wide">מבזקים</span>
+            <div class="ticker-wrap flex-1 text-gray-800 font-medium">
+                <div class="ticker-move">
+                    <span class="ml-8"><strong class="text-red-600">01:10</strong> דאגה במערכת המדינית בירושלים מתוצאות הבחירות בברזיל ובסרביה</span>
+                    <span class="ml-8"><strong class="text-red-600">18:42</strong> סקר אחרון: הקרב צמוד עד הרגע האחרון</span>
+                </div>
+            </div>
+        </div>
     </header>
 
-    <div class="ticker-wrap">
-        <div class="ticker-badge">מבזקים</div>
-        <div class="ticker-content">
-            <strong>01:10</strong> דאגה במערכת המדינית בירושלים מתוצאות הבחירות בברזיל ובסרביה • 
-            <strong>18:42</strong> סקר אחרון: הקרב צמוד עד הרגע האחרון
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 py-6 flex-1 w-full">
+        <div class="flex items-center gap-2 text-xs text-gray-500 mb-4">
+            <span class="text-red-600 font-bold">ראשי</span>
         </div>
-    </div>
 
-    <main class="container">
-        <div class="layout-grid">
-            <section>
-                <!-- כתבה 1 -->
-                <article class="article-card">
-                    <span class="category-badge">חדשות חוץ • בחירות בעולם</span>
-                    <h2><a href="brazil_serbia.html">בבית הקרב צמוד, אך בחוץ סערה: מהפך בברזיל והיסטוריה בסרביה</a></h2>
-                    <p>
-                        מחר ייערכו הבחירות בישראל – ונדמה שכל הרעש סביבן גורם לנו לאבד קשב למתרחש בחוץ: הלילה ניצח נשיא ברזיל המכהן בבחירות בארצו, ובמקביל בסרביה – מפלגה צעירה צפויה להדיח את הנשיא המכהן לאחר 12 שנות שלטון.
-                    </p>
-                    <div class="card-meta">
-                        <div class="author-pill">
-                            <img src="image_98315f.jpg" alt="חי חיים פרץ">
-                            <span>חי חיים פרץ | מערכת ללא פילטר</span>
+        <div class="mb-6 border-b-2 border-red-600 pb-2 flex items-center justify-between">
+            <h1 class="text-2xl md:text-3xl font-black text-slate-900 flex items-center gap-2">
+                <i class="fas fa-newspaper text-red-600"></i> ראשי - כתבות אחרונות
+            </h1>
+            <span class="text-xs text-gray-500 font-medium">מציג כתבות מובילות</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <section class="lg:col-span-8 space-y-6">
+                
+                <!-- כתבה 1 - בחירות בעולם -->
+                <article class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition group">
+                    <div class="p-6 md:p-8">
+                        <span class="inline-block bg-red-100 text-red-700 text-xs font-bold px-3 py-1 rounded-full mb-3">
+                            <i class="fas fa-passport ml-1"></i> חדשות חוץ - בחירות בעולם
+                        </span>
+                        <h2 class="text-2xl md:text-3xl font-black text-slate-900 leading-tight mb-3 group-hover:text-red-600 transition">
+                            <a href="./brazil_serbia.html">בבית הקרב צמוד, אך בחוץ סערה: מהפך בברזיל והיסטוריה בסרביה</a>
+                        </h2>
+                        <p class="text-gray-600 text-base leading-relaxed mb-4">
+                            מחר (יום שלישי, 27 באוקטובר) ייערכו הבחירות בישראל – ונדמה שכל הרעש סביבן גורם לנו לאבד קשב למתרחש בחוץ: הלילה ניצח נשיא ברזיל המכהן בבחירות בארצו, ובמקביל בסרביה – מפלגה צעירה צפויה להדיח את הנשיא המכהן לאחר 12 שנות שלטון.
+                        </p>
+                        <div class="flex items-center justify-between pt-4 border-t border-gray-100 text-xs text-gray-500">
+                            <div class="flex items-center gap-2">
+                                <img src="image_98315f.jpg" alt="חי חיים פרץ" class="w-8 h-8 rounded-full object-cover shadow border" style="object-position: center 20%;">
+                                <span class="font-bold text-slate-900">מאת: חי חיים פרץ | מערכת ללא פילטר</span>
+                            </div>
+                            <a href="./brazil_serbia.html" class="inline-flex items-center gap-1.5 bg-red-600 hover:bg-red-700 text-white font-bold px-4 py-2 rounded-lg text-xs transition shadow-sm">
+                                לקריאת הכתבה המלאה <i class="fas fa-arrow-left"></i>
+                            </a>
                         </div>
-                        <a href="brazil_serbia.html" class="read-more">לקריאת הכתבה המלאה ←</a>
                     </div>
                 </article>
 
-                <!-- כתבה 2 -->
-                <article class="article-card">
-                    <span class="category-badge">פוליטיקה • בחירות בישראל</span>
-                    <h2><a href="news_article_page.html">אף גוש לא מגרד 61: הסיוט של חוסר היציבות הפוליטית חוזר</a></h2>
-                    <p>
-                        ימים ספורים לפתיחת הקלפיות, והסקרים מראים שאף גוש לא משיג 61 מנדטים. הזיכרון של סבבי הבחירות האחרונים עדיין חי, והחשש הגדול הוא שמערכת הבחירות הנוכחית לא תביא הכרעה ברורה.
-                    </p>
-                    <div class="card-meta">
-                        <div class="author-pill">
-                            <img src="image_98315f.jpg" alt="חי חיים פרץ">
-                            <span>חי חיים פרץ</span>
+                <!-- כתבה 2 - פוליטיקה -->
+                <article class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition group">
+                    <div class="p-6 md:p-8">
+                        <span class="inline-block bg-red-100 text-red-700 text-xs font-bold px-3 py-1 rounded-full mb-3">
+                            <i class="fas fa-vote-yea ml-1"></i> כתיבה עיתונאית - בחירות
+                        </span>
+                        <h2 class="text-2xl md:text-3xl font-black text-slate-900 leading-tight mb-3 group-hover:text-red-600 transition">
+                            <a href="./news_article_page.html">אף גוש לא מגרד 61: הסיוט של חוסר היציבות הפוליטית חוזר</a>
+                        </h2>
+                        <p class="text-gray-600 text-base leading-relaxed mb-4">
+                            ימים ספורים לפתיחת הקלפיות, והסקרים מראים שאף גוש לא משיג 61 מנדטים. הזיכרון של 5 הסבבים עוד חקוק בראשנו, והחשש הגדול הוא שמערכת הבחירות הנוכחית לא תביא הכרעה.
+                        </p>
+                        <div class="flex items-center justify-between pt-4 border-t border-gray-100 text-xs text-gray-500">
+                            <div class="flex items-center gap-2">
+                                <img src="image_98315f.jpg" alt="חי חיים פרץ" class="w-8 h-8 rounded-full object-cover shadow border" style="object-position: center 20%;">
+                                <span class="font-bold text-slate-900">מאת: חי חיים פרץ</span>
+                            </div>
+                            <a href="./news_article_page.html" class="inline-flex items-center gap-1.5 bg-red-600 hover:bg-red-700 text-white font-bold px-4 py-2 rounded-lg text-xs transition shadow-sm">
+                                לקריאת הכתבה המלאה <i class="fas fa-arrow-left"></i>
+                            </a>
                         </div>
-                        <a href="news_article_page.html" class="read-more">לקריאת הכתבה המלאה ←</a>
                     </div>
                 </article>
+
             </section>
 
-            <aside>
-                <div class="sidebar-box">
-                    <h3>הנקראות ביותר</h3>
-                    <div class="top-story-item">
-                        <span class="rank-num">1</span>
-                        <div>
-                            <h4><a href="brazil_serbia.html">בבית הקרב צמוד, אך בחוץ סערה: מהפך בברזיל והיסטוריה בסרביה</a></h4>
-                            <small style="color: var(--text-muted);">לפני 3 שעות</small>
-                        </div>
-                    </div>
-                    <div class="top-story-item">
-                        <span class="rank-num">2</span>
-                        <div>
-                            <h4><a href="news_article_page.html">אף גוש לא מגרד 61: חוסר היציבות הפוליטית חוזר</a></h4>
-                            <small style="color: var(--text-muted);">לפני שעה</small>
-                        </div>
+            <aside class="lg:col-span-4 space-y-6">
+                <!-- הכתבות הנקראות ביותר -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
+                    <h3 class="font-bold text-slate-900 text-base mb-4 pb-2 border-b-2 border-red-600">
+                        <i class="fas fa-fire text-red-600 ml-1"></i> הכתבות הנקראות ביותר
+                    </h3>
+                    <div class="space-y-4">
+                        <a href="./brazil_serbia.html" class="flex gap-3 group border-b border-gray-100 pb-3">
+                            <span class="text-2xl font-black text-gray-300 group-hover:text-red-600 transition">1</span>
+                            <div>
+                                <h4 class="text-sm font-bold text-gray-800 group-hover:text-red-600 transition leading-snug">בבית הקרב צמוד, אך בחוץ סערה: מהפך בברזיל והיסטוריה בסרביה</h4>
+                                <span class="text-xs text-gray-400">לפני 3 שעות</span>
+                            </div>
+                        </a>
+                        <a href="./news_article_page.html" class="flex gap-3 group">
+                            <span class="text-2xl font-black text-gray-300 group-hover:text-red-600 transition">2</span>
+                            <div>
+                                <h4 class="text-sm font-bold text-gray-800 group-hover:text-red-600 transition leading-snug">אף גוש לא מגרד 61: הסיוט של חוסר היציבות הפוליטית חוזר</h4>
+                                <span class="text-xs text-gray-400">לפני שעה</span>
+                            </div>
+                        </a>
                     </div>
                 </div>
 
-                <div class="sidebar-box">
-                    <h3>טור דעה מומלץ</h3>
-                    <p style="font-weight: 600; margin-bottom: 8px;">
-                        <a href="opinion_average_man.html">"תמונת האדם הממוצע": איך שורדים בעולם שבו כולם חייבים להיות מיוחדים?</a>
-                    </p>
-                    <div class="author-pill" style="margin-top: 12px;">
-                        <img src="image_98315f.jpg" alt="חי חיים פרץ">
-                        <span>מאת: חי חיים פרץ</span>
-                    </div>
+                <!-- טור אישי - דעות ופרשנויות (מתוקן עם קישור) -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
+                    <h3 class="font-bold text-slate-900 text-base mb-3 pb-2 border-b-2 border-amber-400 flex items-center gap-1">
+                        <i class="fas fa-star text-amber-400"></i> טור אישי - דעות ופרשנויות
+                    </h3>
+                    <a href="./opinion_average_man.html" class="block group">
+                        <p class="text-sm font-bold text-gray-800 group-hover:text-red-600 transition leading-snug mb-3">
+                            "תמונת האדם הממוצע": איך שורדים בעולם שבו כולם חייבים להיות מיוחדים?
+                        </p>
+                        <div class="flex items-center gap-2 pt-2 border-t border-gray-100">
+                            <img src="image_98315f.jpg" alt="חי חיים פרץ" class="w-7 h-7 rounded-full object-cover shadow border" style="object-position: center 20%;">
+                            <span class="text-xs font-bold text-slate-900">מאת: חי חיים פרץ ←</span>
+                        </div>
+                    </a>
                 </div>
             </aside>
         </div>
     </main>
 
-    <footer>
-        <p>© 2026 ללא פילטר. כל הזכויות שמורות • פרויקט תוכן ואקטואליה עצמאי</p>
-    </footer>
-
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('current-date').innerHTML = `<i class="far fa-calendar-alt ml-1"></i> ${now.toLocaleDateString('he-IL', options)}`;
+        });
+    </script>
 </body>
 </html>
