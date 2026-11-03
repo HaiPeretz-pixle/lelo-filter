@@ -4,12 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>בבית הקרב צמוד, אך בחוץ סערה: מהפך בברזיל והיסטוריה בסרביה | ללא פילטר</title>
+    <meta name="description" content="הלילה ניצח נשיא ברזיל המכהן בבחירות בארצו, ובמקביל בסרביה – מפלגה צעירה צפויה להדיח את הנשיא המכהן לאחר 12 שנות שלטון. ניתוח ההשלכות על ישראל.">
+
+    <!-- Open Graph לשיתוף ברשתות ובווטסאפ -->
+    <meta property="og:title" content="בבית הקרב צמוד, אך בחוץ סערה: מהפך בברזיל והיסטוריה בסרביה | ללא פילטר">
+    <meta property="og:description" content="הלילה ניצח נשיא ברזיל המכהן בבחירות בארצו, ובמקביל בסרביה – מפלגה צעירה צפויה להדיח את הנשיא המכהן לאחר 12 שנות שלטון.">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="./image_7a38dc.jpg">
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
     <!-- Google Fonts: Heebo & Rubik -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Rubik:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -18,12 +28,11 @@
             theme: {
                 extend: {
                     colors: {
-                        brand: {
-                            red: '#e53e3e',
-                            darkRed: '#c53030',
-                            navy: '#1a202c',
-                            blue: '#2b6cb0',
-                            accent: '#ebf8ff'
+                        brand: { 
+                            red: '#e53e3e', 
+                            redDark: '#c53030',
+                            navy: '#0f172a', 
+                            navyLight: '#1e293b' 
                         }
                     },
                     fontFamily: {
@@ -35,168 +44,213 @@
         }
     </script>
     <style>
-        body {
-            font-family: 'Heebo', sans-serif;
-            background-color: #f7fafc;
-            color: #2d3748;
+        body { 
+            font-family: 'Heebo', sans-serif; 
+            background-color: #f8fafc; 
+            color: #1e293b; 
         }
-        @keyframes ticker {
-            0% { transform: translate3d(100%, 0, 0); }
-            100% { transform: translate3d(-100%, 0, 0); }
+        
+        @keyframes ticker-rtl {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
         }
-        .ticker-wrap {
-            width: 100%;
+        .ticker-wrap { 
+            width: 100%; 
+            overflow: hidden; 
+            white-space: nowrap; 
+        }
+        .ticker-move { 
+            display: inline-block; 
+            animation: ticker-rtl 32s linear infinite; 
+        }
+        .ticker-move:hover { 
+            animation-play-state: paused; 
+        }
+
+        body.menu-open {
             overflow: hidden;
-            white-space: nowrap;
-        }
-        .ticker-move {
-            display: inline-block;
-            animation: ticker 30s linear infinite;
-        }
-        .ticker-move:hover {
-            animation-play-state: paused;
         }
     </style>
 </head>
-<body class="bg-gray-100 min-h-screen flex flex-col" dir="rtl">
+<body class="bg-slate-50 min-h-screen flex flex-col antialiased selection:bg-red-500 selection:text-white" dir="rtl">
 
     <!-- Top Bar -->
-    <div class="bg-slate-900 text-gray-300 text-xs py-1.5 px-4">
+    <div class="bg-slate-900 text-slate-300 text-xs py-2 px-4 border-b border-slate-800">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <a href="#" class="hover:text-white font-bold text-red-400"><i class="fas fa-circle text-xs animate-pulse ml-1"></i>שידור חי</a>
-                <span class="text-gray-600">|</span>
+                <a href="#" class="hover:text-white font-bold text-red-400 flex items-center">
+                    <span class="w-2 h-2 rounded-full bg-red-500 animate-ping ml-1.5 inline-block"></span>שידור חי
+                </a>
+                <span class="text-slate-700">|</span>
                 <a href="#" class="hover:text-white transition">מהדורה דיגיטלית</a>
-                <span class="text-gray-600">|</span>
+                <span class="text-slate-700">|</span>
                 <a href="#" class="hover:text-white transition">מבזקים</a>
             </div>
-            <div class="flex items-center gap-4">
-                <span class="hidden md:inline-block"><i class="fas fa-sun text-amber-400 ml-1"></i> תל אביב 24°C</span>
-                <span id="current-date"><i class="far fa-calendar-alt ml-1"></i> טוען תאריך...</span>
+            <div class="flex items-center gap-4 text-slate-400">
+                <span class="hidden md:inline-flex items-center gap-1.5"><i class="fas fa-sun text-amber-400"></i> תל אביב 24°C</span>
+                <span id="current-date" class="inline-flex items-center gap-1.5"><i class="far fa-calendar-alt text-slate-400"></i> טוען תאריך...</span>
             </div>
         </div>
     </div>
 
-    <!-- Main Header / Logo Section -->
-    <header class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+    <!-- Main Header -->
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-40 shadow-sm transition-all">
+        <div class="max-w-7xl mx-auto px-4 py-3.5 flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <button class="bg-red-600 hover:bg-red-700 text-white text-xs font-bold px-3 py-1.5 rounded transition shadow-sm">
-                    <i class="fas fa-bell ml-1"></i> התראות
+                <button class="bg-red-600 hover:bg-red-700 text-white text-xs font-bold px-3.5 py-2 rounded-lg transition shadow-sm flex items-center gap-1.5 active:scale-95">
+                    <i class="fas fa-bell"></i> <span class="hidden sm:inline">התראות</span>
                 </button>
                 <div class="relative hidden sm:block">
-                    <input type="text" placeholder="חיפוש בחדשות..." class="bg-gray-100 text-sm rounded-full pl-8 pr-4 py-1.5 focus:outline-none focus:ring-2 focus:ring-red-500 w-44 md:w-60 transition text-right">
-                    <i class="fas fa-search absolute left-3 top-2.5 text-gray-400 text-xs"></i>
+                    <input type="text" placeholder="חיפוש בחדשות..." class="bg-slate-100 text-slate-800 text-xs rounded-lg pl-8 pr-3.5 py-2 focus:outline-none focus:ring-2 focus:ring-red-500 focus:bg-white w-48 md:w-64 transition border border-transparent focus:border-red-200">
+                    <i class="fas fa-search absolute left-3 top-2.5 text-slate-400 text-xs pointer-events-none"></i>
                 </div>
             </div>
 
             <div class="flex items-center gap-3">
-                <span class="hidden sm:inline-block text-xs bg-gray-100 text-gray-600 font-medium px-2 py-1 rounded border">חדשות ואקטואליה בגובה העיניים</span>
-                <a href="./index.html" class="flex items-center gap-2">
-                    <span class="bg-red-600 text-white font-black text-2xl px-3 py-1 rounded tracking-tight font-rubik shadow-sm">ללא פילטר</span>
+                <span class="hidden lg:inline-block text-xs bg-slate-100 text-slate-600 font-medium px-2.5 py-1 rounded-md border border-slate-200">חדשות ואקטואליה בגובה העיניים</span>
+                <a href="./index.html" class="flex items-center gap-2 group">
+                    <span class="bg-red-600 group-hover:bg-red-700 text-white font-black text-2xl md:text-3xl px-3.5 py-1 rounded-lg tracking-tight font-rubik shadow transition">ללא פילטר</span>
                 </a>
+                <button id="mobile-menu-btn" class="lg:hidden p-2 text-slate-700 hover:text-red-600 focus:outline-none rounded-lg hover:bg-slate-100 transition" aria-label="פתח תפריט">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
             </div>
         </div>
 
-        <!-- Navigation Bar -->
-        <nav class="bg-slate-800 text-white text-sm font-medium">
+        <!-- Navigation Bar (Desktop) -->
+        <nav class="bg-slate-900 text-white text-sm font-medium border-t border-slate-800 hidden lg:block">
             <div class="max-w-7xl mx-auto px-4 flex items-center overflow-x-auto whitespace-nowrap scrollbar-none justify-start">
-                <a href="./index.html" class="py-2.5 px-3 hover:bg-slate-700 transition">ראשי</a>
-                <a href="./politics.html" class="py-2.5 px-3 hover:bg-slate-700 transition">פוליטיקה</a>
-                <a href="#" class="py-2.5 px-3 hover:bg-slate-700 transition">צבא וביטחון</a>
-                <a href="#" class="py-2.5 px-3 hover:bg-slate-700 transition">כלכלה</a>
-                <a href="#" class="py-2.5 px-3 hover:bg-slate-700 transition">משפט</a>
-                <!-- תגית "בעולם" מסומנת באדום ומפנה לעמוד הקטגוריה world.html -->
-                <a href="./world.html" class="py-2.5 px-3 bg-red-600 font-bold hover:bg-red-700 transition">בעולם</a>
-                <a href="#" class="py-2.5 px-3 hover:bg-slate-700 transition">תרבות וסגנון</a>
-                <a href="#" class="py-2.5 px-3 hover:bg-slate-700 transition">ספורט</a>
-                <a href="#" class="py-2.5 px-3 hover:bg-slate-700 transition">טכנולוגיה</a>
-                <a href="./opinion_average_man.html" class="py-2.5 px-3 hover:bg-slate-700 transition text-amber-300 font-semibold"><i class="fas fa-star text-xs ml-1"></i>דעות ופרשנויות</a>
+                <a href="./index.html" class="py-3 px-4 hover:bg-slate-800 text-slate-200 hover:text-white transition">ראשי</a>
+                <a href="./politics.html" class="py-3 px-4 hover:bg-slate-800 text-slate-200 hover:text-white transition">פוליטיקה</a>
+                <a href="#" class="py-3 px-4 hover:bg-slate-800 text-slate-300 hover:text-white transition">צבא וביטחון</a>
+                <a href="#" class="py-3 px-4 hover:bg-slate-800 text-slate-300 hover:text-white transition">כלכלה</a>
+                <a href="#" class="py-3 px-4 hover:bg-slate-800 text-slate-300 hover:text-white transition">משפט</a>
+                <a href="./world.html" class="py-3 px-4 bg-red-600 font-bold hover:bg-red-700 transition flex items-center gap-1.5 border-b-2 border-white">בעולם</a>
+                <a href="#" class="py-3 px-4 hover:bg-slate-800 text-slate-300 hover:text-white transition">תרבות וסגנון</a>
+                <a href="#" class="py-3 px-4 hover:bg-slate-800 text-slate-300 hover:text-white transition">ספורט</a>
+                <a href="#" class="py-3 px-4 hover:bg-slate-800 text-slate-300 hover:text-white transition">טכנולוגיה</a>
+                <a href="./opinion_average_man.html" class="py-3 px-4 hover:bg-slate-800 transition text-amber-300 font-semibold flex items-center gap-1.5"><i class="fas fa-star text-xs"></i> דעות ופרשנויות</a>
             </div>
         </nav>
 
-        <!-- News Ticker -->
-        <div class="bg-gray-200 border-b border-gray-300 text-xs flex items-center px-4 py-1.5">
-            <span class="bg-red-600 text-white font-bold px-2 py-0.5 rounded text-[11px] ml-3 shrink-0 uppercase tracking-wide">מבזקים</span>
-            <div class="ticker-wrap flex-1 text-gray-800 font-medium">
+        <!-- מבזקים -->
+        <div class="bg-slate-100 border-y border-slate-200 text-xs flex items-center px-4 py-2">
+            <span class="bg-red-600 text-white font-bold px-2.5 py-0.5 rounded text-[11px] ml-3 shrink-0 uppercase tracking-wide shadow-sm flex items-center gap-1">
+                <i class="fas fa-bolt text-[10px]"></i> מבזקים
+            </span>
+            <div class="ticker-wrap flex-1 text-slate-800 font-medium">
                 <div class="ticker-move">
-                    <span class="ml-8"><strong class="text-red-600">03:15</strong> דרמה בברזיל: לולה דה סילבה ניצח בסיבוב השני בבחירות</span>
-                    <span class="ml-8"><strong class="text-red-600">02:40</strong> בסרביה: הנשיא ווצ'יץ' הודה בשינוי יחסי הכוחות בעקבות מחאת הסטודנטים</span>
-                    <span class="ml-8"><strong class="text-red-600">01:10</strong> דאגה במערכת המדינית בירושלים מתוצאות הבחירות בברזיל ובסרביה</span>
+                    <span class="ml-10"><strong class="text-red-600 ml-1">03:15</strong> דרמה בברזיל: לולה דה סילבה ניצח בסיבוב השני בבחירות</span>
+                    <span class="ml-10"><strong class="text-red-600 ml-1">02:40</strong> בסרביה: הנשיא ווצ'יץ' הודה בשינוי יחסי הכוחות בעקבות מחאת הסטודנטים</span>
+                    <span class="ml-10"><strong class="text-red-600 ml-1">01:10</strong> דאגה במערכת המדינית בירושלים מתוצאות הבחירות בברזיל ובסרביה</span>
                 </div>
             </div>
         </div>
     </header>
 
+    <!-- תפריט מובייל נפתח -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-slate-950/60 z-50 backdrop-blur-sm hidden transition-opacity">
+        <div class="fixed inset-y-0 right-0 w-72 bg-slate-900 text-white p-6 shadow-2xl flex flex-col justify-between">
+            <div>
+                <div class="flex items-center justify-between pb-4 border-b border-slate-800 mb-6">
+                    <span class="bg-red-600 text-white font-black text-xl px-3 py-1 rounded font-rubik">ללא פילטר</span>
+                    <button id="close-menu-btn" class="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <nav class="flex flex-col space-y-1 text-sm font-medium">
+                    <a href="./index.html" class="px-3 py-2.5 rounded-lg hover:bg-slate-800 text-slate-200 transition flex items-center gap-2"><i class="fas fa-home w-5"></i> ראשי</a>
+                    <a href="./politics.html" class="px-3 py-2.5 rounded-lg hover:bg-slate-800 text-slate-200 transition flex items-center gap-2"><i class="fas fa-landmark w-5"></i> פוליטיקה</a>
+                    <a href="./world.html" class="px-3 py-2.5 rounded-lg bg-red-600 text-white font-bold flex items-center gap-2"><i class="fas fa-globe w-5"></i> בעולם</a>
+                    <a href="./opinion_average_man.html" class="px-3 py-2.5 rounded-lg hover:bg-slate-800 text-amber-300 font-semibold transition flex items-center gap-2"><i class="fas fa-star w-5"></i> דעות ופרשנויות</a>
+                    <a href="#" class="px-3 py-2.5 rounded-lg hover:bg-slate-800 text-slate-400 transition flex items-center gap-2"><i class="fas fa-shield-alt w-5"></i> צבא וביטחון</a>
+                    <a href="#" class="px-3 py-2.5 rounded-lg hover:bg-slate-800 text-slate-400 transition flex items-center gap-2"><i class="fas fa-chart-line w-5"></i> כלכלה</a>
+                    <a href="#" class="px-3 py-2.5 rounded-lg hover:bg-slate-800 text-slate-400 transition flex items-center gap-2"><i class="fas fa-gavel w-5"></i> משפט</a>
+                    <a href="#" class="px-3 py-2.5 rounded-lg hover:bg-slate-800 text-slate-400 transition flex items-center gap-2"><i class="fas fa-microchip w-5"></i> טכנולוגיה</a>
+                </nav>
+            </div>
+            <div class="pt-6 border-t border-slate-800 text-xs text-slate-400 text-center">
+                © 2026 ללא פילטר. כל הזכויות שמורות.
+            </div>
+        </div>
+    </div>
+
     <!-- Main Content Container -->
-    <main class="max-w-7xl mx-auto px-4 py-6 flex-1 w-full">
+    <main class="max-w-7xl mx-auto px-4 py-8 flex-1 w-full">
+        
         <!-- Breadcrumb & Category -->
-        <div class="flex items-center gap-2 text-xs text-gray-500 mb-3">
+        <div class="flex items-center gap-2 text-xs text-slate-500 mb-4">
             <a href="./index.html" class="hover:underline">ראשי</a>
-            <span>></span>
+            <span>/</span>
             <a href="./world.html" class="hover:underline text-red-600 font-semibold">חדשות בעולם</a>
-            <span>></span>
-            <span class="text-gray-700 truncate">בבית הקרב צמוד, אך בחוץ סערה</span>
+            <span>/</span>
+            <span class="text-slate-700 truncate font-medium">בבית הקרב צמוד, אך בחוץ סערה</span>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            <article class="lg:col-span-8 bg-white p-6 md:p-8 rounded-xl shadow-sm border border-gray-200">
-                <span class="inline-block bg-red-100 text-red-700 text-xs font-bold px-3 py-1 rounded-full mb-3">
-                    <i class="fas fa-globe-americas ml-1"></i> חדשות חוץ - בחירות בעולם
+            
+            <!-- גוף הכתבה המרכזי -->
+            <article class="lg:col-span-8 bg-white p-6 md:p-10 rounded-2xl shadow-sm border border-slate-200">
+                
+                <span class="inline-flex items-center bg-red-50 text-red-700 text-xs font-bold px-3 py-1 rounded-full mb-4 border border-red-100">
+                    <i class="fas fa-globe-americas ml-1.5"></i> חדשות חוץ - בחירות בעולם
                 </span>
-                <h1 class="text-3xl md:text-5xl font-black text-slate-900 leading-tight mb-4 tracking-tight">
+
+                <h1 class="text-3xl md:text-5xl font-black text-slate-900 leading-tight mb-4 tracking-tight font-rubik">
                     בבית הקרב צמוד, אך בחוץ סערה: מהפך בברזיל והיסטוריה בסרביה
                 </h1>
-                <h2 class="text-lg md:text-xl text-gray-600 font-normal leading-relaxed mb-6 border-r-4 border-red-600 pr-3">
+
+                <h2 class="text-lg md:text-xl text-slate-600 font-normal leading-relaxed mb-6 border-r-4 border-red-600 pr-4">
                     מחר (יום שלישי, 27 באוקטובר) ייערכו הבחירות בישראל – ונדמה שכל הרעש סביבן גורם לנו לאבד קשב למה שמתרחש בחוץ: הלילה ניצח נשיא ברזיל המכהן בבחירות בארצו, ובמקביל בסרביה – מפלגה צעירה צפויה להדיח את הנשיא המכהן לאחר 12 שנות שלטון.
                 </h2>
-                <div class="flex flex-wrap items-center justify-between border-y border-gray-200 py-3 mb-6 text-xs text-gray-600 gap-3">
+
+                <div class="flex flex-wrap items-center justify-between border-y border-slate-200 py-3.5 mb-6 text-xs text-slate-600 gap-3">
                     <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-red-600 text-white flex items-center justify-center font-bold text-sm shadow">
-                            ח
-                        </div>
+                        <img src="image_98315f.jpg" alt="חי חיים פרץ" class="w-10 h-10 rounded-full object-cover shadow-sm border border-slate-200" style="object-position: center 20%;">
                         <div>
                             <div class="font-bold text-slate-900 text-sm">מאת: חי חיים פרץ</div>
-                            <div>פורסם לאחרונה | מערכת ללא פילטר</div>
+                            <div class="text-slate-400">דסק חוץ | מערכת ללא פילטר</div>
                         </div>
                     </div>
                     <div class="flex items-center gap-2">
-                        <button onclick="window.print()" class="p-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg border transition" title="הדפס כתבה">
+                        <button onclick="window.print()" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg border border-slate-200 transition font-medium flex items-center gap-1.5" title="הדפס כתבה">
                             <i class="fas fa-print"></i> הדפסה
                         </button>
                     </div>
                 </div>
 
-                <div class="flex items-center gap-2 mb-6 pb-2 border-b border-gray-100">
-                    <span class="text-xs font-bold text-gray-500 ml-2">שתף כתבה:</span>
-                    <button onclick="shareLink('facebook')" class="bg-blue-600 text-white px-3 py-1.5 rounded text-xs font-semibold hover:opacity-90 transition flex items-center gap-1.5">
+                <!-- כפתורי שיתוף -->
+                <div class="flex items-center flex-wrap gap-2 mb-8 pb-4 border-b border-slate-100">
+                    <span class="text-xs font-bold text-slate-500 ml-2">שתף כתבה:</span>
+                    <button onclick="shareLink('facebook')" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center gap-1.5 shadow-sm active:scale-95">
                         <i class="fab fa-facebook-f"></i> פייסבוק
                     </button>
-                    <button onclick="shareLink('twitter')" class="bg-sky-500 text-white px-3 py-1.5 rounded text-xs font-semibold hover:opacity-90 transition flex items-center gap-1.5">
+                    <button onclick="shareLink('twitter')" class="bg-slate-800 hover:bg-slate-900 text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center gap-1.5 shadow-sm active:scale-95">
                         <i class="fab fa-x-twitter"></i> טוויטר / X
                     </button>
-                    <button onclick="shareLink('whatsapp')" class="bg-emerald-600 text-white px-3 py-1.5 rounded text-xs font-semibold hover:opacity-90 transition flex items-center gap-1.5">
+                    <button onclick="shareLink('whatsapp')" class="bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center gap-1.5 shadow-sm active:scale-95">
                         <i class="fab fa-whatsapp"></i> וואטסאפ
                     </button>
-                    <button onclick="copyArticleLink()" class="bg-gray-700 text-white px-3 py-1.5 rounded text-xs font-semibold hover:opacity-90 transition flex items-center gap-1.5">
+                    <button onclick="copyArticleLink()" class="bg-slate-700 hover:bg-slate-800 text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center gap-1.5 shadow-sm active:scale-95">
                         <i class="fas fa-link"></i> העתק קישור
                     </button>
                 </div>
 
                 <!-- Main Image - Image 1 (Lula) -->
-                <div class="mb-6 rounded-xl overflow-hidden shadow-md bg-slate-900 border border-gray-200">
-                    <img src="./image_7a38dc.jpg" alt="לולה דה סילבה וחגיגות הניצחון" class="w-full h-auto object-cover max-h-[480px]">
-                    <div class="bg-slate-900/90 text-gray-300 text-xs p-3 flex justify-between items-center border-t border-slate-800">
-                        <span><i class="fas fa-camera ml-1"></i> לולה עם תומכיו בחגיגות הניצחון בברזיל</span>
-                        <span class="text-gray-400">צילום: AP, Andre Penner</span>
+                <div class="mb-8 rounded-2xl overflow-hidden shadow-md bg-slate-900 border border-slate-200">
+                    <img src="./image_7a38dc.jpg" alt="לולה דה סילבה וחגיגות הניצחון" class="w-full h-auto object-cover max-h-[500px]">
+                    <div class="bg-slate-900/95 text-slate-300 text-xs p-3.5 flex justify-between items-center border-t border-slate-800">
+                        <span><i class="fas fa-camera ml-1 text-slate-400"></i> לולה עם תומכיו בחגיגות הניצחון בברזיל</span>
+                        <span class="text-slate-400">צילום: AP, Andre Penner</span>
                     </div>
                 </div>
 
-                <div class="bg-gradient-to-r from-red-50 to-orange-50 border-r-4 border-red-600 rounded-xl p-5 mb-8 shadow-sm">
-                    <h3 class="font-bold text-red-900 text-base mb-3 flex items-center">
+                <!-- 3 מוקדים מרכזיים -->
+                <div class="bg-gradient-to-r from-red-50 to-orange-50 border-r-4 border-red-600 rounded-xl p-6 mb-8 shadow-sm">
+                    <h3 class="font-bold text-red-900 text-base mb-3 flex items-center font-rubik">
                         <i class="fas fa-list-ul ml-2 text-red-600"></i> 3 מוקדים מרכזיים בכתבה:
                     </h3>
-                    <ul class="space-y-2 text-sm text-gray-800 font-medium">
+                    <ul class="space-y-2.5 text-sm text-slate-800 font-medium">
                         <li class="flex items-start">
                             <span class="text-red-600 font-bold ml-2">1.</span>
                             <span><strong>הניצחון הדרמטי בברזיל:</strong> לולה דה סילבה מנצח בפער דחוק אך משמעותי, בעוד יריבו בולסונארו מסרב להכיר בתוצאות.</span>
@@ -212,8 +266,9 @@
                     </ul>
                 </div>
 
-                <div class="text-gray-800 space-y-6 text-lg leading-relaxed">
-                    <p class="font-semibold text-slate-900">
+                <!-- תוכן הכתבה המלא -->
+                <div class="text-slate-800 space-y-6 text-lg leading-relaxed font-normal">
+                    <p class="font-semibold text-slate-900 text-xl leading-relaxed">
                         נשיא ברזיל, לואיס אינסיו לולה דה סילבה, שמרבה לבקר את ישראל, נבחר הלילה לכהונה רביעית. הוא גבר בקרב צמוד על יריבו פלאביו בולסונארו, בנו של הנשיא לשעבר ז'איר בולסונארו. באחוזים הניצחון נראה דחוק – 51.8% לעומת 48.2% – אך בפועל מדובר בפער של מיליוני קולות.
                     </p>
 
@@ -221,7 +276,7 @@
                         ההכרעה הגיעה בסיבוב השני, לאחר שבסיבוב הראשון לא הושגה הכרעה. למרות התוצאות, בולסונארו הודיע כי לא יכיר בהן, זאת לאחר ששופט בית המשפט העליון האריך את שעות ההצבעה בשעתיים. "נבקש שהתוצאות יבוטלו", הכריז בולסונארו.
                     </p>
 
-                    <h3 class="text-2xl font-bold text-slate-900 border-b-2 border-red-600 pb-2 mt-8 mb-4">
+                    <h3 class="text-2xl font-bold text-slate-900 border-b-2 border-red-600 pb-2 mt-10 mb-4 font-rubik">
                         בשורה מאכזבת לישראל
                     </h3>
 
@@ -234,15 +289,15 @@
                     </p>
 
                     <!-- Image 2 (Bolsonaro) -->
-                    <div class="my-8 rounded-xl overflow-hidden shadow-md bg-slate-900 border border-gray-200">
-                        <img src="./image_7a3803.jpg" alt="פלאביו בולסונארו מניף את דגל ישראל" class="w-full h-auto object-cover max-h-[480px]">
-                        <div class="bg-slate-900/90 text-gray-300 text-xs p-3 flex justify-between items-center border-t border-slate-800">
-                            <span><i class="fas fa-camera ml-1"></i> בולסונארו מניף את דגל ישראל באירוע בחירות. ביקש להדק את היחסים עם ירושלים</span>
-                            <span class="text-gray-400">צילום: AP / Photo/Lucas Landau</span>
+                    <div class="my-8 rounded-2xl overflow-hidden shadow-md bg-slate-900 border border-slate-200">
+                        <img src="./image_7a3803.jpg" alt="פלאביו בולסונארו מניף את דגל ישראל" class="w-full h-auto object-cover max-h-[500px]">
+                        <div class="bg-slate-900/95 text-slate-300 text-xs p-3.5 flex justify-between items-center border-t border-slate-800">
+                            <span><i class="fas fa-camera ml-1 text-slate-400"></i> בולסונארו מניף את דגל ישראל באירוע בחירות. ביקש להדק את היחסים עם ירושלים</span>
+                            <span class="text-slate-400">צילום: AP / Photo/Lucas Landau</span>
                         </div>
                     </div>
 
-                    <h3 class="text-2xl font-bold text-slate-900 border-b-2 border-red-600 pb-2 mt-8 mb-4">
+                    <h3 class="text-2xl font-bold text-slate-900 border-b-2 border-red-600 pb-2 mt-10 mb-4 font-rubik">
                         ניצחון גדול ללולה, אך העתיד אינו מזהיר
                     </h3>
 
@@ -254,7 +309,7 @@
                         בבחירות לקונגרס התחזקו דווקא מפלגות הימין ושותפותיהן, והן צפויות להחזיק ברוב בבית המחוקקים – דבר שיקשה מאוד על ממשלת דה סילבה להעביר רפורמות ותקציבים.
                     </p>
 
-                    <h3 class="text-2xl font-bold text-slate-900 border-b-2 border-red-600 pb-2 mt-8 mb-4">
+                    <h3 class="text-2xl font-bold text-slate-900 border-b-2 border-red-600 pb-2 mt-10 mb-4 font-rubik">
                         במרחק כ-10,000 קילומטרים משם: המהפך בסרביה
                     </h3>
 
@@ -267,15 +322,15 @@
                     </p>
 
                     <!-- Image 3 (Serbia / Vucic) -->
-                    <div class="my-8 rounded-xl overflow-hidden shadow-md bg-slate-900 border border-gray-200">
-                        <img src="./image_7a34e4.jpg" alt="מחאות והפגנות בסרביה" class="w-full h-auto object-cover max-h-[480px]">
-                        <div class="bg-slate-900/90 text-gray-300 text-xs p-3 flex justify-between items-center border-t border-slate-800">
-                            <span><i class="fas fa-camera ml-1"></i> הפגנות הסטודנטים בסרביה ברקע שלטי הקמפיין של ווצ'יץ'</span>
-                            <span class="text-gray-400">צילום: AP Photo/Armin Durgut</span>
+                    <div class="my-8 rounded-2xl overflow-hidden shadow-md bg-slate-900 border border-slate-200">
+                        <img src="./image_7a34e4.jpg" alt="מחאות והפגנות בסרביה" class="w-full h-auto object-cover max-h-[500px]">
+                        <div class="bg-slate-900/95 text-slate-300 text-xs p-3.5 flex justify-between items-center border-t border-slate-800">
+                            <span><i class="fas fa-camera ml-1 text-slate-400"></i> הפגנות הסטודנטים בסרביה ברקע שלטי הקמפיין של ווצ'יץ'</span>
+                            <span class="text-slate-400">צילום: AP Photo/Armin Durgut</span>
                         </div>
                     </div>
 
-                    <h3 class="text-2xl font-bold text-slate-900 border-b-2 border-red-600 pb-2 mt-8 mb-4">
+                    <h3 class="text-2xl font-bold text-slate-900 border-b-2 border-red-600 pb-2 mt-10 mb-4 font-rubik">
                         יחסי חוץ מעורפלים
                     </h3>
 
@@ -283,12 +338,12 @@
                         ניתן היה לצפות כי למפלגה הזוכה בניצחון כה משמעותי תהיה מדיניות חוץ סדורה, אך המציאות מורכבת יותר.
                     </p>
 
-                    <div class="my-8 bg-slate-50 border-r-8 border-slate-800 p-6 rounded-l-xl italic shadow-inner">
+                    <div class="my-8 bg-slate-50 border-r-8 border-slate-800 p-6 rounded-l-2xl italic shadow-inner">
                         <i class="fas fa-quote-right text-3xl text-slate-300 block mb-2"></i>
                         <p class="text-xl font-bold text-slate-800 leading-relaxed font-rubik">
                             "המדיניות תונחה לפי האינטרס האזרחי."
                         </p>
-                        <span class="block mt-3 text-sm font-semibold text-gray-500 not-italic">
+                        <span class="block mt-3 text-sm font-semibold text-slate-500 not-italic">
                             — נציגי מפלגת הצעירים בסרביה בתשובה מעורפלת לגבי יחסי החוץ עם ישראל
                         </span>
                     </div>
@@ -298,110 +353,174 @@
                     </p>
                 </div>
 
-                <div class="mt-8 pt-4 border-t border-gray-200">
-                    <div class="flex flex-wrap gap-2">
-                        <span class="text-xs text-gray-500 font-bold self-center ml-2">תגיות:</span>
-                        <a href="#" class="bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs px-2.5 py-1 rounded-full border transition">ברזיל</a>
-                        <a href="#" class="bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs px-2.5 py-1 rounded-full border transition">סרביה</a>
-                        <a href="#" class="bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs px-2.5 py-1 rounded-full border transition">בחירות בעולם</a>
-                        <a href="#" class="bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs px-2.5 py-1 rounded-full border transition">לולה דה סילבה</a>
-                        <a href="#" class="bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs px-2.5 py-1 rounded-full border transition">יחסי חוץ</a>
+                <!-- תגיות -->
+                <div class="mt-10 pt-5 border-t border-slate-200">
+                    <div class="flex flex-wrap items-center gap-2">
+                        <span class="text-xs text-slate-500 font-bold ml-2">תגיות:</span>
+                        <a href="#" class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs px-3 py-1.5 rounded-full border border-slate-200 transition">ברזיל</a>
+                        <a href="#" class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs px-3 py-1.5 rounded-full border border-slate-200 transition">סרביה</a>
+                        <a href="#" class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs px-3 py-1.5 rounded-full border border-slate-200 transition">בחירות בעולם</a>
+                        <a href="#" class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs px-3 py-1.5 rounded-full border border-slate-200 transition">לולה דה סילבה</a>
+                        <a href="#" class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs px-3 py-1.5 rounded-full border border-slate-200 transition">יחסי חוץ</a>
                     </div>
                 </div>
             </article>
 
+            <!-- סרגל צד (Sidebar) -->
             <aside class="lg:col-span-4 space-y-6">
-                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
+                
+                <!-- סקר גולשים -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-5">
                     <div class="flex items-center gap-2 mb-3 text-red-600">
                         <i class="fas fa-poll text-lg"></i>
-                        <h3 class="font-bold text-slate-900 text-base">סקר גולשים - ללא פילטר</h3>
+                        <h3 class="font-bold text-slate-900 text-base font-rubik">סקר גולשים - ללא פילטר</h3>
                     </div>
-                    <p class="text-sm text-gray-800 font-medium mb-4">כיצד ישפיעו תוצאות הבחירות בברזיל ובסרביה על מעמדה של ישראל בעולם?</p>
+                    <p class="text-sm text-slate-800 font-medium mb-4">כיצד ישפיעו תוצאות הבחירות בברזיל ובסרביה על מעמדה של ישראל בעולם?</p>
+                    
                     <div id="poll-options" class="space-y-2">
-                        <button onclick="votePoll(1)" class="w-full text-right p-3 bg-gray-50 border border-gray-200 hover:bg-red-50 hover:border-red-300 rounded-lg text-sm font-semibold text-slate-800 transition flex justify-between items-center">
+                        <button onclick="votePoll(1)" class="w-full text-right p-3 bg-slate-50 border border-slate-200 hover:bg-red-50 hover:border-red-300 rounded-lg text-sm font-semibold text-slate-800 transition flex justify-between items-center group">
                             <span>יחמירו את הבידוד המדיני</span>
-                            <i class="far fa-circle text-gray-400"></i>
+                            <i class="far fa-circle text-slate-400 group-hover:text-red-500"></i>
                         </button>
-                        <button onclick="votePoll(2)" class="w-full text-right p-3 bg-gray-50 border border-gray-200 hover:bg-blue-50 hover:border-blue-300 rounded-lg text-sm font-semibold text-slate-800 transition flex justify-between items-center">
+                        <button onclick="votePoll(2)" class="w-full text-right p-3 bg-slate-50 border border-slate-200 hover:bg-blue-50 hover:border-blue-300 rounded-lg text-sm font-semibold text-slate-800 transition flex justify-between items-center group">
                             <span>לא ישפיעו בצורה משמעותית</span>
-                            <i class="far fa-circle text-gray-400"></i>
+                            <i class="far fa-circle text-slate-400 group-hover:text-blue-500"></i>
                         </button>
-                        <button onclick="votePoll(3)" class="w-full text-right p-3 bg-gray-50 border border-gray-200 hover:bg-emerald-50 hover:border-emerald-300 rounded-lg text-sm font-semibold text-slate-800 transition flex justify-between items-center">
+                        <button onclick="votePoll(3)" class="w-full text-right p-3 bg-slate-50 border border-slate-200 hover:bg-emerald-50 hover:border-emerald-300 rounded-lg text-sm font-semibold text-slate-800 transition flex justify-between items-center group">
                             <span>תלוי במדיניות שתוביל הממשלה הישראלית</span>
-                            <i class="far fa-circle text-gray-400"></i>
+                            <i class="far fa-circle text-slate-400 group-hover:text-emerald-500"></i>
                         </button>
                     </div>
+
                     <div id="poll-results" class="hidden space-y-3 mt-3">
-                        <div class="text-xs font-bold text-emerald-600 bg-emerald-50 p-2 rounded text-center mb-2">תודה שהצבעת! תוצאות הביניים:</div>
+                        <div class="text-xs font-bold text-emerald-700 bg-emerald-50 p-2.5 rounded-lg border border-emerald-200 text-center mb-2 flex items-center justify-center gap-1.5">
+                            <i class="fas fa-check-circle"></i> תודה שהצבעת! תוצאות הביניים:
+                        </div>
                         <div>
-                            <div class="flex justify-between text-xs font-bold mb-1">
+                            <div class="flex justify-between text-xs font-bold mb-1 text-slate-700">
                                 <span>יחמירו את הבידוד</span>
                                 <span>58%</span>
                             </div>
-                            <div class="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
-                                <div class="bg-red-600 h-full" style="width: 58%;"></div>
+                            <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
+                                <div class="bg-red-600 h-full rounded-full" style="width: 58%;"></div>
                             </div>
                         </div>
                         <div>
-                            <div class="flex justify-between text-xs font-bold mb-1">
+                            <div class="flex justify-between text-xs font-bold mb-1 text-slate-700">
                                 <span>לא ישפיעו</span>
                                 <span>18%</span>
                             </div>
-                            <div class="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
-                                <div class="bg-blue-600 h-full" style="width: 18%;"></div>
+                            <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
+                                <div class="bg-blue-600 h-full rounded-full" style="width: 18%;"></div>
                             </div>
                         </div>
                         <div>
-                            <div class="flex justify-between text-xs font-bold mb-1">
+                            <div class="flex justify-between text-xs font-bold mb-1 text-slate-700">
                                 <span>תלוי בממשלה</span>
                                 <span>24%</span>
                             </div>
-                            <div class="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
-                                <div class="bg-emerald-600 h-full" style="width: 24%;"></div>
+                            <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
+                                <div class="bg-emerald-600 h-full rounded-full" style="width: 24%;"></div>
                             </div>
                         </div>
-                        <p class="text-[11px] text-gray-400 text-center mt-2">סך הכל מצביעים: 8,420</p>
+                        <p class="text-[11px] text-slate-400 text-center mt-2 font-medium">סך הכל מצביעים: 8,420</p>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
-                    <h3 class="font-bold text-slate-900 text-base mb-4 pb-2 border-b-2 border-red-600 flex items-center justify-between">
-                        <span><i class="fas fa-fire text-red-600 ml-1"></i> הכתבות הנקראות ביותר</span>
-                        <span class="text-xs font-normal text-gray-500">היום</span>
+                <!-- הכתבות הנקראות ביותר -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-5">
+                    <h3 class="font-bold text-slate-900 text-base mb-4 pb-2 border-b-2 border-red-600 flex items-center justify-between font-rubik">
+                        <span class="flex items-center gap-1.5"><i class="fas fa-fire text-red-600"></i> הנקראות ביותר</span>
+                        <span class="text-xs font-normal text-slate-400">היום</span>
                     </h3>
                     <div class="space-y-4">
+                        <a href="./brazil_serbia.html" class="flex gap-3 group border-b border-slate-100 pb-3">
+                            <span class="text-2xl font-black text-slate-300 group-hover:text-red-600 transition font-rubik">1</span>
+                            <div>
+                                <h4 class="text-sm font-bold text-slate-800 group-hover:text-red-600 transition leading-snug">הקאמבק הדרמטי בברזיליה: מה מצפה ליחסי החוץ של דרום אמריקה?</h4>
+                                <span class="text-xs text-slate-400 mt-1 inline-block"><i class="far fa-clock ml-1"></i>לפני שעה</span>
+                            </div>
+                        </a>
+                        <a href="./brazil_serbia.html" class="flex gap-3 group border-b border-slate-100 pb-3">
+                            <span class="text-2xl font-black text-slate-300 group-hover:text-red-600 transition font-rubik">2</span>
+                            <div>
+                                <h4 class="text-sm font-bold text-slate-800 group-hover:text-red-600 transition leading-snug">מהפכת הסטודנטים בסרביה: האם הבלקן בדרך לעידן חדש?</h4>
+                                <span class="text-xs text-slate-400 mt-1 inline-block"><i class="far fa-clock ml-1"></i>לפני 3 שעות</span>
+                            </div>
+                        </a>
                         <a href="./brazil_serbia.html" class="flex gap-3 group">
-                            <span class="text-2xl font-black text-gray-300 group-hover:text-red-600 transition">1</span>
+                            <span class="text-2xl font-black text-slate-300 group-hover:text-red-600 transition font-rubik">3</span>
                             <div>
-                                <h4 class="text-sm font-bold text-gray-800 group-hover:text-red-600 transition leading-snug">הקאמבק הדרמטי בברזיליה: מה מצפה ליחסי החוץ של דרום אמריקה?</h4>
-                                <span class="text-xs text-gray-400">לפני שעה</span>
-                            </div>
-                        </a>
-                        <a href="./brazil_serbia.html" class="flex gap-3 group border-t border-gray-100 pt-3">
-                            <span class="text-2xl font-black text-gray-300 group-hover:text-red-600 transition">2</span>
-                            <div>
-                                <h4 class="text-sm font-bold text-gray-800 group-hover:text-red-600 transition leading-snug">מהפכת הסטודנטים בסרביה: האם הבלקן בדרך לעידן חדש?</h4>
-                                <span class="text-xs text-gray-400">לפני 3 שעות</span>
-                            </div>
-                        </a>
-                        <a href="./brazil_serbia.html" class="flex gap-3 group border-t border-gray-100 pt-3">
-                            <span class="text-2xl font-black text-gray-300 group-hover:text-red-600 transition">3</span>
-                            <div>
-                                <h4 class="text-sm font-bold text-gray-800 group-hover:text-red-600 transition leading-snug">יומיים לפני הקלפיות בישראל: כיצד משפיע השינוי העולמי על הבוחר הישראלי?</h4>
-                                <span class="text-xs text-gray-400">לפני 5 שעות</span>
+                                <h4 class="text-sm font-bold text-slate-800 group-hover:text-red-600 transition leading-snug">יומיים לפני הקלפיות בישראל: כיצד משפיע השינוי העולמי על הבוחר הישראלי?</h4>
+                                <span class="text-xs text-slate-400 mt-1 inline-block"><i class="far fa-clock ml-1"></i>לפני 5 שעות</span>
                             </div>
                         </a>
                     </div>
                 </div>
+
             </aside>
         </div>
     </main>
 
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 text-xs border-t border-slate-800 mt-12">
+        <div class="max-w-7xl mx-auto px-4 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 border-b border-slate-800 pb-6 mb-6">
+                <div>
+                    <span class="bg-red-600 text-white font-black text-xl px-3 py-1 rounded font-rubik inline-block mb-1">ללא פילטר</span>
+                    <p class="text-xs text-slate-400">חדשות ואקטואליה עצמאית בגובה העיניים</p>
+                </div>
+                <div class="flex gap-4 text-sm">
+                    <a href="./index.html" class="hover:text-white transition">ראשי</a>
+                    <a href="./politics.html" class="hover:text-white transition">פוליטיקה</a>
+                    <a href="./world.html" class="hover:text-white transition">בעולם</a>
+                    <a href="./opinion_average_man.html" class="hover:text-white transition">דעות</a>
+                </div>
+            </div>
+            <div class="text-center text-slate-500 text-[11px]">
+                © 2026 כל הזכויות שמורות למערכת "ללא פילטר" • פרויקט תוכן עצמאי
+            </div>
+        </div>
+    </footer>
+
+    <!-- הודעת Toast להעתקת קישור -->
+    <div id="toast-msg" class="fixed bottom-6 right-6 bg-slate-900 text-white text-xs font-semibold px-4 py-3 rounded-xl shadow-2xl border border-slate-700 hidden transition-all duration-300 flex items-center gap-2 z-50">
+        <i class="fas fa-check-circle text-emerald-400 text-sm"></i>
+        <span>הקישור הועתק בהצלחה ללוח!</span>
+    </div>
+
+    <!-- JavaScript אינטראקטיבי -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const now = new Date();
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            document.getElementById('current-date').innerHTML = `<i class="far fa-calendar-alt ml-1"></i> ${now.toLocaleDateString('he-IL', options)}`;
+            const formattedDate = now.toLocaleDateString('he-IL', options);
+            const dateElem = document.getElementById('current-date');
+            if (dateElem) {
+                dateElem.innerHTML = `<i class="far fa-calendar-alt text-slate-400 ml-1"></i> ${formattedDate}`;
+            }
+
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const closeBtn = document.getElementById('close-menu-btn');
+            const menuOverlay = document.getElementById('mobile-menu-overlay');
+
+            function toggleMenu(show) {
+                if (show) {
+                    menuOverlay.classList.remove('hidden');
+                    document.body.classList.add('menu-open');
+                } else {
+                    menuOverlay.classList.add('hidden');
+                    document.body.classList.remove('menu-open');
+                }
+            }
+
+            if (menuBtn && closeBtn && menuOverlay) {
+                menuBtn.addEventListener('click', () => toggleMenu(true));
+                closeBtn.addEventListener('click', () => toggleMenu(false));
+                menuOverlay.addEventListener('click', (e) => {
+                    if (e.target === menuOverlay) toggleMenu(false);
+                });
+            }
         });
 
         function votePoll(option) {
@@ -418,13 +537,15 @@
         }
 
         function copyArticleLink() {
-            const dummy = document.createElement('input');
-            document.body.appendChild(dummy);
-            dummy.value = window.location.href;
-            dummy.select();
-            document.execCommand('copy');
-            document.body.removeChild(dummy);
-            alert('הקישור הועתק בהצלחה ללוח!');
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                const toast = document.getElementById('toast-msg');
+                toast.classList.remove('hidden');
+                setTimeout(() => {
+                    toast.classList.add('hidden');
+                }, 3000);
+            }).catch(() => {
+                alert('הקישור הועתק ללוח');
+            });
         }
     </script>
 </body>
