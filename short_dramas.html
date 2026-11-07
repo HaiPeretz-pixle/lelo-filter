@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Is cinema in danger? The rise of short dramas | ללא פילטר</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <meta name="description" content="An interesting phenomenon is gaining momentum – short dramas. The film industry is at a crossroads, where it must decide how to proceed: embrace it or fight it.">
+
+    <!-- Open Graph לשיתוף ברשתות ובווטסאפ -->
+    <meta property="og:title" content="Is cinema in danger? The rise of short dramas | ללא פילטר">
+    <meta property="og:description" content="An interesting phenomenon is gaining momentum – short dramas. The film industry is at a crossroads: embrace it or fight it.">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="short dramas.jpg">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Heebo & Rubik -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Rubik:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { 
+                            red: '#e53e3e', 
+                            redDark: '#c53030',
+                            navy: '#0f172a', 
+                            navyLight: '#1e293b' 
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Heebo', 'sans-serif'],
+                        rubik: ['Rubik', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { 
+            font-family: 'Heebo', sans-serif; 
+            background-color: #f8fafc; 
+            color: #1e293b; 
+        }
+        
+        @keyframes ticker-rtl {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        .ticker-wrap { 
+            width: 100%; 
+            overflow: hidden; 
+            white-space: nowrap; 
+        }
+        .ticker-move { 
+            display: inline-block; 
+            animation: ticker-rtl 32s linear infinite; 
+        }
+        .ticker-move:hover { 
+            animation-play-state: paused; 
+        }
+
+        body.menu-open {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen flex flex-col antialiased selection:bg-red-500 selection:text-white" dir="rtl">
+
+    <!-- Top Bar: Date, Weather, Quick Links -->
+    <div class="bg-slate-900 text-slate-300 text-xs py-2 px-4 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <a href="#" class="hover:text-white font-bold text-red-400 flex items-center">
+                    <span class="w-2 h-2 rounded-full bg-red-500 animate-ping ml-1.5 inline-block"></span>שידור חי
+                </a>
+                <span class="text-slate-700">|</span>
+                <a href="#" class="hover:text-white transition">מהדורה דיגיטלית</a>
+                <span class="text-slate-700">|</span>
+                <a href="#" class="hover:text-white transition">מבזקים</a>
+            </div>
+            <div class="flex items-center gap-4 text-slate-400">
+                <span class="hidden md:inline-flex items-center gap-1.5"><i class="fas fa-sun text-amber-400"></i> תל אביב 24°C</span>
+                <span id="current-date" class="inline-flex items-center gap-1.5"><i class="far fa-calendar-alt text-slate-400"></i> טוען תאריך...</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header / Logo Section -->
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-40 shadow-sm transition-all">
+        <div class="max-w-7xl mx-auto px-4 py-3.5 flex justify-between items-center">
+            
+            <div class="flex items-center gap-3">
+                <button class="bg-red-600 hover:bg-red-700 text-white text-xs font-bold px-3.5 py-2 rounded-lg transition shadow-sm flex items-center gap-1.5 active:scale-95">
+                    <i class="fas fa-bell"></i> <span class="hidden sm:inline">התראות</span>
+                </button>
+                <div class="relative hidden sm:block">
+                    <input type="text" placeholder="חיפוש בחדשות..." class="bg-slate-100 text-slate-800 text-xs rounded-lg pl-8 pr-3.5 py-2 focus:outline-none focus:ring-2 focus:ring-red-500 focus:bg-white w-48 md:w-64 transition border border-transparent focus:border-red-200">
+                    <i class="fas fa-search absolute left-3 top-2.5 text-slate-400 text-xs pointer-events-none"></i>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <span class="hidden lg:inline-block text-xs bg-slate-100 text-slate-600 font-medium px-2.5 py-1 rounded-md border border-slate-200">חדשות ואקטואליה בגובה העיניים</span>
+                <a href="./index.html" class="flex items-center gap-2 group">
+                    <span class="bg-red-600 group-hover:bg-red-700 text-white font-black text-2xl md:text-3xl px-3.5 py-1 rounded-lg tracking-tight font-rubik shadow transition">ללא פילטר</span>
+                </a>
+                <button id="mobile-menu-btn" class="lg:hidden p-2 text-slate-700 hover:text-red-600 focus:outline-none rounded-lg hover:bg-slate-100 transition" aria-label="פתח תפריט">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Navigation Bar (Desktop) -->
+        <nav class="bg-slate-900 text-white text-sm font-medium border-t border-slate-800 hidden lg:block">
+            <div class="max-w-7xl mx-auto px-4 flex items-center overflow-x-auto whitespace-nowrap scrollbar-none justify-start">
+                <a href="./index.html" class="py-3 px-4 hover:bg-slate-800 text-slate-200 hover:text-white transition">ראשי</a>
+                <a href="./politics.html" class="py-3 px-4 hover:bg-slate-800 text-slate-300 hover:text-white transition">פוליטיקה</a>
+                <a href="#" class="py-3 px-4 hover:bg-slate-800 text-slate-300 hover:text-white transition">צבא וביטחון</a>
+                <a href="#" class="py-3 px-4 hover:bg-slate-800 text-slate-300 hover:text-white transition">כלכלה</a>
+                <a href="#" class="py-3 px-4 hover:bg-slate-800 text-slate-300 hover:text-white transition">משפט</a>
+                <a href="./world.html" class="py-3 px-4 hover:bg-slate-800 text-slate-200 hover:text-white transition">בעולם</a>
+                <a href="#" class="py-3 px-4 hover:bg-slate-800 text-slate-300 hover:text-white transition">תרבות וסגנון</a>
+                <a href="#" class="py-3 px-4 bg-red-600 font-bold hover:bg-red-700 transition flex items-center gap-1.5 border-b-2 border-white">בידור</a>
+                <a href="#" class="py-3 px-4 hover:bg-slate-800 text-slate-300 hover:text-white transition">פנאי</a>
+                <a href="#" class="py-3 px-4 hover:bg-slate-800 text-slate-300 hover:text-white transition">ספורט</a>
+                <a href="#" class="py-3 px-4 hover:bg-slate-800 text-slate-300 hover:text-white transition">טכנולוגיה</a>
+                <a href="./opinion_average_man.html" class="py-3 px-4 hover:bg-slate-800 transition text-amber-300 font-semibold flex items-center gap-1.5"><i class="fas fa-star text-xs"></i> דעות ופרשנויות</a>
+            </div>
+        </nav>
+
+        <!-- מבזקים -->
+        <div class="bg-slate-100 border-y border-slate-200 text-xs flex items-center px-4 py-2">
+            <span class="bg-red-600 text-white font-bold px-2.5 py-0.5 rounded text-[11px] ml-3 shrink-0 uppercase tracking-wide shadow-sm flex items-center gap-1">
+                <i class="fas fa-bolt text-[10px]"></i> מבזקים
+            </span>
+            <div class="ticker-wrap flex-1 text-slate-800 font-medium">
+                <div class="ticker-move">
+                    <span class="ml-10"><strong class="text-red-600 ml-1">מהדורת בידור:</strong> שוק הדרמות הקצרות מגלגל בין 11 ל-15 מיליארד דולר בשנה לפי נתוני Omdia</span>
+                    <span class="ml-10"><strong class="text-red-600 ml-1">הוליווד מתעוררת:</strong> דיסני ופוקס משקיעות הון עתק בפלטפורמות תוכן אנכי לנייד</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- תפריט מובייל נפתח -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-slate-950/60 z-50 backdrop-blur-sm hidden transition-opacity">
+        <div class="fixed inset-y-0 right-0 w-72 bg-slate-900 text-white p-6 shadow-2xl flex flex-col justify-between">
+            <div>
+                <div class="flex items-center justify-between pb-4 border-b border-slate-800 mb-6">
+                    <span class="bg-red-600 text-white font-black text-xl px-3 py-1 rounded font-rubik">ללא פילטר</span>
+                    <button id="close-menu-btn" class="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <nav class="flex flex-col space-y-1 text-sm font-medium">
+                    <a href="./index.html" class="px-3 py-2.5 rounded-lg hover:bg-slate-800 text-slate-200 transition flex items-center gap-2"><i class="fas fa-home w-5"></i> ראשי</a>
+                    <a href="./politics.html" class="px-3 py-2.5 rounded-lg hover:bg-slate-800 text-slate-200 transition flex items-center gap-2"><i class="fas fa-landmark w-5"></i> פוליטיקה</a>
+                    <a href="#" class="px-3 py-2.5 rounded-lg bg-red-600 text-white font-bold flex items-center gap-2"><i class="fas fa-film w-5"></i> בידור</a>
+                    <a href="#" class="px-3 py-2.5 rounded-lg hover:bg-slate-800 text-slate-200 transition flex items-center gap-2"><i class="fas fa-couch w-5"></i> פנאי</a>
+                    <a href="./world.html" class="px-3 py-2.5 rounded-lg hover:bg-slate-800 text-slate-200 transition flex items-center gap-2"><i class="fas fa-globe w-5"></i> בעולם</a>
+                    <a href="./opinion_average_man.html" class="px-3 py-2.5 rounded-lg hover:bg-slate-800 text-amber-300 font-semibold transition flex items-center gap-2"><i class="fas fa-star w-5"></i> דעות ופרשנויות</a>
+                    <a href="#" class="px-3 py-2.5 rounded-lg hover:bg-slate-800 text-slate-400 transition flex items-center gap-2"><i class="fas fa-shield-alt w-5"></i> צבא וביטחון</a>
+                    <a href="#" class="px-3 py-2.5 rounded-lg hover:bg-slate-800 text-slate-400 transition flex items-center gap-2"><i class="fas fa-chart-line w-5"></i> כלכלה</a>
+                    <a href="#" class="px-3 py-2.5 rounded-lg hover:bg-slate-800 text-slate-400 transition flex items-center gap-2"><i class="fas fa-gavel w-5"></i> משפט</a>
+                    <a href="#" class="px-3 py-2.5 rounded-lg hover:bg-slate-800 text-slate-400 transition flex items-center gap-2"><i class="fas fa-microchip w-5"></i> טכנולוגיה</a>
+                </nav>
+            </div>
+            <div class="pt-6 border-t border-slate-800 text-xs text-slate-400 text-center">
+                © 2026 ללא פילטר. כל הזכויות שמורות.
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 py-8 flex-1 w-full">
+        
+        <!-- Breadcrumb & Category -->
+        <div class="flex items-center gap-2 text-xs text-slate-500 mb-4">
+            <a href="./index.html" class="hover:underline">ראשי</a>
+            <span>/</span>
+            <a href="#" class="hover:underline text-red-600 font-semibold">בידור ופנאי</a>
+            <span>/</span>
+            <span class="text-slate-700 truncate font-medium" dir="ltr">Is cinema in danger? The rise of short dramas</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            
+            <!-- Left Column: Article Body (8 cols) -->
+            <article class="lg:col-span-8 bg-white p-6 md:p-10 rounded-2xl shadow-sm border border-slate-200">
+                
+                <!-- תגיות קטגוריה בראש הכתבה -->
+                <div class="flex flex-wrap items-center gap-2 mb-4">
+                    <span class="inline-flex items-center bg-red-50 text-red-700 text-xs font-bold px-3 py-1 rounded-full border border-red-100">
+                        <i class="fas fa-film ml-1.5"></i> כתיבה עיתונאית - בידור
+                    </span>
+                    <span class="inline-flex items-center bg-blue-50 text-blue-700 text-xs font-bold px-3 py-1 rounded-full border border-blue-100">
+                        <i class="fas fa-popcorn ml-1.5"></i> פנאי ומהדורה באנגלית
+                    </span>
+                </div>
+
+                <!-- כותרת וכותרת משנה באנגלית (LTR) -->
+                <div dir="ltr" class="text-left">
+                    <h1 class="text-3xl md:text-5xl font-black text-slate-900 leading-tight mb-4 tracking-tight font-rubik">
+                        Is cinema in danger? The rise of short dramas
+                    </h1>
+
+                    <h2 class="text-lg md:text-xl text-slate-600 font-normal leading-relaxed mb-6 border-l-4 border-red-600 pl-4">
+                        An interesting phenomenon is gaining momentum – short dramas. The film industry is at a crossroads, where it must decide how to proceed: embrace it or fight it.
+                    </h2>
+                </div>
+
+                <!-- פרטי הכותב והדפסה -->
+                <div class="flex flex-wrap items-center justify-between border-y border-slate-200 py-3.5 mb-6 text-xs text-slate-600 gap-3">
+                    <div class="flex items-center gap-3">
+                        <img src="image_98315f.jpg" alt="חי חיים פרץ" class="w-10 h-10 rounded-full object-cover shadow-sm border border-slate-200" style="object-position: center 20%;">
+                        <div>
+                            <div class="font-bold text-slate-900 text-sm">מאת: חי חיים פרץ</div>
+                            <div class="text-slate-400">תרבות, בידור ופנאי | מערכת ללא פילטר</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="window.print()" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg border border-slate-200 transition font-medium flex items-center gap-1.5" title="הדפס כתבה">
+                            <i class="fas fa-print"></i> הדפסה
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Social Share Bar Top -->
+                <div class="flex items-center flex-wrap gap-2 mb-8 pb-4 border-b border-slate-100">
+                    <span class="text-xs font-bold text-slate-500 ml-2">שתף כתבה:</span>
+                    <button onclick="shareLink('facebook')" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center gap-1.5 shadow-sm active:scale-95">
+                        <i class="fab fa-facebook-f"></i> פייסבוק
+                    </button>
+                    <button onclick="shareLink('twitter')" class="bg-slate-800 hover:bg-slate-900 text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center gap-1.5 shadow-sm active:scale-95">
+                        <i class="fab fa-x-twitter"></i> טוויטר / X
+                    </button>
+                    <button onclick="shareLink('whatsapp')" class="bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center gap-1.5 shadow-sm active:scale-95">
+                        <i class="fab fa-whatsapp"></i> וואטסאפ
+                    </button>
+                    <button onclick="copyArticleLink()" class="bg-slate-700 hover:bg-slate-800 text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center gap-1.5 shadow-sm active:scale-95">
+                        <i class="fas fa-link"></i> העתק קישור
+                    </button>
+                </div>
+
+                <!-- Main Featured Media / Hero Image 1: short dramas.jpg -->
+                <div class="mb-8 rounded-2xl overflow-hidden shadow-md bg-slate-900 relative border border-slate-200">
+                    <img src="short dramas.jpg" alt="Is cinema in danger? The rise of short dramas" class="w-full h-64 md:h-96 object-cover">
+                    <div class="bg-slate-900/95 text-slate-300 text-xs p-3.5 flex justify-between items-center border-t border-slate-800">
+                        <span><i class="fas fa-camera ml-1 text-slate-400"></i> הדרמות הקצרות כובשות את המסכים ואת הוליווד</span>
+                        <span class="text-slate-400">מערכת ללא פילטר</span>
+                    </div>
+                </div>
+
+                <!-- Article Body Content Container in English (LTR) -->
+                <div dir="ltr" class="text-left text-slate-800 space-y-6 text-lg leading-relaxed font-normal">
+
+                    <!-- Key Points Highlight Box -->
+                    <div class="bg-gradient-to-r from-red-50 to-orange-50 border-l-4 border-red-600 rounded-xl p-6 mb-8 shadow-sm">
+                        <h3 class="font-bold text-red-900 text-base mb-3 flex items-center font-rubik">
+                            <i class="fas fa-list-ul mr-2 text-red-600"></i> 3 Key Points Covered in This Article:
+                        </h3>
+                        <ul class="space-y-2.5 text-sm text-slate-800 font-medium">
+                            <li class="flex items-start">
+                                <span class="text-red-600 font-bold mr-2">1.</span>
+                                <span><strong>Where It Began (2018):</strong> How Chinese platforms Kuaishou and Douyin pioneered 90-to-120-second vertical drama series.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-red-600 font-bold mr-2">2.</span>
+                                <span><strong>The Business Model & Market Size:</strong> The rise of ReelShort and DramaBox, pay-per-episode monetization, and $11B–$15B in annual revenue.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-red-600 font-bold mr-2">3.</span>
+                                <span><strong>Hollywood's Response:</strong> How traditional studios like Disney and Fox Entertainment shifted from skepticism to massive strategic investments.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <p class="font-semibold text-slate-900 text-xl leading-relaxed">
+                        You've probably all noticed the short drama ads flooding social media, and some of you have likely been sucked into them more than once.
+                    </p>
+
+                    <h3 class="text-2xl font-bold text-slate-900 border-b-2 border-red-600 pb-2 mt-10 mb-4 font-rubik">
+                        Where did it begin?
+                    </h3>
+
+                    <p>
+                        Let's go back a bit, to 2018. Platforms like <strong>Kuaishou</strong> and <strong>Douyin</strong> (the Chinese counterpart to TikTok) based in China, began encouraging creators to produce fast-paced drama series, optimized for vertical mobile viewing.
+                    </p>
+
+                    <p>
+                        The concept, in short, is that each episode lasts between 90 and 120 seconds, and at the end of every episode, you scroll down to the next one, similar to Instagram Reels or TikTok.
+                    </p>
+
+                    <h3 class="text-2xl font-bold text-slate-900 border-b-2 border-red-600 pb-2 mt-10 mb-4 font-rubik">
+                        The Turning Point and the Business Model
+                    </h3>
+
+                    <p>
+                        In China, the market became professionalized and turned into a massive industry. Down the road, studios like <strong>ReelShort</strong> and <strong>DramaBox</strong> were established, targeting an international audience.
+                    </p>
+
+                    <!-- Second Image: reel short.jpg -->
+                    <div class="my-8 rounded-2xl overflow-hidden shadow-md bg-slate-900 relative border border-slate-200">
+                        <img src="reel short.jpg" alt="ReelShort platform" class="w-full h-64 md:h-80 object-cover">
+                        <div class="bg-slate-900/95 text-slate-300 text-xs p-3.5 flex justify-between items-center border-t border-slate-800">
+                            <span><i class="fas fa-mobile-alt mr-1.5 text-red-400"></i> Studios like ReelShort and DramaBox brought the pay-per-episode model to global audiences</span>
+                            <span class="text-slate-400">ReelShort</span>
+                        </div>
+                    </div>
+
+                    <p>
+                        Later on, these platforms shifted to a <strong>pay-per-episode</strong> model, where the first few episodes are free, but right at the climax of the drama, you have to start paying for every additional episode.
+                    </p>
+
+                    <p>
+                        Following massive exposure and success with international audiences, they began producing English-language productions as well, with the most popular genres being revenge stories, mysterious billionaires, werewolves, and more.
+                    </p>
+
+                    <p>
+                        According to data from the research firm <strong>Omdia</strong>, the short drama market generates between <strong>$11 billion and $15 billion</strong> annually.
+                    </p>
+
+                    <h3 class="text-2xl font-bold text-slate-900 border-b-2 border-red-600 pb-2 mt-10 mb-4 font-rubik">
+                        What will the traditional film industries do?
+                    </h3>
+
+                    <p>
+                        Their initial reaction to the success of short dramas was pessimistic, thinking it was just a passing trend – but this assumption quickly blew up in their faces.
+                    </p>
+
+                    <p>
+                        Once they realized their mistake, giant studios and television networks began investing massive amounts of capital into the field, aiming not to be left behind.
+                    </p>
+
+                    <p>
+                        <strong>Disney</strong> began integrating the company DramaBox into its accelerator program, and started implementing a vertical discovery feed on Disney+. <strong>Fox Entertainment</strong> made a strategic investment in the production company Holywater, and other major companies followed suit.
+                    </p>
+
+                    <!-- Pull Quote Element -->
+                    <div class="my-8 bg-slate-50 border-l-8 border-slate-800 p-6 rounded-r-2xl italic shadow-inner">
+                        <i class="fas fa-quote-left text-3xl text-slate-300 block mb-2"></i>
+                        <p class="text-xl font-bold text-slate-800 leading-relaxed font-rubik">
+                            “Microdramas are redefining what premium storytelling means in the digital era.”
+                        </p>
+                        <span class="block mt-3 text-sm font-semibold text-slate-500 not-italic">
+                            — Rua Aguete, Senior Researcher at Omdia
+                        </span>
+                    </div>
+
+                    <h3 class="text-2xl font-bold text-slate-900 border-b-2 border-red-600 pb-2 mt-10 mb-4 font-rubik">
+                        Is the future of cinema in danger?
+                    </h3>
+
+                    <p class="font-semibold text-slate-900 bg-slate-50 p-5 rounded-xl border border-slate-200">
+                        Probably not, but ultimately the industry is undergoing a metamorphosis – cinema is still alive and kicking, but it definitely needs to learn how to dance to the new beat dictated by the small screen.
+                    </p>
+
+                </div>
+
+                <!-- Bottom Tags (כולל תגיות בידור ופנאי) -->
+                <div class="mt-10 pt-5 border-t border-slate-200">
+                    <div class="flex flex-wrap items-center gap-2">
+                        <span class="text-xs text-slate-500 font-bold ml-2">תגיות:</span>
+                        <a href="#" class="bg-red-50 hover:bg-red-100 text-red-700 font-semibold text-xs px-3 py-1.5 rounded-full border border-red-200 transition">בידור</a>
+                        <a href="#" class="bg-red-50 hover:bg-red-100 text-red-700 font-semibold text-xs px-3 py-1.5 rounded-full border border-red-200 transition">פנאי</a>
+                        <a href="#" class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs px-3 py-1.5 rounded-full border border-slate-200 transition">קולנוע</a>
+                        <a href="#" class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs px-3 py-1.5 rounded-full border border-slate-200 transition">דרמות קצרות</a>
+                        <a href="#" class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs px-3 py-1.5 rounded-full border border-slate-200 transition">ReelShort</a>
+                        <a href="#" class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs px-3 py-1.5 rounded-full border border-slate-200 transition">הוליווד</a>
+                    </div>
+                </div>
+
+            </article>
+
+            <!-- Right Column: Sidebar (4 cols) -->
+            <aside class="lg:col-span-4 space-y-6">
+
+                <!-- Live Interactive Poll Widget -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-5">
+                    <div class="flex items-center gap-2 mb-3 text-red-600">
+                        <i class="fas fa-poll text-lg"></i>
+                        <h3 class="font-bold text-slate-900 text-base font-rubik">סקר גולשים - ללא פילטר</h3>
+                    </div>
+                    <p class="text-sm text-slate-800 font-medium mb-4">
+                        האם כבר יצא לכם להישאב לדרמות הקצרות ברשתות החברתיות?
+                    </p>
+                    
+                    <div id="poll-options" class="space-y-2">
+                        <button onclick="votePoll(1)" class="w-full text-right p-3 bg-slate-50 border border-slate-200 hover:bg-red-50 hover:border-red-300 rounded-lg text-sm font-semibold text-slate-800 transition flex justify-between items-center group">
+                            <span>כן, נשאבתי לזה מהפרסומות בפיד</span>
+                            <i class="far fa-circle text-slate-400 group-hover:text-red-500"></i>
+                        </button>
+                        <button onclick="votePoll(2)" class="w-full text-right p-3 bg-slate-50 border border-slate-200 hover:bg-blue-50 hover:border-blue-300 rounded-lg text-sm font-semibold text-slate-800 transition flex justify-between items-center group">
+                            <span>צפיתי רק בפרקים החינמיים</span>
+                            <i class="far fa-circle text-slate-400 group-hover:text-blue-500"></i>
+                        </button>
+                        <button onclick="votePoll(3)" class="w-full text-right p-3 bg-slate-50 border border-slate-200 hover:bg-emerald-50 hover:border-emerald-300 rounded-lg text-sm font-semibold text-slate-800 transition flex justify-between items-center group">
+                            <span>לא, מעדיף סרטים וסדרות באורך מלא</span>
+                            <i class="far fa-circle text-slate-400 group-hover:text-emerald-500"></i>
+                        </button>
+                    </div>
+
+                    <!-- Poll Results -->
+                    <div id="poll-results" class="hidden space-y-3 mt-3">
+                        <div class="text-xs font-bold text-emerald-700 bg-emerald-50 p-2.5 rounded-lg border border-emerald-200 text-center mb-2 flex items-center justify-center gap-1.5">
+                            <i class="fas fa-check-circle"></i> תודה שהצבעת! תוצאות הביניים:
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs font-bold mb-1 text-slate-700">
+                                <span>כן, נשאבתי מהפרסומות</span>
+                                <span>58%</span>
+                            </div>
+                            <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden flex justify-end">
+                                <div class="bg-red-600 h-full rounded-full" style="width: 58%;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs font-bold mb-1 text-slate-700">
+                                <span>רק בפרקים החינמיים</span>
+                                <span>27%</span>
+                            </div>
+                            <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden flex justify-end">
+                                <div class="bg-blue-600 h-full rounded-full" style="width: 27%;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs font-bold mb-1 text-slate-700">
+                                <span>מעדיף קולנוע וטלוויזיה רגילים</span>
+                                <span>15%</span>
+                            </div>
+                            <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden flex justify-end">
+                                <div class="bg-emerald-600 h-full rounded-full" style="width: 15%;"></div>
+                            </div>
+                        </div>
+                        <p class="text-[11px] text-slate-400 text-center mt-2 font-medium">סך הכל מצביעים: 8,490</p>
+                    </div>
+                </div>
+
+                <!-- Most Read News Widget -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-5">
+                    <h3 class="font-bold text-slate-900 text-base mb-4 pb-2 border-b-2 border-red-600 flex items-center justify-between font-rubik">
+                        <span class="flex items-center gap-1.5"><i class="fas fa-fire text-red-600"></i> הכתבות הנקראות ביותר</span>
+                        <span class="text-xs font-normal text-slate-400">היום</span>
+                    </h3>
+                    <div class="space-y-4">
+                        <a href="./brazil_serbia.html" class="flex gap-3 group border-b border-slate-100 pb-3">
+                            <span class="text-2xl font-black text-slate-300 group-hover:text-red-600 transition font-rubik">1</span>
+                            <div>
+                                <h4 class="text-sm font-bold text-slate-800 group-hover:text-red-600 transition leading-snug">בבית הקרב צמוד, אך בחוץ סערה: מהפך בברזיל והיסטוריה בסרביה</h4>
+                                <span class="text-xs text-slate-400 mt-1 inline-block"><i class="far fa-clock ml-1"></i>לפני 3 שעות</span>
+                            </div>
+                        </a>
+                        <a href="./news_article_page.html" class="flex gap-3 group">
+                            <span class="text-2xl font-black text-slate-300 group-hover:text-red-600 transition font-rubik">2</span>
+                            <div>
+                                <h4 class="text-sm font-bold text-slate-800 group-hover:text-red-600 transition leading-snug">אף גוש לא מגרד 61: הסיוט של חוסר היציבות הפוליטית חוזר</h4>
+                                <span class="text-xs text-slate-400 mt-1 inline-block"><i class="far fa-clock ml-1"></i>לפני שעה</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Opinion Widget -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-5 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 left-0 h-1 bg-amber-400"></div>
+                    <h3 class="font-bold text-slate-900 text-base mb-3 pb-2 border-b border-slate-100 flex items-center gap-1.5 font-rubik">
+                        <i class="fas fa-star text-amber-400"></i> טור אישי - דעות ופרשנויות
+                    </h3>
+                    <a href="./opinion_average_man.html" class="block group">
+                        <p class="text-sm font-bold text-slate-800 group-hover:text-red-600 transition leading-snug mb-3">
+                            "תמונת האדם הממוצע": איך שורדים בעולם שבו כולם חייבים להיות מיוחדים?
+                        </p>
+                        <div class="flex items-center justify-between pt-2.5 border-t border-slate-100">
+                            <div class="flex items-center gap-2">
+                                <img src="image_98315f.jpg" alt="חי חיים פרץ" class="w-7 h-7 rounded-full object-cover shadow-sm border border-slate-200" style="object-position: center 20%;">
+                                <span class="text-xs font-bold text-slate-900">חי חיים פרץ</span>
+                            </div>
+                            <span class="text-xs font-semibold text-red-600 group-hover:translate-x-1 transition flex items-center gap-1">לקריאה ←</span>
+                        </div>
+                    </a>
+                </div>
+
+            </aside>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 text-xs border-t border-slate-800 mt-12">
+        <div class="max-w-7xl mx-auto px-4 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 border-b border-slate-800 pb-6 mb-6">
+                <div>
+                    <span class="bg-red-600 text-white font-black text-xl px-3 py-1 rounded font-rubik inline-block mb-1">ללא פילטר</span>
+                    <p class="text-xs text-slate-400">חדשות ואקטואליה עצמאית בגובה העיניים</p>
+                </div>
+                <div class="flex flex-wrap gap-4 text-sm">
+                    <a href="./index.html" class="hover:text-white transition">ראשי</a>
+                    <a href="./politics.html" class="hover:text-white transition">פוליטיקה</a>
+                    <a href="#" class="hover:text-white transition text-red-400 font-semibold">בידור</a>
+                    <a href="#" class="hover:text-white transition">פנאי</a>
+                    <a href="./world.html" class="hover:text-white transition">בעולם</a>
+                    <a href="./opinion_average_man.html" class="hover:text-white transition">דעות</a>
+                </div>
+            </div>
+            <div class="text-center text-slate-500 text-[11px]">
+                © 2026 כל הזכויות שמורות למערכת "ללא פילטר" • פרויקט תוכן עצמאי
+            </div>
+        </div>
+    </footer>
+
+    <!-- הודעת Toast להעתקת קישור -->
+    <div id="toast-msg" class="fixed bottom-6 right-6 bg-slate-900 text-white text-xs font-semibold px-4 py-3 rounded-xl shadow-2xl border border-slate-700 hidden transition-all duration-300 flex items-center gap-2 z-50">
+        <i class="fas fa-check-circle text-emerald-400 text-sm"></i>
+        <span>הקישור הועתק בהצלחה ללוח!</span>
+    </div>
+
+    <!-- JavaScript אינטראקטיבי -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const formattedDate = now.toLocaleDateString('he-IL', options);
+            const dateElem = document.getElementById('current-date');
+            if (dateElem) {
+                dateElem.innerHTML = `<i class="far fa-calendar-alt text-slate-400 ml-1"></i> ${formattedDate}`;
+            }
+
+            // תפריט מובייל
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const closeBtn = document.getElementById('close-menu-btn');
+            const menuOverlay = document.getElementById('mobile-menu-overlay');
+
+            function toggleMenu(show) {
+                if (show) {
+                    menuOverlay.classList.remove('hidden');
+                    document.body.classList.add('menu-open');
+                } else {
+                    menuOverlay.classList.add('hidden');
+                    document.body.classList.remove('menu-open');
+                }
+            }
+
+            if (menuBtn && closeBtn && menuOverlay) {
+                menuBtn.addEventListener('click', () => toggleMenu(true));
+                closeBtn.addEventListener('click', () => toggleMenu(false));
+                menuOverlay.addEventListener('click', (e) => {
+                    if (e.target === menuOverlay) toggleMenu(false);
+                });
+            }
+        });
+
+        function votePoll(option) {
+            document.getElementById('poll-options').classList.add('hidden');
+            document.getElementById('poll-results').classList.remove('hidden');
+        }
+
+        function shareLink(platform) {
+            const url = encodeURIComponent(window.location.href);
+            const title = encodeURIComponent("Is cinema in danger? The rise of short dramas | ללא פילטר");
+            if (platform === 'facebook') window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`);
+            if (platform === 'twitter') window.open(`https://twitter.com/intent/tweet?text=${title}&url=${url}`);
+            if (platform === 'whatsapp') window.open(`https://api.whatsapp.com/send?text=${title} ${url}`);
+        }
+
+        function copyArticleLink() {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                const toast = document.getElementById('toast-msg');
+                toast.classList.remove('hidden');
+                setTimeout(() => {
+                    toast.classList.add('hidden');
+                }, 3000);
+            }).catch(() => {
+                alert('הקישור הועתק בהצלחה ללוח!');
+            });
+        }
+    </script>
+</body>
+</html>
